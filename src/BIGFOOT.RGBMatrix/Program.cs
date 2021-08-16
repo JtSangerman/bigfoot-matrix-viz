@@ -141,9 +141,6 @@ namespace BIGFOOT.RGBMatrix
         {
             var arr = ArrayUtils.CreateShuffledSequential(32);
             int n = arr.Length;
-            var sorted = new Color(0, 0, 123);
-            var unsorted = new Color(123, 123, 123);
-            var processing = new Color(123, 0, 0);
             var matrix = new RGBLedMatrix(32, 1, 1);
             var canvas = matrix.CreateOffscreenCanvas();
             var sleepMs = 2;
