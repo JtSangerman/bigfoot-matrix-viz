@@ -4,15 +4,17 @@ using System.Text;
 
 namespace BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing
 {
-    public abstract class Matrix
+    public abstract class Matrix<TCanvas> where TCanvas : Canvas
     {
-        public Matrix(int rows, int chained = 1, int parallel = 1)
-        {
+        public int Size { get; protected set; }
 
+        public Matrix(int size, int rows_not_yet_supported, int parallel_not_yet_supported)
+        {
+            Size = size;
         }
 
-        public abstract Canvas CreateOffscreenCanvas();
-        public abstract Canvas GetCanvas();
-        public abstract Canvas SwapOnVsync(Canvas canvas);
+        public abstract TCanvas CreateOffscreenCanvas();
+        public abstract TCanvas GetCanvas();
+        public abstract TCanvas SwapOnVsync(TCanvas canvas);
     }
 }

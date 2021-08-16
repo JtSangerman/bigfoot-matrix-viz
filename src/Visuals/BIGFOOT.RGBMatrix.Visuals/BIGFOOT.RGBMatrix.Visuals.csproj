@@ -6,4 +6,8 @@
     <RootNamespace>BIGFOOT.RGBMatrix.Visuals</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.csproj" />
+  </ItemGroup>
+
 </Project>

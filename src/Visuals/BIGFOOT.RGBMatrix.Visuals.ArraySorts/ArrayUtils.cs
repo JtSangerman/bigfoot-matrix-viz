@@ -10,7 +10,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
         /// <summary>method <c>CreateShuffledSequential</c> returns a SHUFFLED array of values [1, 2, ..., inclusiveMax] .</summary>
         public static int[] CreateShuffledSequential(int inclusiveMax)
         {
-            var array = Enumerable.Range(1, 32).ToArray();
+            var array = Enumerable.Range(1, inclusiveMax).ToArray();
             Random rng = new Random();
 
             var n = array.Length;

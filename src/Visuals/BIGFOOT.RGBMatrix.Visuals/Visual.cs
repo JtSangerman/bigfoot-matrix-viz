@@ -1,15 +1,18 @@
-﻿using System;
+﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
+using System;
 
 namespace BIGFOOT.RGBMatrix.Visuals
 {
-    public abstract class Visual<TMatrix, TCanvas>
+    public abstract class Visual<TMatrix, TCanvas> 
+        where TMatrix : Matrix<TCanvas> 
+        where TCanvas : Canvas
     {
         protected readonly TMatrix _matrix;
-        protected readonly TCanvas _canvas;
-        public Visual(TMatrix matrix, TCanvas canvas)
+        public Visual(TMatrix matrix)
         {
             _matrix = matrix;
-            _canvas = canvas;
         }
+
+        public abstract void Visualise();
     }
 }

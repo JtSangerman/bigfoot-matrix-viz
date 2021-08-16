@@ -6,7 +6,6 @@ namespace BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing
 {
     public interface Canvas
     {
-        public Canvas SwapOnVsync(Canvas canvas);
         public void SetPixel(int x, int y, Color color);
         public void Fill(Color color);
         public void Clear();

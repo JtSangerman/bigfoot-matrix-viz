@@ -11,6 +11,7 @@
     <ProjectReference Include="..\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.csproj" />
     <ProjectReference Include="..\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\BIGFOOT.RGBMatrix.Visuals.ArraySorts.csproj" />
     <ProjectReference Include="..\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\BIGFOOT.RGBMatrix.Visuals.Maze.csproj" />
+    <ProjectReference Include="..\Visuals\Visualizer\BIGFOOT.RGBMatrix.Visuals.Visualizer.ColoredConsole\BIGFOOT.RGBMatrix.Visuals.Visualizer.ColoredConsole.csproj" />
   </ItemGroup>
 
 </Project>

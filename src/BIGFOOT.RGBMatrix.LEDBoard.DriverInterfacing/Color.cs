@@ -15,6 +15,7 @@ namespace BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing
             G = (byte)g;
             B = (byte)b;
         }
+
         public Color(byte r, byte g, byte b)
         {
             R = r;
