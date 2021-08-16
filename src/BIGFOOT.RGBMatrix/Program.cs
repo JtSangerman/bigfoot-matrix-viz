@@ -1,10 +1,7 @@
-﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
+﻿using BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole;
+using BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed;
 using BIGFOOT.RGBMatrix.Visuals.ArraySorts;
-using BIGFOOT.RGBMatrix.Visuals.Visualizer.ColoredConsole;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading;
 
 namespace BIGFOOT.RGBMatrix
 {
@@ -17,13 +14,19 @@ namespace BIGFOOT.RGBMatrix
             if (opt == ConsoleKey.D1)
             {
                 var bubble = new BubbleSort<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix);
-                bubble.Visualise();
+                bubble.Visualize();
+            }
+            else if(opt == ConsoleKey.D2)
+            {
+                var insertion = new InsertionSort<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix);
+                insertion.Visualize();
             }
             else
             {
-                var insertion = new InsertionSort<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix);
-                insertion.Visualise();
-            } 
+                var led = new InterfacedRGBLedMatrix(32, 1, 1);
+                var bubble = new BubbleSort<InterfacedRGBLedMatrix, InterfacedRGBLedCanvas>(led);
+                bubble.Visualize();
+            }
         }
     }
 }

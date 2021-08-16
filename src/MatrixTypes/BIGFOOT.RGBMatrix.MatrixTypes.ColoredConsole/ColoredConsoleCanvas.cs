@@ -1,9 +1,8 @@
 ﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
-namespace BIGFOOT.RGBMatrix.Visuals.Visualizer.ColoredConsole
+namespace BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole
 {
     public class ColoredConsoleCanvas : Canvas
     {
@@ -16,11 +15,12 @@ namespace BIGFOOT.RGBMatrix.Visuals.Visualizer.ColoredConsole
 
         public void DrawLine(int x0, int y0, int x1, int y1, Color color)
         {
+            var cc = ToConsoleColor(color);
             for (var x = x0; x <= x1; x++)
             {
                 for (var y = y0; y <= y1; y++)
                 {
-                    _grid[x, y] = ToConsoleColor(color);
+                    _grid[x, y] = cc;
                 }
             }
         }
@@ -36,12 +36,13 @@ namespace BIGFOOT.RGBMatrix.Visuals.Visualizer.ColoredConsole
                 )
                 == (true, true, true, true)
             )
-                _grid[x, y] = ToConsoleColor(color); ;
+                _grid[x, y] = ToConsoleColor(color);
         }
 
         public void Clear()
         {
             Fill(new Color(0,0,0));
+            //Console.Write(string.Join("", Enumerable.Repeat("\n", 32).ToList()));
             Console.Clear();
         }
 
@@ -52,7 +53,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Visualizer.ColoredConsole
             {
                 for (var j = 0; j < _grid.GetLength(1); j++)
                 {
-                    _grid[i, j] = ToConsoleColor(color);
+                    _grid[i, j] = cc;
                 }
             }
         }

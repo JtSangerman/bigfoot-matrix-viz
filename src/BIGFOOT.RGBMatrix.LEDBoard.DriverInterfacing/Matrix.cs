@@ -13,8 +13,12 @@ namespace BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing
             Size = size;
         }
 
-        public abstract TCanvas CreateOffscreenCanvas();
-        public abstract TCanvas GetCanvas();
-        public abstract TCanvas SwapOnVsync(TCanvas canvas);
+        public abstract RGBLedCanvas CreateOffscreenCanvas();
+        public abstract RGBLedCanvas GetCanvas();
+        public abstract RGBLedCanvas SwapOnVsync(RGBLedCanvas canvas);
+
+        public abstract TCanvas InterfacedCreateOffscreenCanvas();
+        public abstract TCanvas InterfacedGetCanvas();
+        public abstract TCanvas InterfacedSwapOnVsync(TCanvas canvas);
     }
 }
