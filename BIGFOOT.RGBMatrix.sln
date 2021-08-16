@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C6A361E0-BA0C-4C58-8A19-AFDF2ACF8E1F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix", "src\BIGFOOT.RGBMatrix\BIGFOOT.RGBMatrix.csproj", "{321DBF63-C0EF-4A30-9212-D44831C236E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing", "src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.csproj", "{157B826F-17B5-40E6-92D4-DAAFB9532397}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visuals", "Visuals", "{832E7028-BFA1-4F69-8179-37BE4846C21F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Visuals.ArraySorts", "src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\BIGFOOT.RGBMatrix.Visuals.ArraySorts.csproj", "{6F8C6E6E-5335-4668-BAE2-368E57F7E57D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Visuals.Maze", "src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\BIGFOOT.RGBMatrix.Visuals.Maze.csproj", "{93192D31-4598-40B7-8097-D30A9DC9B2D5}"
+EndProject
+
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{321DBF63-C0EF-4A30-9212-D44831C236E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{321DBF63-C0EF-4A30-9212-D44831C236E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{321DBF63-C0EF-4A30-9212-D44831C236E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{321DBF63-C0EF-4A30-9212-D44831C236E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157B826F-17B5-40E6-92D4-DAAFB9532397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157B826F-17B5-40E6-92D4-DAAFB9532397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157B826F-17B5-40E6-92D4-DAAFB9532397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157B826F-17B5-40E6-92D4-DAAFB9532397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F8C6E6E-5335-4668-BAE2-368E57F7E57D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F8C6E6E-5335-4668-BAE2-368E57F7E57D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F8C6E6E-5335-4668-BAE2-368E57F7E57D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F8C6E6E-5335-4668-BAE2-368E57F7E57D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93192D31-4598-40B7-8097-D30A9DC9B2D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93192D31-4598-40B7-8097-D30A9DC9B2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93192D31-4598-40B7-8097-D30A9DC9B2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93192D31-4598-40B7-8097-D30A9DC9B2D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{321DBF63-C0EF-4A30-9212-D44831C236E8} = {C6A361E0-BA0C-4C58-8A19-AFDF2ACF8E1F}
+		{157B826F-17B5-40E6-92D4-DAAFB9532397} = {C6A361E0-BA0C-4C58-8A19-AFDF2ACF8E1F}
+		{6F8C6E6E-5335-4668-BAE2-368E57F7E57D} = {832E7028-BFA1-4F69-8179-37BE4846C21F}
+		{832E7028-BFA1-4F69-8179-37BE4846C21F} = {C6A361E0-BA0C-4C58-8A19-AFDF2ACF8E1F}
+		{93192D31-4598-40B7-8097-D30A9DC9B2D5} = {832E7028-BFA1-4F69-8179-37BE4846C21F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43437EDA-6A5E-4A29-92A4-6AF28B662785}
+	EndGlobalSection
+EndGlobal

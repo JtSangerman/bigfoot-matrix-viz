@@ -1,0 +1,16 @@
+C:\Source\BIGFOOT\BIGFOOT\obj\Debug\netcoreapp3.1\BIGFOOT.csprojAssemblyReference.cache
+C:\Source\BIGFOOT\BIGFOOT\obj\Debug\netcoreapp3.1\BIGFOOT.AssemblyInfoInputs.cache
+C:\Source\BIGFOOT\BIGFOOT\obj\Debug\netcoreapp3.1\BIGFOOT.AssemblyInfo.cs
+C:\Source\BIGFOOT\BIGFOOT\obj\Debug\netcoreapp3.1\BIGFOOT.csproj.CoreCompileInputs.cache
+C:\Source\BIGFOOT\BIGFOOT\bin\Debug\netcoreapp3.1\BIGFOOT.exe
+C:\Source\BIGFOOT\BIGFOOT\bin\Debug\netcoreapp3.1\BIGFOOT.deps.json
+C:\Source\BIGFOOT\BIGFOOT\bin\Debug\netcoreapp3.1\BIGFOOT.runtimeconfig.json
+C:\Source\BIGFOOT\BIGFOOT\bin\Debug\netcoreapp3.1\BIGFOOT.runtimeconfig.dev.json
+C:\Source\BIGFOOT\BIGFOOT\bin\Debug\netcoreapp3.1\BIGFOOT.dll
+C:\Source\BIGFOOT\BIGFOOT\bin\Debug\netcoreapp3.1\BIGFOOT.pdb
+C:\Source\BIGFOOT\BIGFOOT\bin\Debug\netcoreapp3.1\ArraySorts.dll
+C:\Source\BIGFOOT\BIGFOOT\bin\Debug\netcoreapp3.1\ArraySorts.pdb
+C:\Source\BIGFOOT\BIGFOOT\obj\Debug\netcoreapp3.1\BIGFOOT.csproj.CopyComplete
+C:\Source\BIGFOOT\BIGFOOT\obj\Debug\netcoreapp3.1\BIGFOOT.dll
+C:\Source\BIGFOOT\BIGFOOT\obj\Debug\netcoreapp3.1\BIGFOOT.pdb
+C:\Source\BIGFOOT\BIGFOOT\obj\Debug\netcoreapp3.1\BIGFOOT.genruntimeconfig.cache

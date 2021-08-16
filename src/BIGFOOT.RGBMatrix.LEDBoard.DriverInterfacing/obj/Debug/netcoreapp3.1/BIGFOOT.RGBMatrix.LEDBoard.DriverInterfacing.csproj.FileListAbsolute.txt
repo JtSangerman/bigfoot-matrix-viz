@@ -1,0 +1,16 @@
+C:\Source\BIGFOOT\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.deps.json
+C:\Source\BIGFOOT\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.dll
+C:\Source\BIGFOOT\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.pdb
+C:\Source\BIGFOOT\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.AssemblyInfoInputs.cache
+C:\Source\BIGFOOT\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.AssemblyInfo.cs
+C:\Source\BIGFOOT\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.csproj.CoreCompileInputs.cache
+C:\Source\BIGFOOT\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.dll
+C:\Source\BIGFOOT\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.pdb
+C:\Source\BIGFOOT.RGBMatrix\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.deps.json
+C:\Source\BIGFOOT.RGBMatrix\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.dll
+C:\Source\BIGFOOT.RGBMatrix\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.pdb
+C:\Source\BIGFOOT.RGBMatrix\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.AssemblyInfoInputs.cache
+C:\Source\BIGFOOT.RGBMatrix\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.AssemblyInfo.cs
+C:\Source\BIGFOOT.RGBMatrix\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.csproj.CoreCompileInputs.cache
+C:\Source\BIGFOOT.RGBMatrix\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.dll
+C:\Source\BIGFOOT.RGBMatrix\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.pdb

@@ -1,0 +1,9 @@
+C:\Source\BIGFOOT\ArraySorts\bin\Debug\netcoreapp3.1\ArraySorts.deps.json
+C:\Source\BIGFOOT\ArraySorts\bin\Debug\netcoreapp3.1\ArraySorts.dll
+C:\Source\BIGFOOT\ArraySorts\bin\Debug\netcoreapp3.1\ArraySorts.pdb
+C:\Source\BIGFOOT\ArraySorts\obj\Debug\netcoreapp3.1\ArraySorts.csprojAssemblyReference.cache
+C:\Source\BIGFOOT\ArraySorts\obj\Debug\netcoreapp3.1\ArraySorts.AssemblyInfoInputs.cache
+C:\Source\BIGFOOT\ArraySorts\obj\Debug\netcoreapp3.1\ArraySorts.AssemblyInfo.cs
+C:\Source\BIGFOOT\ArraySorts\obj\Debug\netcoreapp3.1\ArraySorts.csproj.CoreCompileInputs.cache
+C:\Source\BIGFOOT\ArraySorts\obj\Debug\netcoreapp3.1\ArraySorts.dll
+C:\Source\BIGFOOT\ArraySorts\obj\Debug\netcoreapp3.1\ArraySorts.pdb

@@ -1,0 +1,16 @@
+C:\Source\BIGFOOT.RGBMatrix\BIGFOOT.RGBMatrix.Visuals.Maze\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.csprojAssemblyReference.cache
+C:\Source\BIGFOOT.RGBMatrix\BIGFOOT.RGBMatrix.Visuals.Maze\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.AssemblyInfoInputs.cache
+C:\Source\BIGFOOT.RGBMatrix\BIGFOOT.RGBMatrix.Visuals.Maze\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.AssemblyInfo.cs
+C:\Source\BIGFOOT.RGBMatrix\BIGFOOT.RGBMatrix.Visuals.Maze\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.csproj.CoreCompileInputs.cache
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.deps.json
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.dll
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.pdb
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.dll
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.pdb
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.csprojAssemblyReference.cache
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.AssemblyInfoInputs.cache
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.AssemblyInfo.cs
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.csproj.CoreCompileInputs.cache
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.csproj.CopyComplete
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.dll
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.Maze.pdb

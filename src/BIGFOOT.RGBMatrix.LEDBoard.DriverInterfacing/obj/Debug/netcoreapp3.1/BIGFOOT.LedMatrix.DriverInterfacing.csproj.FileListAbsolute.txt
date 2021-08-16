@@ -1,0 +1,9 @@
+C:\Source\BIGFOOT\BIGFOOT.LedMatrix.DriverInterfacing\bin\Debug\netcoreapp3.1\BIGFOOT.LedMatrix.DriverInterfacing.deps.json
+C:\Source\BIGFOOT\BIGFOOT.LedMatrix.DriverInterfacing\bin\Debug\netcoreapp3.1\BIGFOOT.LedMatrix.DriverInterfacing.dll
+C:\Source\BIGFOOT\BIGFOOT.LedMatrix.DriverInterfacing\bin\Debug\netcoreapp3.1\BIGFOOT.LedMatrix.DriverInterfacing.pdb
+C:\Source\BIGFOOT\BIGFOOT.LedMatrix.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.LedMatrix.DriverInterfacing.csprojAssemblyReference.cache
+C:\Source\BIGFOOT\BIGFOOT.LedMatrix.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.LedMatrix.DriverInterfacing.AssemblyInfoInputs.cache
+C:\Source\BIGFOOT\BIGFOOT.LedMatrix.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.LedMatrix.DriverInterfacing.AssemblyInfo.cs
+C:\Source\BIGFOOT\BIGFOOT.LedMatrix.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.LedMatrix.DriverInterfacing.csproj.CoreCompileInputs.cache
+C:\Source\BIGFOOT\BIGFOOT.LedMatrix.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.LedMatrix.DriverInterfacing.dll
+C:\Source\BIGFOOT\BIGFOOT.LedMatrix.DriverInterfacing\obj\Debug\netcoreapp3.1\BIGFOOT.LedMatrix.DriverInterfacing.pdb

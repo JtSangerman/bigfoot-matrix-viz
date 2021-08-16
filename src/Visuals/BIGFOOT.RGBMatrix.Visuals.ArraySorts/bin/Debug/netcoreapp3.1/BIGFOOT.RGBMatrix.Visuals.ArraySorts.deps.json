@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "BIGFOOT.RGBMatrix.Visuals.ArraySorts/1.0.0": {
+        "runtime": {
+          "BIGFOOT.RGBMatrix.Visuals.ArraySorts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BIGFOOT.RGBMatrix.Visuals.ArraySorts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

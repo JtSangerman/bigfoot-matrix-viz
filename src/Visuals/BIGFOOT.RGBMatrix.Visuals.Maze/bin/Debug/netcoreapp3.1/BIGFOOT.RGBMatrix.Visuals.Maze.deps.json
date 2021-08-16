@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "BIGFOOT.RGBMatrix.Visuals.Maze/1.0.0": {
+        "dependencies": {
+          "BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing": "1.0.0"
+        },
+        "runtime": {
+          "BIGFOOT.RGBMatrix.Visuals.Maze.dll": {}
+        }
+      },
+      "BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing/1.0.0": {
+        "runtime": {
+          "BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BIGFOOT.RGBMatrix.Visuals.Maze/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,17 @@
+C:\Source\BIGFOOT\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.deps.json
+C:\Source\BIGFOOT\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.dll
+C:\Source\BIGFOOT\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.pdb
+C:\Source\BIGFOOT\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.AssemblyInfoInputs.cache
+C:\Source\BIGFOOT\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.AssemblyInfo.cs
+C:\Source\BIGFOOT\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.csproj.CoreCompileInputs.cache
+C:\Source\BIGFOOT\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.dll
+C:\Source\BIGFOOT\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.pdb
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.deps.json
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.dll
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\bin\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.pdb
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.csprojAssemblyReference.cache
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.AssemblyInfoInputs.cache
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.AssemblyInfo.cs
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.csproj.CoreCompileInputs.cache
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.dll
+C:\Source\BIGFOOT.RGBMatrix\src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\obj\Debug\netcoreapp3.1\BIGFOOT.RGBMatrix.Visuals.ArraySorts.pdb

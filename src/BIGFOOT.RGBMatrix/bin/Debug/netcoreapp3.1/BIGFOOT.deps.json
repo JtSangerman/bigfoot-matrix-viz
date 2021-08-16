@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "BIGFOOT/1.0.0": {
+        "dependencies": {
+          "ArraySorts": "1.0.0"
+        },
+        "runtime": {
+          "BIGFOOT.dll": {}
+        }
+      },
+      "ArraySorts/1.0.0": {
+        "runtime": {
+          "ArraySorts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BIGFOOT/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ArraySorts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
