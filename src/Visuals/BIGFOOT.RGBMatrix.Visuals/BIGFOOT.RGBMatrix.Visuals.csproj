@@ -2,13 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>BIGFOOT.RGBMatrix.Visuals.ArraySorts</AssemblyName>
-    <RootNamespace>BIGFOOT.RGBMatrix.Visuals.ArraySorts</RootNamespace>
+	<AssemblyName>BIGFOOT.RGBMatrix.Visuals</AssemblyName>
+    <RootNamespace>BIGFOOT.RGBMatrix.Visuals</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.csproj" />
-    <ProjectReference Include="..\BIGFOOT.RGBMatrix.Visuals\BIGFOOT.RGBMatrix.Visuals.csproj" />
   </ItemGroup>
 
 </Project>
