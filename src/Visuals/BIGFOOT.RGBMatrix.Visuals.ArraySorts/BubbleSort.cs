@@ -12,7 +12,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
         public override void VisualizeVirtually()
         {
             var array = ArrayUtils.CreateShuffledSequential(Matrix.Size);
-            var sleepMs = 50;
+            var sleepMs = 1;
 
             var canvas = Matrix.InterfacedCreateOffscreenCanvas();
             int n = array.Length;

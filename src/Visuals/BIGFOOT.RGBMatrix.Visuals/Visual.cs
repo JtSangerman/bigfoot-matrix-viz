@@ -1,5 +1,6 @@
 ﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
 using System;
+using System.Threading;
 
 namespace BIGFOOT.RGBMatrix.Visuals
 {
@@ -31,6 +32,8 @@ namespace BIGFOOT.RGBMatrix.Visuals
             {
                 VisualizeOnHardware();
             }
+
+            Thread.Sleep(10000);
         }
 
         public abstract void VisualizeOnHardware();

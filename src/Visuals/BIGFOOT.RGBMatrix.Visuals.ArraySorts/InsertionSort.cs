@@ -58,7 +58,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
             var arr = ArrayUtils.CreateShuffledSequential(32);
             int n = arr.Length;
             var canvas = Matrix.InterfacedCreateOffscreenCanvas();
-            var sleepMs = 2;
+            var sleepMs = 1;
 
             // One by one move boundary of unsorted subarray
             for (int i = 0; i < n - 1; i++)

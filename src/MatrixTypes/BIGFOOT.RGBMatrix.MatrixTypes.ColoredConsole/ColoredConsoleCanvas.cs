@@ -9,6 +9,13 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole
         private ConsoleColor[,] _grid;
         public ColoredConsoleCanvas(int size)
         {
+            //int bufWidth = 2 * size;
+            //int bufHeight = size + 1;
+
+            //Console.SetWindowSize(bufWidth, bufHeight);
+            //Console.BufferHeight = bufHeight;
+            //Console.BufferWidth = bufWidth;
+
             _grid = new ConsoleColor[size, size];
             Fill(new Color(0,0,0));
         }
@@ -63,9 +70,30 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole
 
         }
 
-        public ConsoleColor[,] GetGrid()
+        public void Display()
         {
-            return _grid;
+            Console.Clear();
+
+            // Print rotated 90 degrees
+            for (int col = _grid.GetLength(1) - 1; col >= 0; col--)
+            {
+                for (int row = 0; row < _grid.GetLength(0); row++)
+                {
+                    Console.ForegroundColor = _grid[row, col];
+                    Console.Write("[]");
+                }
+                Console.Write("\n");
+            }
+
+            //for (var i = 0; i < grid.GetLength(0); i++)
+            //{
+            //    for (var j = 0; j < grid.GetLength(1); j++)
+            //    {
+            //        Console.ForegroundColor = grid[i, j];
+            //        Console.Write("#");
+            //    }
+            //    Console.Write("\n");
+            //}
         }
 
         private ConsoleColor ToConsoleColor(Color c)

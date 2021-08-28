@@ -1,27 +1,29 @@
 ﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole
 {
-    public class ColoredConsoleMatrix : Matrix<ColoredConsoleCanvas>
+    public class FastConsoleMatrix : Matrix<FastConsoleCanvas>
     {
-        public ColoredConsoleMatrix(int rows, int chained_not_yet_supported = 1, int parallel_not_yet_supported = 1) 
+        public FastConsoleMatrix(int rows, int chained_not_yet_supported = 1, int parallel_not_yet_supported = 1)
             : base(rows, chained_not_yet_supported, parallel_not_yet_supported) { }
 
-        public override ColoredConsoleCanvas InterfacedCreateOffscreenCanvas()
+        public override FastConsoleCanvas InterfacedCreateOffscreenCanvas()
         {
-            return new ColoredConsoleCanvas(Size);
+            return new FastConsoleCanvas(Size);
         }
 
-        public override ColoredConsoleCanvas InterfacedSwapOnVsync(ColoredConsoleCanvas canvas)
+        public override FastConsoleCanvas InterfacedSwapOnVsync(FastConsoleCanvas canvas)
         {
             canvas.Display();
             return canvas;
         }
 
-        public override ColoredConsoleCanvas InterfacedGetCanvas()
+        public override FastConsoleCanvas InterfacedGetCanvas()
         {
-            return new ColoredConsoleCanvas(Size);
+            return new FastConsoleCanvas(Size);
         }
 
         /* The methods below should never be executed, but exist for abstraction compilation.       */
