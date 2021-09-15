@@ -1,4 +1,5 @@
 ﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
+using System;
 using System.Threading;
 
 namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
@@ -9,12 +10,13 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
     {
         public BubbleSort(TMatrix matrix) : base(matrix) { }
 
+        private TCanvas _canvas;
         public override void VisualizeVirtually()
         {
+            _canvas = Matrix.InterfacedGetCanvas();
             var array = ArrayUtils.CreateShuffledSequential(Matrix.Size);
-            var sleepMs = 1;
+            var sleepMs = 100;
 
-            var canvas = Matrix.InterfacedCreateOffscreenCanvas();
             int n = array.Length;
             for (int i = 0; i < n - 1; i++)
             {
@@ -26,21 +28,23 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
                         array[j] = array[j + 1];
                         array[j + 1] = temp;
 
-                        canvas.Clear();
+                        _canvas.Clear();
                         for (int k = 0; k < n; k++)
                         {
-                            canvas.DrawLine(k, 0, k, array[k] - 1, k == j + 1 ? new Color(123, 0, 0) : k < n - i ? new Color(123, 123, 123) : new Color(0, 0, 123));
+                            _canvas.DrawLine(k, 0, k, array[k] - 1, k == j + 1 ? new Color(123, 0, 0) : k < n - i ? new Color(123, 123, 123) : new Color(0, 0, 123));
                         }
-                        canvas = Matrix.InterfacedSwapOnVsync(canvas);
+                        _canvas = Matrix.InterfacedSwapOnVsync(_canvas);
                         Thread.Sleep(sleepMs);
                     }
             }
-            canvas.Clear();
+            _canvas.Clear();
             for (int k = 0; k < array.Length; k++)
             {
-                canvas.DrawLine(k, 0, k, array[k] - 1, new Color(0, 0, 123));
+                _canvas.DrawLine(k, 0, k, array[k] - 1, new Color(0, 0, 123));
             }
-            canvas = Matrix.InterfacedSwapOnVsync(canvas);
+            _canvas = Matrix.InterfacedSwapOnVsync(_canvas);
+
+            Console.WriteLine("done");
         }
 
         public override void VisualizeOnHardware()
@@ -55,7 +59,6 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
                 for (int j = 0; j < n - i - 1; j++)
                     if (array[j] > array[j + 1])
                     {
-                        // swap temp and arr[i]
                         int temp = array[j];
                         array[j] = array[j + 1];
                         array[j + 1] = temp;

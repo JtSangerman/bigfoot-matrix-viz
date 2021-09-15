@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 
+
+// TODO refactor class structure and the awful code in general.
 namespace BIGFOOT.RGBMatrix.Visuals.Maze
 {
     public class Coordinate
@@ -182,13 +184,11 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
         private Color WallColor = new Color(125, 125, 125);
         private Color[,] history;
         private TCanvas canvas;
-        private readonly TMatrix matrix;
 
         public MazeStack(TMatrix Matrix, int row, int col, int cornRow, int cornCol, int scale, int tickMs) : base(Matrix)
         {
-            matrix = Matrix;
+            canvas = this.Matrix.InterfacedGetCanvas();
             sleepMs = tickMs;
-            canvas = Matrix.InterfacedCreateOffscreenCanvas();
             this.scale = scale;
             this.visted = new bool[cornRow, cornCol];
             this.history = new Color[cornRow, cornCol];
@@ -275,7 +275,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
         public void draw()
         {
 
-            canvas = matrix.InterfacedSwapOnVsync(canvas);
+            canvas = Matrix.InterfacedSwapOnVsync(Matrix.InterfacedGetCanvas());
             int ind = 0;
             for (int i = 0; i < maze.GetLength(0); i++)
             {
@@ -344,7 +344,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
 
             solveMazeRecursively(maze, end.getCol() + 1, end.getRow(), -1);
 
-            canvas = matrix.InterfacedSwapOnVsync(canvas);
+            canvas = Matrix.InterfacedSwapOnVsync(canvas);
 
             drawAtEnd();
         }
@@ -355,7 +355,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
         private bool solved = false;
         private bool solveMazeRecursively(char[,] maze, int x, int y, int d)
         {
-            canvas = matrix.InterfacedSwapOnVsync(canvas);
+            canvas = Matrix.InterfacedSwapOnVsync(canvas);
             if (lrow != -1)
             {
                 //StdDraw.setPenColor(StdDraw.GRAY);
@@ -389,9 +389,9 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
 
                     //StdDraw.setPenColor(StdDraw.CYAN);
                     var c = new Color(255, 0, 0);
-                    canvas = matrix.InterfacedSwapOnVsync(canvas);
+                    canvas = Matrix.InterfacedSwapOnVsync(canvas);
                     Thread.Sleep(sleepMs);
-                    canvas = matrix.InterfacedSwapOnVsync(canvas);
+                    canvas = Matrix.InterfacedSwapOnVsync(canvas);
                     switch (i)
                     {
                         case 0:
@@ -437,7 +437,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
             {
 
                 Thread.Sleep(sleepMs);
-                canvas = matrix.InterfacedSwapOnVsync(canvas);
+                canvas = Matrix.InterfacedSwapOnVsync(canvas);
                 var c = new Color(0, 210, 0);
                 maze[y, x] = '*';
                 //StdDraw.setPenColor(StdDraw.BLACK);
@@ -472,7 +472,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
                         break;
                 }
             }
-            canvas = matrix.InterfacedSwapOnVsync(canvas);
+            canvas = Matrix.InterfacedSwapOnVsync(canvas);
             return ok;
         }
 
@@ -504,7 +504,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
                     }
 
                 }
-                canvas = matrix.InterfacedSwapOnVsync(canvas);
+                canvas = Matrix.InterfacedSwapOnVsync(canvas);
             }
         }
 

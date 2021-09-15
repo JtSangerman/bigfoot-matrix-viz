@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="unvell.D2DLib-x64" Version="1.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.csproj" />
+    <ProjectReference Include="..\src\Visuals\BIGFOOT.RGBMatrix.Visuals\BIGFOOT.RGBMatrix.Visuals.csproj" />
+  </ItemGroup>
+
+</Project>

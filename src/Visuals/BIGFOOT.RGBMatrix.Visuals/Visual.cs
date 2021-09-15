@@ -9,6 +9,7 @@ namespace BIGFOOT.RGBMatrix.Visuals
         where TCanvas : Canvas
     {
         protected readonly TMatrix Matrix;
+        public readonly int Rows;
         private bool _isEmulating 
         {
             get 
@@ -19,10 +20,11 @@ namespace BIGFOOT.RGBMatrix.Visuals
 
         public Visual(TMatrix matrix)
         {
+            Rows = matrix.Size;
             Matrix = matrix;
         }
 
-        public void Visualize()
+        public virtual void Visualize()
         {
             if (_isEmulating)
             {
@@ -34,6 +36,11 @@ namespace BIGFOOT.RGBMatrix.Visuals
             }
 
             Thread.Sleep(10000);
+        }
+
+        public TMatrix GetMatrix()
+        {
+            return Matrix;
         }
 
         public abstract void VisualizeOnHardware();

@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Visuals",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed", "src\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed.csproj", "{B3827681-13BD-4B2F-89CB-1D62DE57566B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIGFOOT.RGBMatrix.Visuals.Snake", "src\Visuals\BIGFOOT.RGBMatrix.Visuals.Snake\Snake.csproj", "{2B050496-8921-44D0-8C25-018F120AE742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Visuals.Snake", "src\Visuals\BIGFOOT.RGBMatrix.Visuals.Snake\BIGFOOT.RGBMatrix.Visuals.Snake.csproj", "{2B050496-8921-44D0-8C25-018F120AE742}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIGFOOT.RGBMatrix.MatrixTypes.Direct2D", "BIGFOOT.RGBMatrix.MatrixTypes.Direct2D\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D.csproj", "{2B16EE9B-AC33-4E0A-ABF8-8BC9E6D91052}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{2B050496-8921-44D0-8C25-018F120AE742}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B050496-8921-44D0-8C25-018F120AE742}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B050496-8921-44D0-8C25-018F120AE742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B16EE9B-AC33-4E0A-ABF8-8BC9E6D91052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B16EE9B-AC33-4E0A-ABF8-8BC9E6D91052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B16EE9B-AC33-4E0A-ABF8-8BC9E6D91052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B16EE9B-AC33-4E0A-ABF8-8BC9E6D91052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{E36B5293-D6A2-4895-ABC0-2CA400492962} = {832E7028-BFA1-4F69-8179-37BE4846C21F}
 		{B3827681-13BD-4B2F-89CB-1D62DE57566B} = {5B703EF3-4DE6-4248-9DDC-64D2D595067E}
 		{2B050496-8921-44D0-8C25-018F120AE742} = {832E7028-BFA1-4F69-8179-37BE4846C21F}
+		{2B16EE9B-AC33-4E0A-ABF8-8BC9E6D91052} = {5B703EF3-4DE6-4248-9DDC-64D2D595067E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43437EDA-6A5E-4A29-92A4-6AF28B662785}
