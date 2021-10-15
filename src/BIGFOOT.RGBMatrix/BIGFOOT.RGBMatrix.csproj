@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>BIGFOOT.RGBMatrix</AssemblyName>
     <RootNamespace>BIGFOOT.RGBMatrix</RootNamespace>
+    <StartupObject>BIGFOOT.RGBMatrix.XboxControllerBluetoothInputPOC</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

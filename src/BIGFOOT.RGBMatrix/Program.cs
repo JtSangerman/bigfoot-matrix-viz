@@ -14,7 +14,7 @@ namespace BIGFOOT.RGBMatrix
     {
         static void Main(string[] args)
         {
-            var opt = ConsoleKey.Escape; // Console.ReadKey().Key;
+            var opt = Console.ReadKey().Key; // Console.ReadKey().Key;
             if (opt == ConsoleKey.D1)
             {
                 var matrix = new ColoredConsoleMatrix(32);
@@ -48,14 +48,7 @@ namespace BIGFOOT.RGBMatrix
             else
             {
                 opt = Console.ReadKey().Key;
-                //Application.EnableVisualStyles();
-                //Application.SetCompatibleTextRenderingDefault(false);
-                ////var matrix = new Direct2DMatrix(32);
-                ////var bubble = new BubbleSort<Direct2DMatrix, Direct2DCanvas>(matrix);
-                //Application.Run(new Direct2DCanvas(32));
 
-                ////bubble.Visualize();
-                ///
                 var matrix = new Direct2DMatrix(32);
                 Visual<Direct2DMatrix, Direct2DCanvas> v;
 
@@ -71,9 +64,8 @@ namespace BIGFOOT.RGBMatrix
                         v = new InsertionSort<Direct2DMatrix, Direct2DCanvas>(matrix);
                         break;
                 }
-                //var bubble = new BubbleSort<Direct2DMatrix, Direct2DCanvas>(matrix);
+
                 Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(v);
-                //d2d.Visualise();
             }
         }
     }

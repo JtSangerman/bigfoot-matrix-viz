@@ -37,6 +37,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
 
         protected override void OnFrame()
         {
+            Console.WriteLine($"Current key: {_visual._dir}");
             SceneChanged = true;
         }
 
@@ -49,6 +50,12 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
             {
                 _visual.Visualize();
             }).Start();
+        }
+
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+            _visual._dir = e.KeyCode.ToString();
         }
 
         protected override void OnClosed(EventArgs e)
@@ -138,7 +145,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
                             var rect = new Rectangle(i * 30, j * 30, 30, 30);
                             var brush = pen.Brush;
                             g2.FillRectangle(brush, rect);
-                            g2.DrawString($"{i},{j}", Font, Pens.Pink.Brush, new PointF(i*30, j*30));
+                            //g2.DrawString($"{i},{j}", Font, Pens.Pink.Brush, new PointF(i*30, j*30));
                         }
                     }
                 }
