@@ -1,6 +1,5 @@
 ﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
 using BIGFOOT.RGBMatrix.Visuals.Inputs;
-using BIGFOOT.RGBMatrix.Visuals.Inputs;
 using System;
 using System.Collections.Generic;
 using System.Text;

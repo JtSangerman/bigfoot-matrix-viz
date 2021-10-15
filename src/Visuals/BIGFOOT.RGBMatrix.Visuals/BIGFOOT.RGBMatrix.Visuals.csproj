@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 	<AssemblyName>BIGFOOT.RGBMatrix.Visuals</AssemblyName>
     <RootNamespace>BIGFOOT.RGBMatrix.Visuals</RootNamespace>
+    <Platforms>AnyCPU;ARM64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

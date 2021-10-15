@@ -6,14 +6,10 @@
     <AssemblyName>BIGFOOT.RGBMatrix</AssemblyName>
     <RootNamespace>BIGFOOT.RGBMatrix</RootNamespace>
     <StartupObject>BIGFOOT.RGBMatrix.XboxControllerBluetoothInputPOC</StartupObject>
+    <Platforms>AnyCPU;ARM64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="unvell.D2DLib-x64" Version="1.3.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D.csproj" />
     <ProjectReference Include="..\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole\BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole.csproj" />
     <ProjectReference Include="..\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D.csproj" />
     <ProjectReference Include="..\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed.csproj" />
