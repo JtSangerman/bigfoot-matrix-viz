@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>BIGFOOT.RGBMatrix.Visuals.Snake</AssemblyName>
     <RootNamespace>BIGFOOT.RGBMatrix.Visuals.Snake</RootNamespace>
+    <Platforms>AnyCPU;ARM64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

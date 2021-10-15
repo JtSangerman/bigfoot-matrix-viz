@@ -271,7 +271,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
             return retVal;
         }
 
-        private Coordinate last;
+        //private Coordinate last;
         public void draw()
         {
 
