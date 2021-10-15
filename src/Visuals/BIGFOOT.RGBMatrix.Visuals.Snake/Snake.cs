@@ -1,9 +1,9 @@
 ﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
 using BIGFOOT.RGBMatrix.Visuals;
-using BIGFOOT.RGBMatrix.Visuals.Input;
+using BIGFOOT.RGBMatrix.Visuals.Inputs;
 using System;
 
-namespace SnakeBIGFOOT.RGBMatrix.Visuals.Maze
+namespace SnakeBIGFOOT.RGBMatrix.Visuals.Games
 {
     public class Snake<TMatrix, TCanvas> : Game<TMatrix, TCanvas>
         where TMatrix : Matrix<TCanvas>

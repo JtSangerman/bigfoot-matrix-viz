@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D.csproj" />
     <ProjectReference Include="..\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole\BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole.csproj" />
+    <ProjectReference Include="..\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D.csproj" />
     <ProjectReference Include="..\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed.csproj" />
     <ProjectReference Include="..\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\BIGFOOT.RGBMatrix.Visuals.ArraySorts.csproj" />
     <ProjectReference Include="..\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\BIGFOOT.RGBMatrix.Visuals.Maze.csproj" />

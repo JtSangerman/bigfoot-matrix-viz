@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BIGFOOT.RGBMatrix.Visuals.Input
+namespace BIGFOOT.RGBMatrix.Visuals.Inputs
 {
     public abstract class ControllerInput
     {

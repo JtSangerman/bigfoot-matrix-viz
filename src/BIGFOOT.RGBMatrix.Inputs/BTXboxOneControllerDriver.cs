@@ -1,9 +1,9 @@
 ﻿using System;
-using BIGFOOT.RGBMatrix.Visuals.Input;
+using BIGFOOT.RGBMatrix.Visuals.Inputs;
 using SharpDX.XInput;
 
 
-namespace BluetoothXboxOneControllerBIGFOOT.RGBMatrix.Visuals.Input
+namespace BluetoothXboxOneControllerBIGFOOT.RGBMatrix.Visuals.Inputs
 {
     public class BTXboxOneControllerDriver : ControllerInput
     {
