@@ -1,7 +1,10 @@
 ﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
 using BIGFOOT.RGBMatrix.Visuals;
 using BIGFOOT.RGBMatrix.Visuals.Inputs;
+using BIGFOOT.RGBMatrix.Visuals.Snake;
 using System;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace SnakeBIGFOOT.RGBMatrix.Visuals.Games
 {
@@ -9,23 +12,42 @@ namespace SnakeBIGFOOT.RGBMatrix.Visuals.Games
         where TMatrix : Matrix<TCanvas>
         where TCanvas : Canvas
     {
-        private readonly ControllerInput _input;
-        public Snake(TMatrix matrix, ControllerInput input) : base(matrix, input) 
+        private readonly GameState _state;
+        private const int _tickRateMs = 1000;
+
+        public Snake(TMatrix matrix, ControllerInputDriver input) : base(matrix, input) 
         {
-            _input = input;
+            _state = new GameState(Rows);
         }
 
-        //private readonly ControllerInput _input;
-        //public Snake(TMatrix matrix, ControllerInput input) : base(matrix, input)
+        //public override void Start()
         //{
-        //    _input = input;
+        //    while (!_state.IsGameOver)
+        //    {
+        //        Tick();
+        //    }
         //}
 
-        public override void Start()
+        private void Tick(int tickRateMs = _tickRateMs)
         {
-            _input.Connect();
+            Debug_enumerateInputQueue();
+            Thread.Sleep(tickRateMs);
+        }
 
-            _input.Up();
+
+        ///// debug
+        ///
+        private void Debug_enumerateInputQueue()
+        {
+            if (_inputQueue?.Count == 0) return;
+
+            Console.WriteLine("Input queue: \n\n");
+
+            var num = 0;
+            _inputQueue.ForEach(i =>
+            {
+                Console.WriteLine($"{num++}: {i}");
+            });
         }
     }
 }

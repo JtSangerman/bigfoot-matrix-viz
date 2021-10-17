@@ -9,6 +9,9 @@ namespace BIGFOOT.RGBMatrix.Visuals.Snake
     {
         private readonly int _boardSize;
         private readonly TileType[,] _board;
+
+        internal bool IsGameOver { get => false; }
+
         public GameState(int boardSize)
         {
             _boardSize = boardSize;

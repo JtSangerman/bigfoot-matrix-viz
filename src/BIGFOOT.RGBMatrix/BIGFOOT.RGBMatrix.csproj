@@ -15,6 +15,7 @@
     <ProjectReference Include="..\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed.csproj" />
     <ProjectReference Include="..\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\BIGFOOT.RGBMatrix.Visuals.ArraySorts.csproj" />
     <ProjectReference Include="..\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\BIGFOOT.RGBMatrix.Visuals.Maze.csproj" />
+    <ProjectReference Include="..\Visuals\BIGFOOT.RGBMatrix.Visuals.Snake\BIGFOOT.RGBMatrix.Visuals.Snake.csproj" />
   </ItemGroup>
 
 </Project>

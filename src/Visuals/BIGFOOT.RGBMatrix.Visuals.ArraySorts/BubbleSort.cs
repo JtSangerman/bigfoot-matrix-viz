@@ -1,18 +1,20 @@
 ﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
+using BIGFOOT.RGBMatrix.Visuals.Inputs;
 using System;
 using System.Threading;
 
 namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
 {
-    public class BubbleSort<TMatrix, TCanvas> : Visual<TMatrix, TCanvas>
+    public class BubbleSort<TMatrix, TCanvas> : Game<TMatrix, TCanvas>
         where TMatrix : Matrix<TCanvas>
         where TCanvas : Canvas
     {
-        public BubbleSort(TMatrix matrix) : base(matrix) { }
+        public BubbleSort(TMatrix matrix, ControllerInputDriver controller = null) : base(matrix, controller) { }
 
         private TCanvas _canvas;
         public override void VisualizeVirtually()
         {
+            return;
             _canvas = Matrix.InterfacedGetCanvas();
             var array = ArrayUtils.CreateShuffledSequential(Matrix.Size);
             var sleepMs = 100;

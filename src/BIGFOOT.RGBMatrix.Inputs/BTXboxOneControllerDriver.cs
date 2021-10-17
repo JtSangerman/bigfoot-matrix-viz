@@ -1,101 +1,113 @@
 ﻿using System;
+using System.Threading;
+using BIGFOOT.RGBMatrix.Inputs.Exceptions;
 using BIGFOOT.RGBMatrix.Visuals.Inputs;
 using SharpDX.XInput;
 
 
 namespace BluetoothXboxOneControllerBIGFOOT.RGBMatrix.Visuals.Inputs
 {
-    public class BTXboxOneControllerDriver : ControllerInput
+    public class BTXboxOneControllerDriver : ControllerInputDriver
     {
-        Controller controller;
-        Gamepad gamepad;
-        bool connected;
-        public BTXboxOneControllerDriver()
+
+        private Controller _controller;
+        private Gamepad _gamepad;
+        private const int _deadband = 10000;
+        private bool _skipNextNoInputEvent = false;
+
+        public BTXboxOneControllerDriver() { }
+
+        public override void Listen()
         {
-            controller = new Controller(UserIndex.One);
-            connected = controller.IsConnected;
+            new Thread(() =>
+            {
+                Thread.CurrentThread.Name = "THREAD01_XboxBluetoothController_THREADED_LISTENER01";
+
+                Console.WriteLine($"LISTENING: on thread {Thread.CurrentThread.Name}\n\n\n");
+
+
+                while (true)
+                {
+                    Thread.Sleep(10);
+                    Update();
+                }
+
+            }).Start();
         }
 
-        public override void Connect()
+        private void Update()
         {
-            Connected = true;
+            // TODO add support for disconnected controller
+            if (!_controller.IsConnected)
+                throw new InputControllerNotConnectedException($"Attempted to gather input info but not controller is connected on thread {Thread.CurrentThread.Name}");
+
+            _gamepad = _controller.GetState().Gamepad;
+            var leftThumbX = _gamepad.LeftThumbX * .95;
+            var leftThumbY = _gamepad.LeftThumbY * .95;
+
+            if (leftThumbX > short.MaxValue || 
+                leftThumbY > short.MaxValue || 
+                leftThumbY < short.MinValue ||
+                leftThumbX < short.MinValue)
+            {
+                Console.WriteLine($"Erroneous input detected and discarded -- x: {leftThumbX}, y: {leftThumbY}");
+                return;
+            }
+
+            // no input detected
+            if (Math.Abs(leftThumbY) < _deadband && 
+                Math.Abs(leftThumbX) < _deadband)
+            {
+                if (_skipNextNoInputEvent)
+                {
+                    return;
+                }
+                else
+                {
+                    FIRE_E_INPUT_NONE();
+                    _skipNextNoInputEvent = true;
+                    return;
+                }
+            }
+
+            _skipNextNoInputEvent = false;
+
+
+            // standard directonal inputs
+            if (leftThumbX >= _deadband)
+            {
+                FIRE_E_INPUT_RIGHT();
+            }
+
+            if (leftThumbX <= -_deadband)
+            {
+                FIRE_E_INPUT_LEFT();
+            }
+
+            if (leftThumbY >= _deadband)
+            {
+                FIRE_E_INPUT_UP();
+            }
+
+            if (leftThumbY <= -_deadband)
+            {
+                FIRE_E_INPUT_DOWN();
+            }
         }
 
-        public void Up()
+
+        private protected override void Connect()
         {
-            Console.WriteLine("UP from child classs");
-            base.Up();
+            _controller = new Controller(UserIndex.One);
+
+            if (_controller.IsConnected)
+            {
+                FIRE_E_CONNECITON_SUCCESS();
+            }
+            else
+            {
+                FIRE_E_CONNECITON_FAIL();
+            }
         }
-
-        public void Down()
-        {
-            base.Down();
-        }
-
-        public void Ext1()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Ext2()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsConnected()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Left()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Right()
-        {
-            throw new NotImplementedException();
-        }
-
-        //class MultiThreadGameEnginePOC
-        //{
-        //    public static ConsoleKey _dir;
-        //    public static bool _running = true;
-
-        //    /*
-        //     * Currently a multihthreading POC to support user input while drawing games
-        //     */
-        //    static void Main(string[] args)
-        //    {
-        //        Console.WriteLine("Starting Hello World! ...");
-
-        //        DoStuffThreaded();
-
-        //        while (true)
-        //        {
-        //            _dir = Console.ReadKey().Key;
-        //            if (_dir == ConsoleKey.Z)
-        //            {
-        //                _running = false;
-        //                break;
-        //            }
-        //        }
-
-        //        Console.WriteLine("Goodbye, world! Main thread ENDED!");
-        //    }
-
-        //    public static void DoStuffThreaded()
-        //    {
-        //        new Thread(() =>
-        //        {
-        //            Console.WriteLine("Starting to do stuff");
-        //            while (_running)
-        //            {
-        //                Console.WriteLine($"doing stuff, but the key is {_dir}");
-        //                Thread.Sleep(1000);
-        //            }
-        //        }).Start();
-        //    }
-        //}
     }
 }

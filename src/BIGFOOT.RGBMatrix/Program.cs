@@ -65,7 +65,7 @@ namespace BIGFOOT.RGBMatrix
                         break;
                 }
 
-                Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(v);
+               // Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(v);
             }
         }
     }
