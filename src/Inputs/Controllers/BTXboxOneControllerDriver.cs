@@ -59,6 +59,35 @@ namespace BluetoothXboxOneControllerBIGFOOT.RGBMatrix.Visuals.Inputs
                 return;
             }
 
+            var buttons = _gamepad.Buttons;
+
+            var dpadInputEvent = new ControllerInputEvent();
+            if (buttons.HasFlag(GamepadButtonFlags.DPadUp))
+            {
+                dpadInputEvent.EventType = ControllerInput.UP;
+            }
+            else if (buttons.HasFlag(GamepadButtonFlags.DPadRight))
+            {
+                dpadInputEvent.EventType = ControllerInput.RIGHT;
+            }
+            else if (buttons.HasFlag(GamepadButtonFlags.DPadDown))
+            {
+                dpadInputEvent.EventType = ControllerInput.DOWN;
+            }
+            else if (buttons.HasFlag(GamepadButtonFlags.DPadLeft))
+            {
+                dpadInputEvent.EventType = ControllerInput.LEFT;
+            }
+            else
+            {
+                dpadInputEvent = null;
+            }
+
+            if (dpadInputEvent != null)
+            {
+                FIRE_E_CONTROLLER_INPUT_RECEIVED(dpadInputEvent);
+            }
+
             var leftThumbX = _gamepad.LeftThumbX * .95;
             var leftThumbY = _gamepad.LeftThumbY * .95;
 
@@ -72,7 +101,7 @@ namespace BluetoothXboxOneControllerBIGFOOT.RGBMatrix.Visuals.Inputs
             }
 
             // no input detected
-            if (Math.Abs(leftThumbY) < _deadband && 
+            if (Math.Abs(leftThumbY) < _deadband &&
                 Math.Abs(leftThumbX) < _deadband)
             {
                 if (_skipNextNoInputEvent)
@@ -81,34 +110,43 @@ namespace BluetoothXboxOneControllerBIGFOOT.RGBMatrix.Visuals.Inputs
                 }
                 else
                 {
-                    //FIRE_E_CONTROLLER_INPUT_RECEIVED(ControllerInput.NONE);
+                    //FIRE_E_CONTROLLER_INPUT_RECEIVED(new ControllerInputEvent { EventType = ControllerInput.NONE });
                     _skipNextNoInputEvent = true;
                     return;
                 }
             }
 
             _skipNextNoInputEvent = false;
-            var controllerInputEvent = new ControllerInputEvent();
+            
+
+
+            var joystickInputEvent = new ControllerInputEvent();
 
             // standard directonal inputs
             if (leftThumbX >= _deadband)
             {
-                controllerInputEvent.EventType = ControllerInput.RIGHT;
+                joystickInputEvent.EventType = ControllerInput.RIGHT;
             }
             else if (leftThumbX <= -_deadband)
             {
-                controllerInputEvent.EventType = ControllerInput.LEFT;
+                joystickInputEvent.EventType = ControllerInput.LEFT;
             }
             else if (leftThumbY >= _deadband)
             {
-                controllerInputEvent.EventType = ControllerInput.UP;
+                joystickInputEvent.EventType = ControllerInput.UP;
             }
             else if (leftThumbY <= -_deadband)
             {
-                controllerInputEvent.EventType = ControllerInput.DOWN;
+                joystickInputEvent.EventType = ControllerInput.DOWN;
+            } else
+            {
+                joystickInputEvent = null;
             }
 
-            FIRE_E_CONTROLLER_INPUT_RECEIVED(controllerInputEvent);
+            if (joystickInputEvent != null)
+            {
+                FIRE_E_CONTROLLER_INPUT_RECEIVED(joystickInputEvent);
+            }
         }
 
 

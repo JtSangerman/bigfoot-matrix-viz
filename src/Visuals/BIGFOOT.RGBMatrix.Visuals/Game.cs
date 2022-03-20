@@ -83,6 +83,7 @@ namespace BIGFOOT.RGBMatrix.Visuals
                     break;
                 case ControllerInput.EXT1:
                     Handle_E_INPUT_EXT1();
+                    Thread.Sleep(500);
                     break;
                 case ControllerInput.EXT2:
                     break;

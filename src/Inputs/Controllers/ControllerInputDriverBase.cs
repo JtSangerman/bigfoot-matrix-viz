@@ -45,7 +45,6 @@ namespace BIGFOOT.RGBMatrix.Visuals.Inputs
 
                 while (true)
                 {
-                    //Thread.Sleep(10); // ?
                     Update();
                 }
 
