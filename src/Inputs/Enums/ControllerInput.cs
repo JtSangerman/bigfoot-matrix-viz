@@ -10,7 +10,14 @@ namespace BIGFOOT.RGBMatrix.Inputs.Enums
         DOWN,
         LEFT,
         RIGHT,
+
+
+        // ex: Pause, Start
         EXT1,
-        EXT2
+        // ex: Select
+        EXT2,
+
+        // default, usually unhandled
+        NONE
     }
 }

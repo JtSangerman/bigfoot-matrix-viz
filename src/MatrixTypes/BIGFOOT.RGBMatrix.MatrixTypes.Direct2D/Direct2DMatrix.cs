@@ -14,7 +14,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
         {
             if (_canvas == null)
             {
-                _canvas = new Direct2DCanvas(Size);
+                _canvas = new Direct2DCanvas(Size, false);
             }
             return _canvas;
         }

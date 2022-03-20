@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BIGFOOT.RGBMatrix.Inputs\BIGFOOT.RGBMatrix.Inputs.csproj" />
     <ProjectReference Include="..\..\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.csproj" />
+    <ProjectReference Include="..\..\Inputs\BIGFOOT.RGBMatrix.ControllerInputDrivers.csproj" />
   </ItemGroup>
 
 </Project>

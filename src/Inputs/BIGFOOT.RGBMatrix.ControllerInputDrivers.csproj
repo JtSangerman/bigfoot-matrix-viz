@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Platforms>AnyCPU;ARM64</Platforms>
+    <AssemblyName>BIGFOOT.RGBMatrix.ControllerInput</AssemblyName>
+    <RootNamespace>BIGFOOT.RGBMatrix.ControllerInput</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

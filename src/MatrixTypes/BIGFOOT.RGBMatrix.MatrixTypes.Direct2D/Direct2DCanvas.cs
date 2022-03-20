@@ -1,9 +1,7 @@
 ﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
 using BIGFOOT.RGBMatrix.Visuals;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using unvell.D2DLib;
@@ -15,9 +13,10 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
     {
         private BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color[,] _grid;
         private Game<Direct2DMatrix, Direct2DCanvas> _visual;
+        private readonly bool _debug;
 
         private readonly int _size;
-        public Direct2DCanvas(int size) : base(size)
+        public Direct2DCanvas(int size, bool debug = false) : base(size)
         {
             _size = size;
             _grid = new BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color[size, size];
@@ -26,6 +25,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
 
             ShowFPS = true;
             AnimationDraw = true;
+            _debug = debug;
         }
 
         protected override void OnRender(D2DGraphics g)
@@ -37,21 +37,12 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
 
         protected override void OnFrame()
         {
-            //Console.WriteLine($"Current key: {_visual._dir}");
             SceneChanged = true;
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
-            //if (_visual._input != null)
-            //{
-            //    new Thread(() =>
-            //    {
-            //        _visual._input.EstablishControllerConnection();
-            //    }).Start();
-            //}
 
             new Thread(() =>
             {
@@ -62,7 +53,6 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
         protected override void OnKeyUp(KeyEventArgs e)
         {
             base.OnKeyDown(e);
-            _visual._dir = e.KeyCode.ToString();
         }
 
         protected override void OnClosed(EventArgs e)
@@ -144,6 +134,8 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
                         var led = _grid[i, _size - j - 1];
                         if (led != null)
                         {
+                            // ???
+                            // no idea what this is from
                             if ((led.R, led.B, led.G) == (123, 123, 123))
                             {
                                 led.R = led.G = led.B = 255;
@@ -156,10 +148,27 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
                         }
                     }
                 }
+
+                if (_debug)
+                {
+                    Debug_DrawCoordinates(g2);
+                }
             }
 
         }
 
+        private void Debug_DrawCoordinates(Graphics g)
+        {
+            using (Font smallFont = new Font(SystemFonts.DefaultFont.FontFamily, 7, FontStyle.Regular))
+            {
+                for (int x = 0; x < _size; x++)
+                {
+                    for (int y = 0; y < _size; y++)
+                    {
+                        g.DrawString($"{x},{y}", smallFont, Pens.Pink.Brush, new PointF(x * 30, (_size - y - 1) * 30));
+                    }
+                }
+            }
+        }
     }
-
 }

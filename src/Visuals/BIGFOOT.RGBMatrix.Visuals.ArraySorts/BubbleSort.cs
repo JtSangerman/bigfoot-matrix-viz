@@ -5,16 +5,18 @@ using System.Threading;
 
 namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
 {
-    public class BubbleSort<TMatrix, TCanvas> : Game<TMatrix, TCanvas>
+    public class BubbleSort<TMatrix, TCanvas> : Visual<TMatrix, TCanvas>
         where TMatrix : Matrix<TCanvas>
         where TCanvas : Canvas
     {
-        public BubbleSort(TMatrix matrix, ControllerInputDriver controller = null) : base(matrix, controller) { }
+        public BubbleSort(TMatrix matrix, ControllerInputDriverBase controller = null) : base(matrix) 
+        {
+
+        }
 
         private TCanvas _canvas;
         public override void VisualizeVirtually()
         {
-            return;
             _canvas = Matrix.InterfacedGetCanvas();
             var array = ArrayUtils.CreateShuffledSequential(Matrix.Size);
             var sleepMs = 100;
@@ -45,9 +47,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
                 _canvas.DrawLine(k, 0, k, array[k] - 1, new Color(0, 0, 123));
             }
             _canvas = Matrix.InterfacedSwapOnVsync(_canvas);
-
-            Console.WriteLine("done");
-        }
+         }
 
         public override void VisualizeOnHardware()
         {
