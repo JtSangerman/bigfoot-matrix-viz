@@ -1,20 +1,20 @@
 ﻿using BIGFOOT.RGBMatrix.Inputs;
+using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
 using BIGFOOT.RGBMatrix.MatrixTypes.Direct2D;
-using BIGFOOT.RGBMatrix.Visuals.ArraySorts;
+using BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed;
 using BIGFOOT.RGBMatrix.Visuals.Inputs;
+using BIGFOOT.RGBMatrix.Visuals.Snake;
 using BluetoothXboxOneControllerBIGFOOT.RGBMatrix.Visuals.Inputs;
-using SnakeBIGFOOT.RGBMatrix.Visuals.Games;
 using System;
-using System.Threading;
 
 namespace BIGFOOT.RGBMatrix
 {
-    class XboxControllerBluetoothInputPOC
+    class Main_ControllerPOCDemo
     {
         public static void Main(string[] args)
         {
             var matrix = new Direct2DMatrix(32);
-            ControllerInputDriver inputDriver;
+            ControllerInputDriverBase inputDriver;
 
             Console.WriteLine("Choose a driver: ");
             Console.WriteLine("\t <1> Xbox Controller input via Bluetooth");
@@ -27,36 +27,27 @@ namespace BIGFOOT.RGBMatrix
                 case ConsoleKey.D1:
                     inputDriver = new BTXboxOneControllerDriver();
                     Console.Write("\nStarting Xbox Controller via Bluetooth input driver");
-                    DotDotDot();
                     break;
 
                 default:
                     inputDriver = new KeyboardConsoleDriver();
                     Console.WriteLine("Starting keyboard input driver");
-                    DotDotDot();
                     break;
             }
 
             var visual = new Snake<Direct2DMatrix, Direct2DCanvas>(matrix, inputDriver);
             Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(visual);
 
+            ///////
+
+            //var matrix2 = new InterfacedRGBLedMatrix(32, 1, 1);
+            //var visual2 = new Snake<InterfacedRGBLedMatrix, InterfacedRGBLedCanvas>(matrix2, inputDriver);
+            //visual2.VisualizeOnHardware();
+
             //var matrix = new Direct2DMatrix(32);
             //var visual = new Snake<Direct2DMatrix, Direct2DCanvas>(matrix, xboxDriver);
             //Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(visual);
-
-            //xboxDriver.Connect();
-            //xboxDriver.Up();
             //Thread.Sleep(2000);
-        }
-        
-        private static void DotDotDot()
-        {
-            //Console.Write("."); Thread.Sleep(700);
-            //Console.Write("."); Thread.Sleep(700);
-            //Console.Write("."); Thread.Sleep(700);
-            //Console.Write("."); Thread.Sleep(700);
-            //Console.Write("."); Thread.Sleep(700);
-            Console.Write("\n\n\n");
         }
     }
 }

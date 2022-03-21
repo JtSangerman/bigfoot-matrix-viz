@@ -24,9 +24,6 @@ namespace BIGFOOT.RGBMatrix.Visuals
             Matrix = matrix;
         }
 
-
-        public string _dir;
-        public bool _running = true;
         public virtual void Visualize()
         {
             if (_isEmulating)
@@ -37,9 +34,6 @@ namespace BIGFOOT.RGBMatrix.Visuals
             {
                 VisualizeOnHardware();
             }
-
-            Thread.Sleep(10000);
-            _running = false;
         }
 
         public TMatrix GetMatrix()

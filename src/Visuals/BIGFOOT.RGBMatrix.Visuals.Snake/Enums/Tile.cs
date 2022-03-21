@@ -4,11 +4,11 @@ using System.Text;
 
 namespace BIGFOOT.RGBMatrix.Visuals.Snake.Enums
 {
-    public enum TileType
+    public enum Tile
     {
-        Body,
-        Head,
-        Goal,
-        Empty
+        SNAKE_BODY,
+        SNAKE_HEAD,
+        GOAL,
+        EMPTY
     }
 }
