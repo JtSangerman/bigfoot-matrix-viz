@@ -34,9 +34,6 @@ namespace BIGFOOT.RGBMatrix.Visuals
             {
                 VisualizeOnHardware();
             }
-
-            //Thread.Sleep(10000);
-            //_running = false;
         }
 
         public TMatrix GetMatrix()

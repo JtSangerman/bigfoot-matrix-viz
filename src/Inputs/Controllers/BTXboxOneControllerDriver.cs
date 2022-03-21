@@ -138,7 +138,8 @@ namespace BluetoothXboxOneControllerBIGFOOT.RGBMatrix.Visuals.Inputs
             else if (leftThumbY <= -_deadband)
             {
                 joystickInputEvent.EventType = ControllerInput.DOWN;
-            } else
+            } 
+            else
             {
                 joystickInputEvent = null;
             }

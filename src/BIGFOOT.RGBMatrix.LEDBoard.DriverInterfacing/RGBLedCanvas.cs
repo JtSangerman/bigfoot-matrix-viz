@@ -1,4 +1,4 @@
-﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
+﻿using rpi_rgb_led_matrix_sharp;
 
 namespace BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing
 {
