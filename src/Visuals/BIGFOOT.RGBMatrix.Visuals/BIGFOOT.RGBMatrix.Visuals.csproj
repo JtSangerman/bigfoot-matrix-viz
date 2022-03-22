@@ -12,4 +12,10 @@
     <ProjectReference Include="..\..\Inputs\BIGFOOT.RGBMatrix.ControllerInputDrivers.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="RGBLedMatrix">
+      <HintPath>..\..\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\ExternalLibraries\RGBLedMatrix.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

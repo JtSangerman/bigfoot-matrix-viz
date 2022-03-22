@@ -1,7 +1,4 @@
-﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using rpi_rgb_led_matrix_sharp;
 
 namespace BIGFOOT.RGBMatrix.Visuals.Snake.Constants
 {
