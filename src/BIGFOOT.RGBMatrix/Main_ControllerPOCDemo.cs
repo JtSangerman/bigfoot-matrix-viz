@@ -13,30 +13,30 @@ namespace BIGFOOT.RGBMatrix
     {
         public static void Main(string[] args)
         {
-            var matrix = new Direct2DMatrix(32);
-            ControllerInputDriverBase inputDriver;
+            //var matrix = new Direct2DMatrix(32);
+            //ControllerInputDriverBase inputDriver;
 
-            Console.WriteLine("Choose a driver: ");
-            Console.WriteLine("\t <1> Xbox Controller input via Bluetooth");
-            Console.WriteLine("\t <2> Keyboard input");
-            var key = Console.ReadKey().Key;
-            Console.Clear();
+            //Console.WriteLine("Choose a driver: ");
+            //Console.WriteLine("\t <1> Xbox Controller input via Bluetooth");
+            //Console.WriteLine("\t <2> Keyboard input");
+            //var key = Console.ReadKey().Key;
+            //Console.Clear();
 
-            switch (key)
-            {
-                case ConsoleKey.D1:
-                    inputDriver = new BTXboxOneControllerDriver();
-                    Console.Write("\nStarting Xbox Controller via Bluetooth input driver");
-                    break;
+            //switch (key)
+            //{
+            //    case ConsoleKey.D1:
+            //        inputDriver = new BTXboxOneControllerDriver();
+            //        Console.Write("\nStarting Xbox Controller via Bluetooth input driver");
+            //        break;
 
-                default:
-                    inputDriver = new KeyboardConsoleDriver();
-                    Console.WriteLine("Starting keyboard input driver");
-                    break;
-            }
+            //    default:
+            //        inputDriver = new KeyboardConsoleDriver();
+            //        Console.WriteLine("Starting keyboard input driver");
+            //        break;
+            //}
 
-            var visual = new Snake<Direct2DMatrix, Direct2DCanvas>(matrix, inputDriver);
-            Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(visual);
+            //var visual = new Snake(matrix, inputDriver);
+            //Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(visual);
 
             ///////
 

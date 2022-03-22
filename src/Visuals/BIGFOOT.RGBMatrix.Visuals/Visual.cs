@@ -1,47 +1,21 @@
-﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
-using System;
-using System.Threading;
+﻿using rpi_rgb_led_matrix_sharp;
 
 namespace BIGFOOT.RGBMatrix.Visuals
 {
-    public abstract class Visual<TMatrix, TCanvas>
-        where TMatrix : Matrix<TCanvas>
-        where TCanvas : Canvas
+    public abstract class Visual
     {
-        protected readonly TMatrix Matrix;
-        public readonly int Rows;
-        private bool _isEmulating 
-        {
-            get 
-            { 
-                return Matrix.GetType().Name != "InterfacedRGBLedMatrix"; 
-            } 
-        }
+        protected readonly RGBLedMatrix Matrix;
 
-        public Visual(TMatrix matrix)
+        public Visual(RGBLedMatrix matrix)
         {
-            Rows = matrix.Size;
             Matrix = matrix;
         }
 
-        public virtual void Visualize()
-        {
-            if (_isEmulating)
-            {
-                VisualizeVirtually();
-            }
-            else
-            {
-                VisualizeOnHardware();
-            }
-        }
-
-        public TMatrix GetMatrix()
+        public RGBLedMatrix GetMatrix()
         {
             return Matrix;
         }
 
-        public abstract void VisualizeOnHardware();
-        public abstract void VisualizeVirtually();
+        public abstract void Run();
     }
 }

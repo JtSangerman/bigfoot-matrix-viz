@@ -1,8 +1,8 @@
 ﻿using BIGFOOT.RGBMatrix.Inputs.Enums;
 using BIGFOOT.RGBMatrix.Inputs.Exceptions;
 using BIGFOOT.RGBMatrix.Inputs.Models;
-using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
 using BIGFOOT.RGBMatrix.Visuals.Inputs;
+using rpi_rgb_led_matrix_sharp;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -10,19 +10,15 @@ using System.Threading;
 namespace BIGFOOT.RGBMatrix.Visuals
 {
     // TODO doesn't support hardware viz at the moment
-    public abstract class Game<TMatrix, TCanvas> : Visual<TMatrix, TCanvas>
-        where TMatrix : Matrix<TCanvas>
-        where TCanvas : Canvas
+    public abstract class Game : Visual
     {
-        private readonly TMatrix _matrix;
         public readonly ControllerInputDriverBase _input;
         protected readonly List<ControllerInput> _inputQueue;
         protected bool Paused;
         protected bool ControllerConnected;
 
-        public Game(TMatrix matrix, ControllerInputDriverBase input) : base(matrix)
+        public Game(RGBLedMatrix matrix, ControllerInputDriverBase input) : base(matrix)
         {
-            _matrix = matrix;
             _input = input;
             _inputQueue = new List<ControllerInput>();
 
@@ -30,35 +26,13 @@ namespace BIGFOOT.RGBMatrix.Visuals
             _input.EstablishControllerConnection();
         }
 
-        protected abstract void Run();
+        public abstract override void Run();
         protected abstract void Draw();
-
         protected virtual void DrawPauseScreen() { }
-
-        public override void VisualizeVirtually()
-        {
-            Visualize(true);
-        }
-        public override void VisualizeOnHardware()
-        {
-            Visualize(false);
-        }
-
-        private void Visualize(bool isEmulating)
-        {
-            Run();
-        }
-
-        private void ConnectController()
-        {
-            //SubscribeToControllerEvents();
-            //_input.EstablishControllerConnection();
-        }
 
         private void SubscribeToControllerEvents()
         {
             _input.E_CONTROLLER_INPUT_RECEIVED += Handle_E_INPUT_RECEIVED;
-
             _input.E_CONNECTION_SUCCESS += Handle_E_CONNECTION_SUCCESS;
             _input.E_CONNECTION_FAIL += Handle_E_CONNECTION_FAIL;
         }

@@ -1,33 +1,30 @@
-﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
-using BIGFOOT.RGBMatrix.Visuals.Inputs;
+﻿using BIGFOOT.RGBMatrix.Visuals.Inputs;
 using BIGFOOT.RGBMatrix.Visuals.Snake.Enums;
-using BIGFOOT.RGBMatrix.Visuals.GameExceptions;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using BIGFOOT.RGBMatrix.Visuals.Snake.Constants;
+using rpi_rgb_led_matrix_sharp;
 
 namespace BIGFOOT.RGBMatrix.Visuals.Snake
 {
-    public class Snake<TMatrix, TCanvas> : Game<TMatrix, TCanvas>
-        where TMatrix : Matrix<TCanvas>
-        where TCanvas : Canvas
+    public class Snake : Game
     {
         private const int DEFAULT_TICK_RATE_MS = 50;
         private const int PAUSE_BLINK_TICK_RATE_MS = 500;
 
         private readonly SnakeGameState _state;
         private Direction _currentDirection = Direction.UP;
-        private TCanvas _canvas;
+        private RGBLedCanvas _canvas;
 
-        public Snake(TMatrix matrix, ControllerInputDriverBase input) : base(matrix, input) 
+        public Snake(RGBLedMatrix matrix, ControllerInputDriverBase input) : base(matrix, input) 
         {
-            _state = new SnakeGameState(Rows);
+            _state = new SnakeGameState(matrix.GetCanvas().Width);
         }
 
-        protected async override void Run()
+        public async override void Run()
         {
-            _canvas = Matrix.InterfacedGetCanvas();
+            _canvas = Matrix.GetCanvas();
 
             while (!_state.IsGameOver)
             {
@@ -81,7 +78,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Snake
                 }
             }
 
-            _canvas = Matrix.InterfacedSwapOnVsync(_canvas);
+            _canvas = Matrix.SwapOnVsync(_canvas);
         }
 
         private void DrawNoController()
@@ -94,12 +91,12 @@ namespace BIGFOOT.RGBMatrix.Visuals.Snake
                     _canvas.SetPixel(i, j, new Color(123,123,123));
                 }
             }
-            _canvas = Matrix.InterfacedSwapOnVsync(_canvas);
+            _canvas = Matrix.SwapOnVsync(_canvas);
         }
 
         private Color GetColor(Tile tile, double opacity = 1)
         {
-            Color color = null;
+            Color color = TileColor.EMPTY;
             switch (tile)
             {
                 case Tile.GOAL:
@@ -166,7 +163,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Snake
                 _currentDirection = direction;
             }
 
-            Debug_UpdateCurrentControllerInputOutput(Debug_msg, typeof(Snake<TMatrix, TCanvas>).Name);
+            Debug_UpdateCurrentControllerInputOutput(Debug_msg, typeof(Snake).Name);
         }
 
         ///// debug
