@@ -64,7 +64,7 @@ __________.___  ___________________________   ___________________
         {
             Console.Clear();
             DisplayAsciiArt();
-            RenderLoadingBar(10, "> Building emulation:\n");
+            RenderLoadingBar(10, "> Building emulation:\n\n");
         }
 
         public static void RenderLoadingBar(int segments, string preBuffer = "", int tickRateMs = 500)
@@ -103,7 +103,7 @@ __________.___  ___________________________   ___________________
 
                 Console.SetCursorPosition(0, Console.CursorTop-3);
                 Console.Write(new String(' ', Console.BufferWidth));
-                Console.SetCursorPosition(0, Console.CursorTop-1); // SET TO -2 for DEPLOYED BUILD
+                Console.SetCursorPosition(0, Console.CursorTop-2); // SET TO -2 for DEPLOYED BUILD
                 Console.Write(new String(' ', Console.BufferWidth));
 
                 if (i == segments)
