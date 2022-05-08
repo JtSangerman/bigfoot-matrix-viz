@@ -27,8 +27,8 @@ namespace BIGFOOT.RGBMatrix
         static Dictionary<string, string> MENU1_OPTIONS = new Dictionary<string, string>()
         {
             { "1", "Maze solver\t\tO(?)  \t\t\tDirectX" },
-            { "2", "InsertionSort\t\tO(n^2) \t\tDirectX"},
-            { "3", "BubbleSort\t\tO(n^2)  \t\t\tDirectX" },
+            { "2", "InsertionSort\t\tO(n^2) \t\t\tDirectX"},
+            { "3", "BubbleSort\t\tO(n^2)  \t\tDirectX" },
             { "\n",  "\t<ENTER> to see basic prototyping rendering options -->" },
         };
 
