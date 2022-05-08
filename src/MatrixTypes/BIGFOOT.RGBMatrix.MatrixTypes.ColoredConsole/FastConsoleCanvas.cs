@@ -22,6 +22,8 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole
             Console.BufferHeight = bufHeight;
             Console.BufferWidth = bufWidth;
 
+            Console.WindowWidth = size * 2 + 8;
+
             _rows = Enumerable.Repeat(new Tuple<string, ConsoleColor>("", ConsoleColor.Black), 32).ToList();
         }
 
