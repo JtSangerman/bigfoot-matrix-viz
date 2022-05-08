@@ -19,7 +19,6 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
         {
             _canvas = Matrix.InterfacedGetCanvas();
             var array = ArrayUtils.CreateShuffledSequential(Matrix.Size);
-            var sleepMs = 100;
 
             int n = array.Length;
             for (int i = 0; i < n - 1; i++)
@@ -38,7 +37,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
                             _canvas.DrawLine(k, 0, k, array[k] - 1, k == j + 1 ? new Color(123, 0, 0) : k < n - i ? new Color(123, 123, 123) : new Color(0, 0, 123));
                         }
                         _canvas = Matrix.InterfacedSwapOnVsync(_canvas);
-                        Thread.Sleep(sleepMs);
+                        Thread.Sleep(TickMs);
                     }
             }
             _canvas.Clear();
@@ -71,7 +70,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
                             canvas.DrawLine(k, 0, k, array[k] - 1, k == j + 1 ? new Color(123, 0, 0) : k < n - i ? new Color(123, 123, 123) : new Color(0, 0, 123));
                         }
                         canvas = Matrix.SwapOnVsync(canvas);
-                        Thread.Sleep(sleepMs);
+                        Thread.Sleep(TickMs);
                     }
             }
             canvas.Clear();

@@ -15,7 +15,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole
             //Console.SetWindowSize(bufWidth, bufHeight);
             //Console.BufferHeight = bufHeight;
             //Console.BufferWidth = bufWidth;
-
+            Console.WindowWidth = size * 2 + 8;
             _grid = new ConsoleColor[size, size];
             Fill(new Color(0,0,0));
         }
