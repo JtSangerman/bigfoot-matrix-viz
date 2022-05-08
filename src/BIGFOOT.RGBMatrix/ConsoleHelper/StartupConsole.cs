@@ -69,7 +69,6 @@ __________.___  ___________________________   ___________________
 
         public static void RenderLoadingBar(int segments, string preBuffer = "", int tickRateMs = 500)
         {
-            return;
             Console.CursorVisible = false;
 
             Stopwatch w = Stopwatch.StartNew();
