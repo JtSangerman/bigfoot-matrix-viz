@@ -64,11 +64,12 @@ __________.___  ___________________________   ___________________
         {
             Console.Clear();
             DisplayAsciiArt();
-           // RenderLoadingBar(10, "> Building emulation:\n");
+            RenderLoadingBar(10, "> Building emulation:\n");
         }
 
         public static void RenderLoadingBar(int segments, string preBuffer = "", int tickRateMs = 500)
         {
+            return;
             Console.CursorVisible = false;
 
             Stopwatch w = Stopwatch.StartNew();
@@ -103,7 +104,7 @@ __________.___  ___________________________   ___________________
 
                 Console.SetCursorPosition(0, Console.CursorTop-3);
                 Console.Write(new String(' ', Console.BufferWidth));
-                Console.SetCursorPosition(0, Console.CursorTop-1);
+                Console.SetCursorPosition(0, Console.CursorTop-1); // SET TO -2 for DEPLOYED BUILD
                 Console.Write(new String(' ', Console.BufferWidth));
 
                 if (i == segments)
@@ -201,7 +202,13 @@ __________.___  ___________________________   ___________________
             foreach (var key in options.Keys)
             {
                 string separator = string.IsNullOrWhiteSpace(key) ? "" : ":";
+                var prevColor = Console.ForegroundColor;
+                if (string.IsNullOrWhiteSpace(key))
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                }
                 Console.WriteLine($"\t{key}{separator} \t{options[key]}");
+                Console.ForegroundColor = prevColor;
             }
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
