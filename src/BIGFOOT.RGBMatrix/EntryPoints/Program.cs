@@ -1,6 +1,5 @@
 ﻿using BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole;
 using BIGFOOT.RGBMatrix.MatrixTypes.Direct2D;
-using BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed;
 using BIGFOOT.RGBMatrix.Visuals.ArraySorts;
 using BIGFOOT.RGBMatrix.Visuals.Maze;
 
@@ -8,6 +7,9 @@ using System;
 using BIGFOOT.RGBMatrix.Visuals;
 using System.Collections.Generic;
 using BIGFOOT.RGBMatrix.ConsoleHelper;
+using System.Threading.Tasks;
+using System.Threading;
+using BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed;
 
 namespace BIGFOOT.RGBMatrix
 {
@@ -17,32 +19,50 @@ namespace BIGFOOT.RGBMatrix
     {
         static Dictionary<string, string> MENU2_OPTIONS = new Dictionary<string, string>()
         {
-            { "1", "BubbleSort\t\tO(n^2)  \t\tColoredConsole" },
-            { "2", "InsertionSort\t\tO(n^2)  \t\tColoredConsole" },
-            { "3", "BubbleSort\t\tO(n^2)  \t\tFastConsole" },
-            { "4", "Maze solver\t\tO(?)  \t\t\tColoredConsole" },
-            { "5", "BubbleSort\t\tO(n^2)  \t\tInterfacing (UNSTABLE)" },
+            { "<1>", "BubbleSort\t\tO(n^2)  \t\tColoredConsole" },
+            { "<2>", "InsertionSort\t\tO(n^2)  \t\tColoredConsole" },
+            { "<3>", "BubbleSort\t\tO(n^2)  \t\tFastConsole" },
+            { "<4>", "Maze solver\t\tO(?)  \t\t\tColoredConsole" },
+            { "<5>", "BubbleSort\t\tO(n^2)  \t\tInterfacing (UNSTABLE)" },
+            { "\n",  "\t<ENTER> to go back to rendered graphics options -->\n\n\t\tNOTE: these are expirimental & may not work on all cpu architectures" },
         };
 
         static Dictionary<string, string> MENU1_OPTIONS = new Dictionary<string, string>()
         {
-            { "1", "Maze solver\t\tO(?)  \t\t\tDirectX" },
-            { "2", "InsertionSort\t\tO(n^2) \t\t\tDirectX"},
-            { "3", "BubbleSort\t\tO(n^2)  \t\tDirectX" },
-            { "\n",  "\t<ENTER> to see basic prototyping rendering options -->" },
+            { "<1>", "Maze solver\t\tO(?)  \t\t\tDirectX" },
+            { "<2>", "InsertionSort\t\tO(n^2) \t\t\tDirectX"},
+            { "<3>", "BubbleSort\t\tO(n^2)  \t\tDirectX" },
+            { "\n",  "\t<ENTER> to see basic prototyping rendering options -->\n\n\t\tNOTE: these are expirimental & may not work on all cpu architectures" },
         };
 
 
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            StartupConsole.DisplayGreeting();
-            
-            Start();
+            var initial = true;
+            while (true)
+            {
+                try
+                {
+                    await ExecuteProcessLoop(initial, default);
+                    initial = false;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+               // await Task.Run(async () =>
+             //   {
+
+              //  });
+            }
         }
 
-        public static void Start()
+        public static async Task ExecuteProcessLoop(bool initial, CancellationToken cancellationToken = default)
         {
+            if (initial)
+                StartupConsole.DisplayGreeting();
+
             StartupConsole.DisplayOptions(MENU1_OPTIONS);
 
             var opt = Console.ReadKey().Key;
@@ -78,7 +98,10 @@ namespace BIGFOOT.RGBMatrix
                 }
 
                 StartupConsole.DisplayLoadingEmulation();
-                Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(v, tickMs);
+                await Task.Run(async () =>
+                {
+                    await Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(v, tickMs, cancellationToken);
+                });
             }
             else
             {
@@ -121,6 +144,8 @@ namespace BIGFOOT.RGBMatrix
                     bubble.Visualize();
                 }
             }
+
+            StartupConsole.DisplayVisualEmulationCompleted();
         }
     }
 }

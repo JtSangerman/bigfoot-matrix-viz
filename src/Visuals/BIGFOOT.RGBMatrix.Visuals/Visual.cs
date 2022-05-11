@@ -40,6 +40,8 @@ namespace BIGFOOT.RGBMatrix.Visuals
             {
                 VisualizeOnHardware();
             }
+
+            //Thread.Sleep(2500);
         }
 
         public TMatrix GetMatrix()
