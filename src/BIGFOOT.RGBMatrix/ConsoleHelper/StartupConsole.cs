@@ -46,7 +46,7 @@ __________.___  ___________________________   ___________________
         \/            \/     \/            \/         \/        
 ";
 
-        private static string VERSION = "1.1.1-alpha";
+        private static string VERSION = "1.1.2-alpha";
         private static int CONSOLE_WIDTH = 100;
         private static int LOADING_SEGMENTS = (int)(StartupConsole.CONSOLE_WIDTH / 1.5);
 
@@ -67,11 +67,13 @@ __________.___  ___________________________   ___________________
             Console.Clear();
             DisplayAsciiArt();
 
-            RenderLoadingBar("> Building emulation:\n\n\n", LOADING_SEGMENTS, 5000/200);
+            RenderLoadingBar("> Building emulation - Generating and randomizing:\n\n\n", LOADING_SEGMENTS, 5000/200);
         }
 
         public static void DisplayVisualEmulationCompleted()
         {
+            Console.CursorVisible = false;
+            Console.WindowWidth = 100;
             Console.Clear();
             DisplayAsciiArt();
 
@@ -100,8 +102,6 @@ __________.___  ___________________________   ___________________
 
                 Console.SetCursorPosition((Console.WindowWidth - (loadingTxt.Length + 2 + segments)) / 2, Console.CursorTop);
                 Console.Write(loadingTxt);
-
-
 
                 var prevColor = Console.ForegroundColor;
 

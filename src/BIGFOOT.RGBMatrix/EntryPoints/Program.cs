@@ -24,15 +24,15 @@ namespace BIGFOOT.RGBMatrix
             { "<3>", "BubbleSort\t\tO(n^2)  \t\tFastConsole" },
             { "<4>", "Maze solver\t\tO(?)  \t\t\tColoredConsole" },
             { "<5>", "BubbleSort\t\tO(n^2)  \t\tInterfacing (UNSTABLE)" },
-            { "\n",  "\t<ENTER> to go back to rendered graphics options -->\n\n\t\tNOTE: these are expirimental & may not work on all cpu architectures" },
+            { "\n",  "\t<ENTER> to go back to rendered graphics options -->\n\n\t\tNOTE: these are experimental & may not work on all cpu architectures" },
         };
 
         static Dictionary<string, string> MENU1_OPTIONS = new Dictionary<string, string>()
         {
-            { "<1>", "Maze solver\t\tO(?)  \t\t\tDirectX" },
+            { "<1>", "Dijkstra's maze solver\tO(?)  \t\t\tDirectX" },
             { "<2>", "InsertionSort\t\tO(n^2) \t\t\tDirectX"},
             { "<3>", "BubbleSort\t\tO(n^2)  \t\tDirectX" },
-            { "\n",  "\t<ENTER> to see basic prototyping rendering options -->\n\n\t\tNOTE: these are expirimental & may not work on all cpu architectures" },
+            { "\n",  "\t<ENTER> to see basic prototyping rendering options -->\n\n\t\tNOTE: these are experimental & may not work on all cpu architectures" },
         };
 
 
@@ -88,15 +88,18 @@ namespace BIGFOOT.RGBMatrix
 
             if (v != null)
             {
-                StartupConsole.PromptCustomTickRate();
-
                 var tickMs = 100;
-                var tickMsInputStr = Console.ReadLine();
-                if (int.TryParse(tickMsInputStr, out var parsed))
-                {
-                    tickMs = parsed;
-                }
+                if (opt != ConsoleKey.D1)
+                { 
+                    StartupConsole.PromptCustomTickRate();
 
+                    var tickMsInputStr = Console.ReadLine();
+                    if (int.TryParse(tickMsInputStr, out var parsed))
+                    {
+                        tickMs = parsed;
+                    }
+                }
+                
                 StartupConsole.DisplayLoadingEmulation();
                 await Task.Run(async () =>
                 {
