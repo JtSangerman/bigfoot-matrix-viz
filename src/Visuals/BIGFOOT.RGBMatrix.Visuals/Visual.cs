@@ -41,7 +41,10 @@ namespace BIGFOOT.RGBMatrix.Visuals
                 VisualizeOnHardware();
             }
 
-            //Thread.Sleep(2500);
+            if (Matrix.GetType().Name != "Direct2DMatrix")
+            {
+                Thread.Sleep(2500);
+            }
         }
 
         public TMatrix GetMatrix()
