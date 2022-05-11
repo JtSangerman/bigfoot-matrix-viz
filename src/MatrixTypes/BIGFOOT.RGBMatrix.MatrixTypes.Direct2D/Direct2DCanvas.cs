@@ -47,6 +47,9 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
             new Thread(() =>
             {
                 _visual.Visualize();
+                Thread.Sleep(2500);
+                base.OnClosed(e);
+                Application.Exit();
             }).Start();
         }
 
@@ -57,9 +60,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
 
         protected override void OnClosed(EventArgs e)
         {
-            base.OnClosed(e);
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
-            Application.Exit();
+
         }
 
         public void SetVisual(Visual<Direct2DMatrix, Direct2DCanvas> visual)
