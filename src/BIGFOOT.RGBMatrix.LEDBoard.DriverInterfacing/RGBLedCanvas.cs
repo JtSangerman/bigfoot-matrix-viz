@@ -1,6 +1,4 @@
-﻿using rpi_rgb_led_matrix_sharp;
-
-namespace BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing
+﻿namespace BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing
 {
     public class RGBLedCanvas
     {
