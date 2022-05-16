@@ -139,12 +139,18 @@ namespace BIGFOOT.RGBMatrix
                     StartupConsole.DisplayLoadingEmulation();
                     maze.Visualize();
                 }
+                else if (opt == ConsoleKey.D5)
+                {
+                    // doesn't do anything on emulator
+
+                    //var hardwareMatrix = new InterfacedRGBLedMatrix(32, 1, 1);
+                    //var bubble = new BubbleSort<InterfacedRGBLedMatrix, InterfacedRGBLedCanvas>(hardwareMatrix);
+                    StartupConsole.DisplayLoadingEmulation();
+                    //bubble.Visualize();
+                }
                 else
                 {
-                    var hardwareMatrix = new InterfacedRGBLedMatrix(32, 1, 1);
-                    var bubble = new BubbleSort<InterfacedRGBLedMatrix, InterfacedRGBLedCanvas>(hardwareMatrix);
-                    StartupConsole.DisplayLoadingEmulation();
-                    bubble.Visualize();
+                    return;
                 }
             }
 
