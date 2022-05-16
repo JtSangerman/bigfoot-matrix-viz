@@ -1,0 +1,11 @@
+echo "STARTING BASH SCRIPT"
+while :
+do
+	echo "sudo mono bubble.exe 15"
+        sudo mono bubble.exe 30y
+
+	sleep 1
+	echo "sudo mono maze.exe 15 15 1"
+	sudo mono maze.exe 15 15 1
+	sleep 1
+done
