@@ -180,7 +180,10 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
         private Coordinate start;
         private Coordinate end;
         private bool[,] visted;
-        private Color WallColor = new Color(125, 125, 125);
+        private Color WallColor;// = new Color(55, 77, 124);
+        private Color VisitedColor;// = new Color(70, 237, 200);
+        private Color WalkerColor;// = new Color(253, 242, 137);
+
         private Color[,] history;
         private TCanvas canvas;
         private TMatrix Matrix;
@@ -190,6 +193,14 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
 
         public MazeStack(TMatrix Matrix, int row, int col, int cornRow, int cornCol, int scale, int tickMs)
         {
+            var w = System.Drawing.KnownColor.MidnightBlue;
+            var p = System.Drawing.KnownColor.Indigo;
+            var v = System.Drawing.KnownColor.LightSkyBlue;
+
+            WallColor = LEDBoard.DriverInterfacing.Color.FromKnownColor(w);
+            VisitedColor = LEDBoard.DriverInterfacing.Color.FromKnownColor(v);
+            WalkerColor = LEDBoard.DriverInterfacing.Color.FromKnownColor(p);
+
             this.Matrix = Matrix;
             canvas = Matrix.InterfacedGetCanvas();
             this.scale = scale;
@@ -363,7 +374,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
             {
                 //StdDraw.setPenColor(StdDraw.GRAY);
                 //StdDraw.filledSquare(lrow, lcol, ((double)scale) / (double)1.6);
-                canvas.SetPixel(lrow, lcol, new Color(0, 0, 150));
+                canvas.SetPixel(lrow, lcol, VisitedColor);
             }
             lrow = x;
             lcol = y;
@@ -391,7 +402,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
 
 
                     //StdDraw.setPenColor(StdDraw.CYAN);
-                    var c = new Color(255, 0, 0);
+                    var c = WalkerColor;
                     canvas = Matrix.InterfacedSwapOnVsync(canvas);
                     Thread.Sleep(TickMs);
                     canvas = Matrix.InterfacedSwapOnVsync(canvas);
@@ -482,9 +493,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
 
         public void drawAtEnd()
         {
-            var green = new Color(0, 210, 0);
-            var visColor = new Color(0, 0, 150);
-            var wall = new Color(125, 125, 125);
+            var green = new Color(0, 210, 110);
             for (int i = 0; i < maze.GetLength(0); i++)
             {
                 for (int j = 0; j < maze.GetLength(0); j++)
@@ -499,11 +508,11 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
                     }
                     else if (this.maze[i, j] == '#')
                     {
-                        canvas.SetPixel(j, i, wall);
+                        canvas.SetPixel(j, i, WallColor);
                     }
                     else if (this.visted[i, j] == true)
                     {
-                        canvas.SetPixel(j, i, visColor);
+                        canvas.SetPixel(j, i, VisitedColor);
                     }
 
                 }

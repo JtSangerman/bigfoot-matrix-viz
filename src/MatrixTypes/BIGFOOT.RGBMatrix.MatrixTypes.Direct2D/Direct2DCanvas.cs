@@ -13,6 +13,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
     {
         private BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color[,] _grid;
         private Visual<Direct2DMatrix, Direct2DCanvas> _visual;
+        public System.Drawing.Color BgColor = System.Drawing.Color.FromKnownColor(KnownColor.LightSteelBlue);
         private readonly bool _debug;
 
         private readonly int _size;
@@ -21,7 +22,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
             _size = size;
             _grid = new BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color[size, size];
             Text = "BIGFOOT Emulator - D2D Graphics Engine";
-            BackColor = System.Drawing.Color.Black;
+            BackColor = BgColor;
 
             ShowFPS = true;
             AnimationDraw = true;
@@ -124,7 +125,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
         public void Display(D2DGraphics g)
         {
             _bitMap?.Dispose();
-            _bitMap = new Bitmap(_visual.Rows * 30, _visual.Rows * 30);
+            _bitMap = new Bitmap(SCREEN_SIZE_PX-PxConst, SCREEN_SIZE_PX-PxConst);
             using (Graphics g2 = Graphics.FromImage(_bitMap))
             {
                 g2.Clear(BackColor);
@@ -142,10 +143,10 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
                                 led.R = led.G = led.B = 255;
                             }
                             var pen = new Pen(System.Drawing.Color.FromArgb(led.R, led.G, led.B));
-                            var rect = new Rectangle(i * 30, j * 30, 30, 30);
+                            var rect = new Rectangle(i * PxConst, j * PxConst - PxConst, PxConst, PxConst);
                             var brush = pen.Brush;
                             g2.FillRectangle(brush, rect);
-                            //g2.DrawString($"{i},{j}", Font, Pens.Pink.Brush, new PointF(i*30, j*30));
+                            //g2.DrawString($"{i},{j}", Font, Pens.Pink.Brush, new PointF(i*PxConst, j*PxConst));
                         }
                     }
                 }
@@ -166,7 +167,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
                 {
                     for (int y = 0; y < _size; y++)
                     {
-                        g.DrawString($"{x},{y}", smallFont, Pens.Pink.Brush, new PointF(x * 30, (_size - y - 1) * 30));
+                        g.DrawString($"{x},{y}", smallFont, Pens.Pink.Brush, new PointF(x * PxConst, (_size - y - 1) * PxConst));
                     }
                 }
             }

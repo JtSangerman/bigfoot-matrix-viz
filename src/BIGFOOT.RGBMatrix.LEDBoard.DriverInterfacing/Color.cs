@@ -22,5 +22,16 @@ namespace BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing
             G = g;
             B = b;
         }
+
+        public static Color FromSystemColor(System.Drawing.Color c)
+        {
+            return new Color(c.R, c.G, c.B);
+        }
+
+        public static Color FromKnownColor(System.Drawing.KnownColor k)
+        {
+            var c = System.Drawing.Color.FromKnownColor(k);
+            return new Color(c.R, c.G, c.B);
+        }
     }
 }
