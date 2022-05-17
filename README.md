@@ -39,7 +39,7 @@ Example hub75 control circuit for added context:
 - 3b+ model has been used for development with no issues    
 - *nix dependencies: 
     - `sudo` rights
-    - installation `screen` (ref: https://www.gnu.org/software/screen/)
+    - `screen` installed (ref: https://www.gnu.org/software/screen/)
 
 ### Observed panel power consumption: 
 
