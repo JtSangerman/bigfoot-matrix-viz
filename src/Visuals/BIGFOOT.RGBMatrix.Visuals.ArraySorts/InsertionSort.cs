@@ -13,10 +13,9 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
 
         public override void VisualizeOnHardware()
         {
-            var arr = ArrayUtils.CreateShuffledSequential(32);
+            var arr = ArrayUtils.CreateShuffledSequential(64);
             int n = arr.Length;
             var canvas = Matrix.CreateOffscreenCanvas();
-            var sleepMs = 2;
 
             // One by one move boundary of unsorted subarray
             for (int i = 0; i < n - 1; i++)
@@ -36,7 +35,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
                         //Console.WriteLine($"Drawing line ({k}, {arr[k] - 1}: x0={k}, y0={0}, x1={k}, y1={arr[k] - 1}");
                     }
                     canvas = Matrix.SwapOnVsync(canvas);
-                    Thread.Sleep(sleepMs);
+                    Thread.Sleep(TickMs);
                 }
                 // Swap the found minimum element with the first
                 // element
@@ -55,7 +54,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
 
         public override void VisualizeVirtually()
         {
-            var arr = ArrayUtils.CreateShuffledSequential(32);
+            var arr = ArrayUtils.CreateShuffledSequential(64);
             int n = arr.Length;
             var canvas = Matrix.InterfacedCreateOffscreenCanvas();
             var sleepMs = 1;
@@ -78,7 +77,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
                         //Console.WriteLine($"Drawing line ({k}, {arr[k] - 1}: x0={k}, y0={0}, x1={k}, y1={arr[k] - 1}");
                     }
                     canvas = Matrix.InterfacedSwapOnVsync(canvas);
-                    Thread.Sleep(sleepMs);
+                    Thread.Sleep(TickMs);
                 }
                 // Swap the found minimum element with the first
                 // element

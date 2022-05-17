@@ -15,7 +15,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole
             //Console.SetWindowSize(bufWidth, bufHeight);
             //Console.BufferHeight = bufHeight;
             //Console.BufferWidth = bufWidth;
-
+            Console.WindowWidth = size * 2 + 8;
             _grid = new ConsoleColor[size, size];
             Fill(new Color(0,0,0));
         }
@@ -49,7 +49,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole
         public void Clear()
         {
             Fill(new Color(0,0,0));
-            //Console.Write(string.Join("", Enumerable.Repeat("\n", 32).ToList()));
+            //Console.Write(string.Join("", Enumerable.Repeat("\n", 64).ToList()));
             Console.Clear();
         }
 

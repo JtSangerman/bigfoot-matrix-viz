@@ -1,4 +1,23 @@
-Controlling RGB LED display with Raspberry Pi GPIO
+# The firmware codebase source
+The panel hardware's firmware and controller source code scope. This setup runs an environment dependent on a Linux box hosted by a rpi as the panel CPU/controller. On boot, the build is configured to indefinitely cycle through the designated alg visuals interfaced using the panel hardware. Within is the C library for driving the addressable panel diodes complete with wrapper bindings to the C# and Python languages.
+
+# Starred directories[^1]
+
+- `/hardware/*`: Rpi controller unit source code. Contains startup scripts (for linux/*nix based microcontroller environments), low-level led controller drivers and algorithm visualizations code.
+- `/hardware/lib/*`: Driver code for the LED compute unit.
+- `/hardware/bindings/c#/examples/*`: The directory for C# based algorithm visualizations to be ran on the deployed hardware build. *NOTE this directory is named poorly and is not truly reflective of the contents or purpose.
+
+[^1]: If navigating the project's directory structure and underlying resources, please proceed knowing that the directory structure is not organized properly or meaningfully in places.
+
+
+# Starred resources[^1]
+
+- `/hardware/bindings/c#/examples/Makefile`: Config file responsible for packaging visualization source `*.cs` files to hardware executable `.exe` files. This file will need to compensate for any new visualizations added to the target hardware deploy directory.
+- `/hardware/bindings/c#/examples/alg-viz.sh`: Startup executed bash script responsible for indefinitely cycling through configured visualization executables and executing them on the panel hardware. *NOTE ideally this script should exist in a dedicated 'solution-scripts' directory.
+- `/hardware/bindings/c#/examples/*.cs|*.python`: existing visualizations, mostly written in C#. There also currently exists a rudimentary Python Snake AI viz in this directory (named as `simple_square.py` due to a lazy hack stemming from a py-compile resource script that explicitly references this file name).
+
+
+# Controlling RGB LED display with Raspberry Pi GPIO
 ==================================================
 
 A library to control commonly available 64x64, 32x32 or 16x32 RGB LED panels

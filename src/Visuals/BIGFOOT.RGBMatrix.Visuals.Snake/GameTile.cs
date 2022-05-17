@@ -12,7 +12,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Snake
         public int Y { get; private set; }
         public int? Id { get; set; }
 
-        private const int BOARD_SIZE = 32; // TODO hardcoded for now
+        private const int BOARD_SIZE = 64; // TODO hardcoded for now
         
         public GameTile(int x, int y, Tile type, int? id = null)
         {

@@ -13,7 +13,7 @@ namespace BIGFOOT.RGBMatrix
     {
         public static void Main(string[] args)
         {
-            var matrix = new Direct2DMatrix(32);
+            var matrix = new Direct2DMatrix(64);
             ControllerInputDriverBase inputDriver;
 
             Console.WriteLine("Choose a driver: ");
@@ -40,11 +40,11 @@ namespace BIGFOOT.RGBMatrix
 
             ///////
 
-            //var matrix2 = new InterfacedRGBLedMatrix(32, 1, 1);
+            //var matrix2 = new InterfacedRGBLedMatrix(64, 1, 1);
             //var visual2 = new Snake<InterfacedRGBLedMatrix, InterfacedRGBLedCanvas>(matrix2, inputDriver);
             //visual2.VisualizeOnHardware();
 
-            //var matrix = new Direct2DMatrix(32);
+            //var matrix = new Direct2DMatrix(64);
             //var visual = new Snake<Direct2DMatrix, Direct2DCanvas>(matrix, xboxDriver);
             //Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(visual);
             //Thread.Sleep(2000);

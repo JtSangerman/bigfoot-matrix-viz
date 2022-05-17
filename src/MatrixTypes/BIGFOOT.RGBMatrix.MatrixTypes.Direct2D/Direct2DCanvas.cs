@@ -12,7 +12,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
     public class Direct2DCanvas : MatrixD2DForm, Canvas
     {
         private BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color[,] _grid;
-        private Game<Direct2DMatrix, Direct2DCanvas> _visual;
+        private Visual<Direct2DMatrix, Direct2DCanvas> _visual;
         private readonly bool _debug;
 
         private readonly int _size;
@@ -47,6 +47,9 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
             new Thread(() =>
             {
                 _visual.Visualize();
+                Thread.Sleep(2500);
+                base.OnClosed(e);
+                Application.Exit();
             }).Start();
         }
 
@@ -57,12 +60,10 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
 
         protected override void OnClosed(EventArgs e)
         {
-            base.OnClosed(e);
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
-            Application.Exit();
+
         }
 
-        public void SetVisual(Game<Direct2DMatrix, Direct2DCanvas> visual)
+        public void SetVisual(Visual<Direct2DMatrix, Direct2DCanvas> visual)
         {
             _visual = visual;
         }

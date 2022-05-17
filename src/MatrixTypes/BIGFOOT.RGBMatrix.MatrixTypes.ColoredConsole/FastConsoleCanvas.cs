@@ -22,7 +22,9 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole
             Console.BufferHeight = bufHeight;
             Console.BufferWidth = bufWidth;
 
-            _rows = Enumerable.Repeat(new Tuple<string, ConsoleColor>("", ConsoleColor.Black), 32).ToList();
+            Console.WindowWidth = size * 2 + 8;
+
+            _rows = Enumerable.Repeat(new Tuple<string, ConsoleColor>("", ConsoleColor.Black), 64).ToList();
         }
 
         public void DrawLine(int x0, int y0, int x1, int y1, Color color)
@@ -39,14 +41,14 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole
         public void Clear()
         {
             Fill(new Color(0, 0, 0));
-            Console.WriteLine(string.Join("", Enumerable.Repeat("\n", 32)));
+            Console.WriteLine(string.Join("", Enumerable.Repeat("\n", 64)));
         }
 
         public void Fill(Color color)
         {
             _rows = _rows.Select(r =>
             {
-                return new Tuple<string, ConsoleColor>(string.Join("", Enumerable.Repeat("[]", 32)), ToConsoleColor(color));
+                return new Tuple<string, ConsoleColor>(string.Join("", Enumerable.Repeat("[]", 64)), ToConsoleColor(color));
             }).ToList();
         }
 

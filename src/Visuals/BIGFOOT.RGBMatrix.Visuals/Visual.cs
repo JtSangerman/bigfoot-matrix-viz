@@ -9,7 +9,8 @@ namespace BIGFOOT.RGBMatrix.Visuals
         where TCanvas : Canvas
     {
         protected readonly TMatrix Matrix;
-        public readonly int Rows;
+        public readonly int Rows = 64;
+        protected int TickMs;
         private bool _isEmulating 
         {
             get 
@@ -24,6 +25,11 @@ namespace BIGFOOT.RGBMatrix.Visuals
             Matrix = matrix;
         }
 
+        public void SetTickMs(int tickMs)
+        {
+            TickMs = tickMs;
+        }
+
         public virtual void Visualize()
         {
             if (_isEmulating)
@@ -33,6 +39,11 @@ namespace BIGFOOT.RGBMatrix.Visuals
             else
             {
                 VisualizeOnHardware();
+            }
+
+            if (Matrix.GetType().Name != "Direct2DMatrix")
+            {
+                Thread.Sleep(2500);
             }
         }
 
