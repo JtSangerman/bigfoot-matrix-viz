@@ -50,7 +50,7 @@ Example hub75 control circuit for added context:
     - Rated for *5v* 
     - Observed max load current draw of *5.12a @ 5v*
 
-## See BIGFOOT.viz in action
+## See BIGFOOT.viz hardware prototype in action
 https://imgur.com/a/etemK6w
 
 [^1]: If navigating the project's directory structure and underlying resources, please proceed knowing that the directory structure is not organized properly or meaningfully in places.
