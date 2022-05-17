@@ -1,4 +1,4 @@
-# *The firmware codebase source* 
+# The firmware codebase source
 The panel hardware's firmware and controller source code scope. This setup runs an environment dependent on a Linux box hosted by a rpi as the panel CPU/controller. On boot, the build is configured to indefinitely cycle through the designated alg visuals interfaced using the panel hardware. Within is the C library for driving the addressable panel diodes complete with wrapper bindings to the C# and Python languages.
 
 # Starred directories[^1]

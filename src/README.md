@@ -7,6 +7,14 @@ This eliminates the need for constant time consuming hardware deployments -- all
 
 Currently supports a DirectX rendering and rudimentary console graphics interfacing.
 
+# To run:
+1. Open in VS
+2. Set `\src\BIGFOOT.RGBMatrix` as the startup project
+3. Point the `main` entry point at `\src\BIGFOOT.RGBMatrixEntryPoints\Program.cs`
+4. Enjoy
+
+Highly encouraged: program and share your own visualizations
+
 # Starred directories[^1]
 
 - `/src/*`: Source for the panel hardware emulator: drivers, interfacing, etc.
