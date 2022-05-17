@@ -17,8 +17,8 @@ Forks/branches/PRs or alike are all encouraged. Feedback and contributions of an
 
 # BIGFOOT Repository layout
 This repo houses the two separate, but related code bases: 
-1. [The firmware source code](/hardware/README.md) for the panel's hardware and microcontroller
-2. [The emulator and visualizations source code](/src/README.md) behind the emulator application and current visuals.
+1. [The firmware source code](/hardware) for the panel's hardware and microcontroller
+2. [The emulator and visualizations source code](/src) behind the emulator application and current visuals.
 
 
 # BIGFOOT.viz Hardware Environment POC/Prototype Example:
