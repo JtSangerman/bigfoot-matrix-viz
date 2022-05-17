@@ -13,7 +13,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
 
         public override void VisualizeOnHardware()
         {
-            var arr = ArrayUtils.CreateShuffledSequential(32);
+            var arr = ArrayUtils.CreateShuffledSequential(64);
             int n = arr.Length;
             var canvas = Matrix.CreateOffscreenCanvas();
 
@@ -54,7 +54,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
 
         public override void VisualizeVirtually()
         {
-            var arr = ArrayUtils.CreateShuffledSequential(32);
+            var arr = ArrayUtils.CreateShuffledSequential(64);
             int n = arr.Length;
             var canvas = Matrix.InterfacedCreateOffscreenCanvas();
             var sleepMs = 1;

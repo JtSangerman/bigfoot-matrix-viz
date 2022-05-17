@@ -67,7 +67,7 @@ namespace BIGFOOT.RGBMatrix
 
             var opt = Console.ReadKey().Key;
 
-            var matrixv = new Direct2DMatrix(32);
+            var matrixv = new Direct2DMatrix(64);
             Visual<Direct2DMatrix, Direct2DCanvas> v;
 
             switch (opt)
@@ -113,28 +113,28 @@ namespace BIGFOOT.RGBMatrix
 
                 if (opt == ConsoleKey.D1)
                 {
-                    var matrix = new ColoredConsoleMatrix(32);
+                    var matrix = new ColoredConsoleMatrix(64);
                     var bubble = new BubbleSort<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix);
                     StartupConsole.DisplayLoadingEmulation();
                     bubble.Visualize();
                 }
                 else if (opt == ConsoleKey.D2)
                 {
-                    var matrix = new ColoredConsoleMatrix(32);
+                    var matrix = new ColoredConsoleMatrix(64);
                     var insertion = new InsertionSort<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix);
                     StartupConsole.DisplayLoadingEmulation();
                     insertion.Visualize();
                 }
                 else if (opt == ConsoleKey.D3)
                 {
-                    var matrix = new FastConsoleMatrix(32);
+                    var matrix = new FastConsoleMatrix(64);
                     var bubble = new InsertionSort<FastConsoleMatrix, FastConsoleCanvas>(matrix);
                     StartupConsole.DisplayLoadingEmulation();
                     bubble.Visualize();
                 }
                 else if (opt == ConsoleKey.D4)
                 {
-                    var matrix = new ColoredConsoleMatrix(32);
+                    var matrix = new ColoredConsoleMatrix(64);
                     var maze = new MazeHolder<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix, 4, 4, 100);
                     StartupConsole.DisplayLoadingEmulation();
                     maze.Visualize();
@@ -143,7 +143,7 @@ namespace BIGFOOT.RGBMatrix
                 {
                     // doesn't do anything on emulator
 
-                    //var hardwareMatrix = new InterfacedRGBLedMatrix(32, 1, 1);
+                    //var hardwareMatrix = new InterfacedRGBLedMatrix(64, 1, 1);
                     //var bubble = new BubbleSort<InterfacedRGBLedMatrix, InterfacedRGBLedCanvas>(hardwareMatrix);
                     StartupConsole.DisplayLoadingEmulation();
                     //bubble.Visualize();

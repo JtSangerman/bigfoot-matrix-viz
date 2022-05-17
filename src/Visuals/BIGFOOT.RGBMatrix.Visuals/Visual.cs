@@ -9,7 +9,7 @@ namespace BIGFOOT.RGBMatrix.Visuals
         where TCanvas : Canvas
     {
         protected readonly TMatrix Matrix;
-        public readonly int Rows = 32;
+        public readonly int Rows = 64;
         protected int TickMs;
         private bool _isEmulating 
         {

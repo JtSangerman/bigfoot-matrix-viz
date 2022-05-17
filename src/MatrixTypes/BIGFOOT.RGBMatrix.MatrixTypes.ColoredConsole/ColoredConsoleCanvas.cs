@@ -49,7 +49,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole
         public void Clear()
         {
             Fill(new Color(0,0,0));
-            //Console.Write(string.Join("", Enumerable.Repeat("\n", 32).ToList()));
+            //Console.Write(string.Join("", Enumerable.Repeat("\n", 64).ToList()));
             Console.Clear();
         }
 
