@@ -24,8 +24,9 @@ This repo houses the two separate, but related code bases:
 # BIGFOOT.viz Hardware Environment POC/Prototype Example:
 
 ### Supported low-level circuit interfacing: 
-**HUB75 interfaced to rpi GPIO**
---------------------------------
+- **HUB75 interfaced to rpi GPIO**
+---------------------------------
+
 Example hub75 control circuit for added context:
 ![HUB75 Example](https://github.com/JtSangerman/BIGFOOT.RGBMatrix/blob/app.dev/assets/hub75_circuit_example_128x64.png "HUB75 example circuit diagram")
 
