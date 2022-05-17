@@ -12,11 +12,11 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
         public static async Task BeginVirtualDirect2DGraphicsVisualEmulation<TVisual>(TVisual visual, int tickMs = 100, CancellationToken cancellationToken = default) 
             where TVisual : Visual<Direct2DMatrix, Direct2DCanvas>
         {
-            visual.SetTickMs(tickMs);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             var canvasForm = visual.GetMatrix().InterfacedCreateOffscreenCanvas();
+            visual.SetTickMs(tickMs);
             canvasForm.SetVisual(visual);
 
             Application.Run(canvasForm);

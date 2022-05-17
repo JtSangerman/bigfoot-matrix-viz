@@ -172,7 +172,7 @@ __________.___  ___________________________   ___________________
             Console.ForegroundColor = ConsoleColor.Green;
         }
 
-        public static void PromptCustomTickRate()
+        public static void PromptCustomTickRate(int defaultTickMs)
         {
             Console.Clear();
             DisplayAsciiArt();
@@ -185,7 +185,7 @@ __________.___  ___________________________   ___________________
             Console.Write(" (Press <ENTER> to use default value of");
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write(" 100ms");
+            Console.Write($" {defaultTickMs}ms");
 
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine(").");

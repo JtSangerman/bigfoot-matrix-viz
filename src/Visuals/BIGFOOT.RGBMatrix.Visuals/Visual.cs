@@ -25,7 +25,7 @@ namespace BIGFOOT.RGBMatrix.Visuals
             Matrix = matrix;
         }
 
-        public void SetTickMs(int tickMs)
+        public virtual void SetTickMs(int tickMs)
         {
             TickMs = tickMs;
         }

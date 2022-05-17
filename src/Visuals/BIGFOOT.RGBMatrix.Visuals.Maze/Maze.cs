@@ -28,16 +28,12 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
         where TCanvas : Canvas
     {
         private char[,] maze;
-        private int tickMs;
         private readonly MazeStack<TMatrix, TCanvas> _mazeStack;
 
-
-
-        public MazeHolder(TMatrix matrix, int rows, int cols, int tickMs) : base(matrix)
+        public MazeHolder(TMatrix matrix, int rows, int cols, int? tickMs = null) : base(matrix)
         {
             //sets our scale, size of our maze, and defaults the maze array to full
             int scale = 1;
-            this.tickMs = tickMs;
 
             //StdDraw.setCanvasSize();
             //default the maze array to be completely full
@@ -52,7 +48,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
             int rCol = r.Next(cols);
             maze[rRow, rCol] = ' ';
 
-            _mazeStack = new MazeStack<TMatrix, TCanvas>(Matrix, rRow, rCol, 2 * rows + 1, 2 * cols + 1, scale, tickMs);
+            _mazeStack = new MazeStack<TMatrix, TCanvas>(Matrix, rRow, rCol, 2 * rows + 1, 2 * cols + 1, scale, tickMs??TickMs);
 
             char[] dirs; //an empty list of valid directions in which to cut
             while (!_mazeStack.isEmpty())
@@ -167,32 +163,39 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
 
             return validDirs;
         }
+
+        public override void SetTickMs(int tickMs)
+        {
+            this._mazeStack.TickMs = tickMs;
+        }
     }
 
-    public class MazeStack<TMatrix, TCanvas> : Visual<TMatrix, TCanvas>
+    public class MazeStack<TMatrix, TCanvas> 
         where TMatrix : Matrix<TCanvas>
         where TCanvas : Canvas
     {
-
         private LinkedList<Coordinate> stack = new LinkedList<Coordinate>();
         private char[,] maze;
         private int scale;
         private Coordinate start;
         private Coordinate end;
-        private int sleepMs = 0;
         private bool[,] visted;
         private Color WallColor = new Color(125, 125, 125);
         private Color[,] history;
         private TCanvas canvas;
+        private TMatrix Matrix;
 
-        public MazeStack(TMatrix Matrix, int row, int col, int cornRow, int cornCol, int scale, int tickMs) : base(Matrix)
+        public int TickMs { private get; set; }
+
+
+        public MazeStack(TMatrix Matrix, int row, int col, int cornRow, int cornCol, int scale, int tickMs)
         {
-            canvas = this.Matrix.InterfacedGetCanvas();
-            sleepMs = tickMs;
+            this.Matrix = Matrix;
+            canvas = Matrix.InterfacedGetCanvas();
             this.scale = scale;
             this.visted = new bool[cornRow, cornCol];
             this.history = new Color[cornRow, cornCol];
-            
+            this.TickMs = tickMs;
 
             maze = new char[cornRow, cornCol];
             for (int i = 0; i < maze.GetLength(0); i++)
@@ -390,7 +393,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
                     //StdDraw.setPenColor(StdDraw.CYAN);
                     var c = new Color(255, 0, 0);
                     canvas = Matrix.InterfacedSwapOnVsync(canvas);
-                    Thread.Sleep(sleepMs);
+                    Thread.Sleep(TickMs);
                     canvas = Matrix.InterfacedSwapOnVsync(canvas);
                     switch (i)
                     {
@@ -436,7 +439,7 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
             if (ok)
             {
 
-                Thread.Sleep(sleepMs);
+                Thread.Sleep(TickMs);
                 canvas = Matrix.InterfacedSwapOnVsync(canvas);
                 var c = new Color(0, 210, 0);
                 maze[y, x] = '*';
@@ -506,16 +509,6 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
                 }
                 canvas = Matrix.InterfacedSwapOnVsync(canvas);
             }
-        }
-
-        public override void VisualizeOnHardware()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void VisualizeVirtually()
-        {
-            throw new NotImplementedException();
         }
     }
 }

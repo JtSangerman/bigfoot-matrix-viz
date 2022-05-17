@@ -51,10 +51,6 @@ namespace BIGFOOT.RGBMatrix
                 {
                     Console.WriteLine(ex.ToString());
                 }
-               // await Task.Run(async () =>
-             //   {
-
-              //  });
             }
         }
 
@@ -73,7 +69,7 @@ namespace BIGFOOT.RGBMatrix
             switch (opt)
             {
                 case ConsoleKey.D1:
-                    v = new MazeHolder<Direct2DMatrix, Direct2DCanvas>(matrixv, 15, 15, 5);
+                    v = new MazeHolder<Direct2DMatrix, Direct2DCanvas>(matrixv, 31, 31);
                     break;
                 case ConsoleKey.D2:
                     v = new InsertionSort<Direct2DMatrix, Direct2DCanvas>(matrixv);
@@ -88,16 +84,14 @@ namespace BIGFOOT.RGBMatrix
 
             if (v != null)
             {
-                var tickMs = 100;
-                if (opt != ConsoleKey.D1)
-                { 
-                    StartupConsole.PromptCustomTickRate();
+                var tickMs = opt == ConsoleKey.D1 ? 5 : 100;
 
-                    var tickMsInputStr = Console.ReadLine();
-                    if (int.TryParse(tickMsInputStr, out var parsed))
-                    {
-                        tickMs = parsed;
-                    }
+                StartupConsole.PromptCustomTickRate(tickMs);
+
+                var tickMsInputStr = Console.ReadLine();
+                if (int.TryParse(tickMsInputStr, out var parsed))
+                {
+                    tickMs = parsed;
                 }
                 
                 StartupConsole.DisplayLoadingEmulation();
@@ -135,7 +129,7 @@ namespace BIGFOOT.RGBMatrix
                 else if (opt == ConsoleKey.D4)
                 {
                     var matrix = new ColoredConsoleMatrix(64);
-                    var maze = new MazeHolder<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix, 4, 4, 100);
+                    var maze = new MazeHolder<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix, 10, 10, 1);
                     StartupConsole.DisplayLoadingEmulation();
                     maze.Visualize();
                 }
