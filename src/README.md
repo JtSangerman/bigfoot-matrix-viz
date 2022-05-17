@@ -1,4 +1,4 @@
-# *The development emulator codebase source* 
+# The development emulator codebase source
 The panel hardware emulator application project is written with .NET supported by Visual Studio -- serving the purpose of allowing for efficient development of algorithm visuals, panel drivers, and anything other code that will be deployed and ran on the hardware and supporting environment. 
 
 The value this emulator application yields is in how it serves to eliminate executing the tedious & required hardware deployment procedure in the event ANY code changes are made. The emulator's value is defined by the way it enables the ability to add code changes, develop new builds, explore ideas, etc... all contained within your everyday development machine. 
