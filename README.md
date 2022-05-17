@@ -25,7 +25,6 @@ This repo houses the two separate, but related code bases:
 
 ### Supported low-level circuit interfacing: 
 **HUB75 interfaced to rpi GPIO** 
-
 Example circuit diagram below
 ![HUB75 Example](https://github.com/JtSangerman/BIGFOOT.RGBMatrix/blob/app.dev/assets/hub75_circuit_example_128x64.png "HUB75 example circuit diagram")
 
