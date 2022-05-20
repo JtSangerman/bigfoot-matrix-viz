@@ -6,11 +6,6 @@ An exploratory projected created from the inspiration found in a desire of the a
 ## Included repository source code summary
 A repository for the source code behind this project's engine of a programmable HUB75D LED panel and dependencies: microcontroller, hardware drivers, a supporting hardware development emulator and the various hardware supported algorithm visualizations. A POC/prototype hardware & supporting firmware environment build explanation included below.
 
-## Purpose statement
-With no clear end-game vision of this project, the project currently serves and will continue to serve as a source of inspiring curiosity of our universe's complex tasks, and a tool for curating and programming visualizations for continuing to explore the curiousities -- personally and with my sincere hope as to do the same for yourself as well.
-
-Assuming you've read this far into this brief introduction, my hope is that you've arrived here from acting on any inspirations or curiosities that have found you -- and that `BIGFOOT.viz` is able to present itself as a tool to aid in exploring that interest. Given this project and driving codebase *is currently a passion project that is exclusively worked on with leisure time that is far-and-few between*, many areas of the repo's scope were developed with the aim to require as little time as possible -- and thus areas needing improvement are present and to be expected. 
-
 Feel free to make improvements as you see fit, build new or improve existing features as inspired, or find your stroke of curiousity elsewhere in a way that inspires a purpose -- using this project as a tool or otherwise.
 
 Forks/branches/PRs or alike are all encouraged. Feedback and contributions of any variety are always warmly welcomed. Your interest in this BIGFOOT's source code and the project overall is deeply appreciated!
