@@ -1,3 +1,6 @@
+forgive for anything code or related that is dis-organzied and/or naive. i learned a ton and serves as my purpose for this project!
+
+
 # BIGFOOT.viz
 An exploratory projected created from the inspiration found in a desire of the ability to program & explore visualizations of the concepts behind our universe's various problem-solving computing algorithms -- with the goal to aid an avenue to deeper understanding of our reality's fundamental and explicit limits of procedural complexity -- through the everyday algorithms built with and bound by these underlying limits.
 
