@@ -1,4 +1,4 @@
-﻿using BIGFOOT.RGBMatrix.ControllerInput.Controllers;
+﻿using BIGFOOT.RGBMatrix.Inputs.Drivers.Controllers;
 using BIGFOOT.RGBMatrix.DriverInterfacing;
 using System;
 using System.Threading;

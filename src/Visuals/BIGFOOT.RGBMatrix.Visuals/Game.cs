@@ -1,12 +1,12 @@
-﻿using BIGFOOT.RGBMatrix.ControllerInput.Enums;
-using BIGFOOT.RGBMatrix.ControllerInput.Exceptions;
+﻿using BIGFOOT.RGBMatrix.Inputs.Drivers.Enums;
+using BIGFOOT.RGBMatrix.Inputs.Drivers.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using BIGFOOT.RGBMatrix.ControllerInput.Controllers;
-using BIGFOOT.RGBMatrix.ControllerInput.Models;
+using BIGFOOT.RGBMatrix.Inputs.Drivers.Controllers;
+using BIGFOOT.RGBMatrix.Inputs.Drivers.Models;
 using BIGFOOT.RGBMatrix.DriverInterfacing;
-using BIGFOOT.RGBMatrix.ControllerInput.Exceptions;
+using BIGFOOT.RGBMatrix.Inputs.Drivers.Exceptions;
 
 namespace BIGFOOT.RGBMatrix.Visuals
 {
@@ -17,7 +17,7 @@ namespace BIGFOOT.RGBMatrix.Visuals
     {
         private readonly TMatrix _matrix;
         public readonly ControllerInputDriverBase _input;
-        protected readonly List<ControllerInput.Enums.ControllerInput> _inputQueue;
+        protected readonly List<ControllerInput> _inputQueue;
         protected bool Paused;
         protected bool ControllerConnected;
 
@@ -25,7 +25,7 @@ namespace BIGFOOT.RGBMatrix.Visuals
         {
             _matrix = matrix;
             _input = input;
-            _inputQueue = new List<ControllerInput.Enums.ControllerInput>();
+            _inputQueue = new List<ControllerInput>();
 
             SubscribeToControllerEvents();
             _input.EstablishControllerConnection();
@@ -70,25 +70,25 @@ namespace BIGFOOT.RGBMatrix.Visuals
 
             switch (type)
             {
-                case ControllerInput.Enums.ControllerInput.UP:
+                case ControllerInput.UP:
                     Handle_E_INPUT_UP();
                     break;
-                case ControllerInput.Enums.ControllerInput.DOWN:
+                case ControllerInput.DOWN:
                     Handle_E_INPUT_DOWN();
                     break;
-                case ControllerInput.Enums.ControllerInput.LEFT:
+                case ControllerInput.LEFT:
                     Handle_E_INPUT_LEFT();
                     break;
-                case ControllerInput.Enums.ControllerInput.RIGHT:
+                case ControllerInput.RIGHT:
                     Handle_E_INPUT_RIGHT();
                     break;
-                case ControllerInput.Enums.ControllerInput.EXT1:
+                case ControllerInput.EXT1:
                     Handle_E_INPUT_EXT1();
                     Thread.Sleep(500);
                     break;
-                case ControllerInput.Enums.ControllerInput.EXT2:
+                case ControllerInput.EXT2:
                     break;
-                case ControllerInput.Enums.ControllerInput.NONE:
+                case ControllerInput.NONE:
                     break;
                 default:
                     throw new ControllerInputNotRecognized($"{type}");

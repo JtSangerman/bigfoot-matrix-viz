@@ -1,9 +1,9 @@
-﻿using BIGFOOT.RGBMatrix.ControllerInput.Constants;
-using BIGFOOT.RGBMatrix.ControllerInput.Enums;
+﻿using BIGFOOT.RGBMatrix.Inputs.Drivers.Enums;
+using BIGFOOT.RGBMatrix.Inputs.Drivers.Constants;
 using System;
 using System.Threading;
 
-namespace BIGFOOT.RGBMatrix.ControllerInput.Controllers
+namespace BIGFOOT.RGBMatrix.Inputs.Drivers.Controllers
 {
     public class KeyboardConsoleDriver : ControllerInputDriverBase
     {

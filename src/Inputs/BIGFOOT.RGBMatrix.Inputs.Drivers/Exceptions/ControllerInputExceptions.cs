@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace BIGFOOT.RGBMatrix.ControllerInput.Exceptions
+namespace BIGFOOT.RGBMatrix.Inputs.Drivers.Exceptions
 {
     public class InputControllerNotConnectedException : Exception
     {

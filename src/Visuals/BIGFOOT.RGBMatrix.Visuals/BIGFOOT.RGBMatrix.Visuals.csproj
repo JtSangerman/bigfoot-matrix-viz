@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\DriverInterfacing\BIGFOOT.RGBMatrix.DriverInterfacing.csproj" />
-    <ProjectReference Include="..\..\Inputs\BIGFOOT.RGBMatrix.ControllerInputDrivers.csproj" />
+    <ProjectReference Include="..\..\Inputs\BIGFOOT.RGBMatrix.Inputs.Drivers\BIGFOOT.RGBMatrix.Inputs.Drivers.csproj" />
   </ItemGroup>
 
 </Project>

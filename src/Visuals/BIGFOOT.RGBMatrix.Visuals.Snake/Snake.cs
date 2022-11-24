@@ -4,7 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using BIGFOOT.RGBMatrix.Visuals.Snake.Constants;
-using BIGFOOT.RGBMatrix.ControllerInput.Controllers;
+using BIGFOOT.RGBMatrix.Inputs.Drivers.Controllers;
 using BIGFOOT.RGBMatrix.DriverInterfacing;
 
 namespace BIGFOOT.RGBMatrix.Visuals.Snake

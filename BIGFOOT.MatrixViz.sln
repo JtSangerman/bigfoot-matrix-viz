@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Visuals.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.MatrixTypes.Direct2D", "src\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D.csproj", "{2B16EE9B-AC33-4E0A-ABF8-8BC9E6D91052}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.ControllerInputDrivers", "src\Inputs\BIGFOOT.RGBMatrix.ControllerInputDrivers.csproj", "{8B663B4F-27C1-4063-AAFE-9B3C6387D7CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Inputs.Drivers", "src\Inputs\BIGFOOT.RGBMatrix.Inputs.Drivers\BIGFOOT.RGBMatrix.Inputs.Drivers.csproj", "{8B663B4F-27C1-4063-AAFE-9B3C6387D7CF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C656F41E-1E57-48F0-9667-21574401149A}"
 EndProject

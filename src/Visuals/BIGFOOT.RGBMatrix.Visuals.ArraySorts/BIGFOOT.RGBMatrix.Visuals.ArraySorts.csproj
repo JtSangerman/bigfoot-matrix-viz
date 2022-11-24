@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Inputs\BIGFOOT.RGBMatrix.Inputs.Drivers\BIGFOOT.RGBMatrix.Inputs.Drivers.csproj" />
     <ProjectReference Include="..\BIGFOOT.RGBMatrix.Visuals\BIGFOOT.RGBMatrix.Visuals.csproj" />
   </ItemGroup>
 

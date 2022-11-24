@@ -1,4 +1,4 @@
-﻿namespace BIGFOOT.RGBMatrix.ControllerInput.Constants
+﻿namespace BIGFOOT.RGBMatrix.Inputs.Drivers.Constants
 {
     internal static class ControllerDriverName
     {

@@ -1,4 +1,4 @@
-﻿namespace BIGFOOT.RGBMatrix.ControllerInput.Models
+﻿namespace BIGFOOT.RGBMatrix.Inputs.Drivers.Models
 {
     public class ControllerInputEvent
     {

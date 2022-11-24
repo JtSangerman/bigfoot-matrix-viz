@@ -1,12 +1,12 @@
-﻿using BIGFOOT.RGBMatrix.ControllerInput.Constants;
-using BIGFOOT.RGBMatrix.ControllerInput.Enums;
-using BIGFOOT.RGBMatrix.ControllerInput.Exceptions;
+﻿using BIGFOOT.RGBMatrix.Inputs.Drivers.Enums;
+using BIGFOOT.RGBMatrix.Inputs.Drivers.Exceptions;
+using BIGFOOT.RGBMatrix.Inputs.Drivers.Constants;
 using SharpDX.XInput;
 using System;
 using System.Threading;
 
 
-namespace BIGFOOT.RGBMatrix.ControllerInput.Controllers
+namespace BIGFOOT.RGBMatrix.Inputs.Drivers.Controllers
 {
     public class BTXboxOneControllerDriver : ControllerInputDriverBase
     {

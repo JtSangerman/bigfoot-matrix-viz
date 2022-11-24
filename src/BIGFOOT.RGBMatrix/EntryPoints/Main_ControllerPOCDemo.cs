@@ -1,10 +1,10 @@
-﻿using BIGFOOT.RGBMatrix.ControllerInput;
+﻿using BIGFOOT.RGBMatrix.Inputs.Drivers;
 using BIGFOOT.RGBMatrix.DriverInterfacing;
 using BIGFOOT.RGBMatrix.MatrixTypes.Direct2D;
 using BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed;
 using BIGFOOT.RGBMatrix.Visuals.Snake;
 using System;
-using BIGFOOT.RGBMatrix.ControllerInput.Controllers;
+using BIGFOOT.RGBMatrix.Inputs.Drivers.Controllers;
 
 namespace BIGFOOT.RGBMatrix.EntryPoints
 {

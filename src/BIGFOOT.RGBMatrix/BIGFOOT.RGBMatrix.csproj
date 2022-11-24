@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Inputs\BIGFOOT.RGBMatrix.Inputs.Drivers\BIGFOOT.RGBMatrix.Inputs.Drivers.csproj" />
     <ProjectReference Include="..\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole\BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole.csproj" />
     <ProjectReference Include="..\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D.csproj" />
     <ProjectReference Include="..\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed.csproj" />

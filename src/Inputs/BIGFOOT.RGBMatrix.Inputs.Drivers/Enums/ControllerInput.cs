@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BIGFOOT.RGBMatrix.ControllerInput.Enums
+namespace BIGFOOT.RGBMatrix.Inputs.Drivers.Enums
 {
     public enum ControllerInput
     {
