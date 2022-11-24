@@ -1,11 +1,9 @@
-﻿using BIGFOOT.RGBMatrix.ControllerInputDrivers.Constants;
-using BIGFOOT.RGBMatrix.Inputs.Enums;
-using BIGFOOT.RGBMatrix.Inputs.Models;
-using BIGFOOT.RGBMatrix.Visuals.Inputs;
+﻿using BIGFOOT.RGBMatrix.ControllerInput.Constants;
+using BIGFOOT.RGBMatrix.ControllerInput.Enums;
 using System;
 using System.Threading;
 
-namespace BIGFOOT.RGBMatrix.Inputs
+namespace BIGFOOT.RGBMatrix.ControllerInput.Controllers
 {
     public class KeyboardConsoleDriver : ControllerInputDriverBase
     {
@@ -35,29 +33,29 @@ namespace BIGFOOT.RGBMatrix.Inputs
 
         private protected override void Update()
         {
-            ControllerInput inputEventType = ControllerInput.NONE;
+            Enums.ControllerInput inputEventType = Enums.ControllerInput.NONE;
 
             var key = Console.ReadKey(true).Key;
             switch (key)
             {
                 case ConsoleKey.W:
-                    inputEventType = ControllerInput.UP;
+                    inputEventType = Enums.ControllerInput.UP;
                     break;
                 case ConsoleKey.A:
-                    inputEventType = ControllerInput.LEFT;
+                    inputEventType = Enums.ControllerInput.LEFT;
                     break;
                 case ConsoleKey.S:
-                    inputEventType = ControllerInput.DOWN;
+                    inputEventType = Enums.ControllerInput.DOWN;
                     break;
                 case ConsoleKey.D:
-                    inputEventType = ControllerInput.RIGHT;
+                    inputEventType = Enums.ControllerInput.RIGHT;
                     break;
                 case ConsoleKey.Spacebar:
-                    inputEventType = ControllerInput.EXT1;
+                    inputEventType = Enums.ControllerInput.EXT1;
                     break;
             }
 
-            FIRE_E_CONTROLLER_INPUT_RECEIVED(new ControllerInputEvent() { EventType = inputEventType });
+            FIRE_E_CONTROLLER_INPUT_RECEIVED(new Models.ControllerInputEvent() { EventType = inputEventType });
         }
     }
 }

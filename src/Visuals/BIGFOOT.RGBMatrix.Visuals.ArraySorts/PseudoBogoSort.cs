@@ -1,8 +1,5 @@
-﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
-using BIGFOOT.RGBMatrix.Visuals.Inputs;
+﻿using BIGFOOT.RGBMatrix.DriverInterfacing;
 using System;
-using System.Threading;
-
 
 namespace BIGFOOT.RGBMatrix.Visuals.ArraySorts
 {

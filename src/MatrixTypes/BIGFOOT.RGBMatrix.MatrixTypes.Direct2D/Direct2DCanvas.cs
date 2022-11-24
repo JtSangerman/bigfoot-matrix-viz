@@ -1,4 +1,4 @@
-﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
+﻿using BIGFOOT.RGBMatrix.DriverInterfacing;
 using BIGFOOT.RGBMatrix.Visuals;
 using System;
 using System.Drawing;
@@ -11,7 +11,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
 {
     public class Direct2DCanvas : MatrixD2DForm, Canvas
     {
-        private BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color[,] _grid;
+        private DriverInterfacing.Color[,] _grid;
         private Visual<Direct2DMatrix, Direct2DCanvas> _visual;
         public System.Drawing.Color BgColor = System.Drawing.Color.FromKnownColor(KnownColor.LightSteelBlue);
         private readonly bool _debug;
@@ -20,7 +20,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
         public Direct2DCanvas(int size, bool debug = false) : base(size)
         {
             _size = size;
-            _grid = new BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color[size, size];
+            _grid = new DriverInterfacing.Color[size, size];
             Text = "BIGFOOT Emulator - D2D Graphics Engine";
             BackColor = BgColor;
 
@@ -69,22 +69,22 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
             _visual = visual;
         }
 
-        public BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color[,] GetGrid()
+        public DriverInterfacing.Color[,] GetGrid()
         {
             return _grid;
         }
 
         public void Clear()
         {
-            var color = new LEDBoard.DriverInterfacing.Color(BackColor.R, BackColor.B, BackColor.G);
+            var color = new DriverInterfacing.Color(BackColor.R, BackColor.B, BackColor.G);
             Fill(color);
         }
 
-        public void DrawCircle(int x0, int y0, int radius, BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color color)
+        public void DrawCircle(int x0, int y0, int radius, DriverInterfacing.Color color)
         {
         }
 
-        public void DrawLine(int x0, int y0, int x1, int y1, BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color color)
+        public void DrawLine(int x0, int y0, int x1, int y1, DriverInterfacing.Color color)
         {
             for (var x = x0; x <= x1; x++)
             {
@@ -95,7 +95,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
             }
         }
 
-        public void Fill(BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color color)
+        public void Fill(DriverInterfacing.Color color)
         {
             for (int i = 0; i < _grid.GetLength(0); i++)
             {
@@ -106,7 +106,7 @@ namespace BIGFOOT.RGBMatrix.MatrixTypes.Direct2D
             }
         }
 
-        public void SetPixel(int x, int y, BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.Color color)
+        public void SetPixel(int x, int y, DriverInterfacing.Color color)
         {
             if (
                  (

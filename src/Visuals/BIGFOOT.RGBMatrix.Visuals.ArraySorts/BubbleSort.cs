@@ -1,5 +1,5 @@
-﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
-using BIGFOOT.RGBMatrix.Visuals.Inputs;
+﻿using BIGFOOT.RGBMatrix.ControllerInput.Controllers;
+using BIGFOOT.RGBMatrix.DriverInterfacing;
 using System;
 using System.Threading;
 

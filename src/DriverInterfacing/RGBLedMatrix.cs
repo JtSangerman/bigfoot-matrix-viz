@@ -1,8 +1,9 @@
-﻿using System;
+﻿using BIGFOOT.RGBMatrix.DriverInterfacing;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing
+namespace BIGFOOT.RGBMatrix.DriverInterfacing
 {
     public class RGBLedMatrix
     {

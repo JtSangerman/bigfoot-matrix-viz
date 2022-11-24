@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BIGFOOT.RGBMatrix.ControllerInputDrivers.Constants
+﻿namespace BIGFOOT.RGBMatrix.ControllerInput.Constants
 {
     internal static class ControllerDriverName
     {

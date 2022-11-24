@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing\BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing.csproj" />
+    <ProjectReference Include="..\..\DriverInterfacing\BIGFOOT.RGBMatrix.DriverInterfacing.csproj" />
     <ProjectReference Include="..\..\Visuals\BIGFOOT.RGBMatrix.Visuals\BIGFOOT.RGBMatrix.Visuals.csproj" />
   </ItemGroup>
 

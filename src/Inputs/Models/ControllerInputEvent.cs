@@ -1,9 +1,7 @@
-﻿using BIGFOOT.RGBMatrix.Inputs.Enums;
-
-namespace BIGFOOT.RGBMatrix.Inputs.Models
+﻿namespace BIGFOOT.RGBMatrix.ControllerInput.Models
 {
     public class ControllerInputEvent
     {
-        public ControllerInput EventType { get; set; }
+        public Enums.ControllerInput EventType { get; set; }
     }
 }

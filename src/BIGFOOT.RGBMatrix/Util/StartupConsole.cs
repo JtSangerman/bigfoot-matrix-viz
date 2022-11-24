@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 
-namespace BIGFOOT.RGBMatrix.ConsoleHelper
+namespace BIGFOOT.RGBMatrix.Util
 {
 
     public static class StartupConsole
@@ -55,7 +55,7 @@ __________.___  ___________________________   ___________________
 
         private static string VERSION = "1.1.2-alpha";
         private static int CONSOLE_WIDTH = 100;
-        private static int LOADING_SEGMENTS = (int)(StartupConsole.CONSOLE_WIDTH / 1.5);
+        private static int LOADING_SEGMENTS = (int)(CONSOLE_WIDTH / 1.5);
 
         public static void DisplayGreeting()
         {
@@ -119,10 +119,10 @@ __________.___  ___________________________   ___________________
 
                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write(new String(' ', i - (i == 1 ? 1 : 0)));
+                Console.Write(new string(' ', i - (i == 1 ? 1 : 0)));
 
                 Console.BackgroundColor = ConsoleColor.Black;
-                Console.Write(new String(' ', segments - i));
+                Console.Write(new string(' ', segments - i));
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("|");
@@ -136,9 +136,9 @@ __________.___  ___________________________   ___________________
                 }
 
                 Console.SetCursorPosition(0, Console.CursorTop - 3);
-                Console.Write(new String(' ', Console.BufferWidth));
+                Console.Write(new string(' ', Console.BufferWidth));
                 Console.SetCursorPosition(0, Console.CursorTop - 1); // SET TO Console.CursorTop-2 for DEPLOYED BUILD, ELSE -1
-                Console.Write(new String(' ', Console.BufferWidth));
+                Console.Write(new string(' ', Console.BufferWidth));
 
                 if (i == segments)
                 {
@@ -152,7 +152,7 @@ __________.___  ___________________________   ___________________
 
                     Console.BackgroundColor = ConsoleColor.Green;
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.Write($"{new String(' ', segments)}");
+                    Console.Write($"{new string(' ', segments)}");
 
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -207,7 +207,7 @@ __________.___  ___________________________   ___________________
         {
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Write(new String(' ', Console.BufferWidth - VERSION.Length - 10));
+            Console.Write(new string(' ', Console.BufferWidth - VERSION.Length - 10));
             Console.WriteLine(VERSION);
             Console.BackgroundColor = ConsoleColor.Black;
         }

@@ -1,4 +1,4 @@
-﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
+﻿using BIGFOOT.RGBMatrix.DriverInterfacing;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -197,9 +197,9 @@ namespace BIGFOOT.RGBMatrix.Visuals.Maze
             var p = System.Drawing.KnownColor.Indigo;
             var v = System.Drawing.KnownColor.LightSkyBlue;
 
-            WallColor = LEDBoard.DriverInterfacing.Color.FromKnownColor(w);
-            VisitedColor = LEDBoard.DriverInterfacing.Color.FromKnownColor(v);
-            WalkerColor = LEDBoard.DriverInterfacing.Color.FromKnownColor(p);
+            WallColor = Color.FromKnownColor(w);
+            VisitedColor = Color.FromKnownColor(v);
+            WalkerColor = Color.FromKnownColor(p);
 
             this.Matrix = Matrix;
             canvas = Matrix.InterfacedGetCanvas();

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DriverInterfacing\BIGFOOT.RGBMatrix.DriverInterfacing.csproj" />
     <ProjectReference Include="..\BIGFOOT.RGBMatrix.Visuals\BIGFOOT.RGBMatrix.Visuals.csproj" />
   </ItemGroup>
 

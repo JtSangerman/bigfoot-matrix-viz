@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing</AssemblyName>
-    <RootNamespace>BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing</RootNamespace>
+    <AssemblyName>BIGFOOT.RGBMatrix.DriverInterfacing</AssemblyName>
+    <RootNamespace>BIGFOOT.RGBMatrix.DriverInterfacing</RootNamespace>
     <Platforms>AnyCPU;ARM64</Platforms>
   </PropertyGroup>
 

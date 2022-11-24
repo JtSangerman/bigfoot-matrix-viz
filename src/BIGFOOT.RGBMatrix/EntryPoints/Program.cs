@@ -1,15 +1,13 @@
 ﻿using BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole;
 using BIGFOOT.RGBMatrix.MatrixTypes.Direct2D;
+using BIGFOOT.RGBMatrix.Util;
+using BIGFOOT.RGBMatrix.Visuals;
 using BIGFOOT.RGBMatrix.Visuals.ArraySorts;
 using BIGFOOT.RGBMatrix.Visuals.Maze;
-
 using System;
-using BIGFOOT.RGBMatrix.Visuals;
 using System.Collections.Generic;
-using BIGFOOT.RGBMatrix.ConsoleHelper;
-using System.Threading.Tasks;
 using System.Threading;
-using BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed;
+using System.Threading.Tasks;
 
 namespace BIGFOOT.RGBMatrix
 {
@@ -67,7 +65,7 @@ namespace BIGFOOT.RGBMatrix
             switch (opt)
             {
                 case ConsoleKey.D1:
-                    v = new MazeHolder<Direct2DMatrix, Direct2DCanvas>(matrixv, 31, 31);
+                    v = new MazeHolder<MatrixTypes.Direct2D.Direct2DMatrix, Direct2DCanvas>(matrixv, 31, 31);
                     break;
                 case ConsoleKey.D2:
                     v = new InsertionSort<Direct2DMatrix, Direct2DCanvas>(matrixv);

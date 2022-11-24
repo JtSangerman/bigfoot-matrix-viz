@@ -1,13 +1,12 @@
-﻿using BIGFOOT.RGBMatrix.Inputs;
-using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
+﻿using BIGFOOT.RGBMatrix.ControllerInput;
+using BIGFOOT.RGBMatrix.DriverInterfacing;
 using BIGFOOT.RGBMatrix.MatrixTypes.Direct2D;
 using BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed;
-using BIGFOOT.RGBMatrix.Visuals.Inputs;
 using BIGFOOT.RGBMatrix.Visuals.Snake;
-using BluetoothXboxOneControllerBIGFOOT.RGBMatrix.Visuals.Inputs;
 using System;
+using BIGFOOT.RGBMatrix.ControllerInput.Controllers;
 
-namespace BIGFOOT.RGBMatrix
+namespace BIGFOOT.RGBMatrix.EntryPoints
 {
     class Main_ControllerPOCDemo
     {

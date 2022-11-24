@@ -1,11 +1,11 @@
-﻿using BIGFOOT.RGBMatrix.LEDBoard.DriverInterfacing;
-using BIGFOOT.RGBMatrix.Visuals.Inputs;
-using BIGFOOT.RGBMatrix.Visuals.Snake.Enums;
+﻿using BIGFOOT.RGBMatrix.Visuals.Snake.Enums;
 using BIGFOOT.RGBMatrix.Visuals.GameExceptions;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using BIGFOOT.RGBMatrix.Visuals.Snake.Constants;
+using BIGFOOT.RGBMatrix.ControllerInput.Controllers;
+using BIGFOOT.RGBMatrix.DriverInterfacing;
 
 namespace BIGFOOT.RGBMatrix.Visuals.Snake
 {

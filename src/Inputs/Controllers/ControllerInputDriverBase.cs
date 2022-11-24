@@ -1,9 +1,9 @@
-﻿using BIGFOOT.RGBMatrix.Inputs.Enums;
-using BIGFOOT.RGBMatrix.Inputs.Models;
+﻿using BIGFOOT.RGBMatrix.ControllerInput.Models;
+using BIGFOOT.RGBMatrix.ControllerInput.Enums;
 using System;
 using System.Threading;
 
-namespace BIGFOOT.RGBMatrix.Visuals.Inputs
+namespace BIGFOOT.RGBMatrix.ControllerInput.Controllers
 {
     //TODO can be a static class I believe
     public abstract class ControllerInputDriverBase
