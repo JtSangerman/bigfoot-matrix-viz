@@ -57,17 +57,18 @@ __________.___  ___________________________   ___________________
 
             DisplayAsciiArt();
 
-            RenderLoadingBar("> Welcome to BIGFOOT:\n> A LED Panel Emulator designed for exploring visualizations of anything interesting.\n\n", LOADING_SEGMENTS, 5000/80);
+            RenderLoadingBar("> Welcome to BIGFOOT:\n> A LED Panel Emulator designed for exploring visualizations of anything interesting.\n\n", LOADING_SEGMENTS, 5000 / 80);
 
             Console.Clear();
         }
 
         public static void DisplayLoadingEmulation()
         {
+            return;
             Console.Clear();
             DisplayAsciiArt();
 
-            RenderLoadingBar("> Building emulation - Generating and randomizing:\n\n\n", LOADING_SEGMENTS, 5000/200);
+            RenderLoadingBar("> Building emulation - Generating and randomizing:\n\n\n", LOADING_SEGMENTS, 5000 / 200);
         }
 
         public static void DisplayVisualEmulationCompleted()
@@ -77,23 +78,24 @@ __________.___  ___________________________   ___________________
             Console.Clear();
             DisplayAsciiArt();
 
-            RenderLoadingBar("> Cleaning up and returning to menu... \n\n\n", (int)(LOADING_SEGMENTS/1.6), 5000/450);
+            RenderLoadingBar("> Cleaning up and returning to menu... \n\n\n", (int)(LOADING_SEGMENTS / 1.6), 5000 / 450);
         }
 
         public static void RenderLoadingBar(string preBuffer = "", int segments = 50, int tickRateConst = 1)
         {
+            return;
             var tickRateMs = 5000 / (segments * tickRateConst);
             const string loadingTxt = "LOADING ";
             Random r = new Random();
             Console.CursorVisible = false;
             Stopwatch w = Stopwatch.StartNew();
 
-            
+
             for (int i = 1; i <= segments; i++)
             {
                 Console.Write(preBuffer);
 
-                int delayChance = r.Next(20); 
+                int delayChance = r.Next(20);
                 if (delayChance == 1)
                 {
                     int delayMs = r.Next(1000);
@@ -126,9 +128,9 @@ __________.___  ___________________________   ___________________
                     Thread.Sleep(2000);
                 }
 
-                Console.SetCursorPosition(0, Console.CursorTop-3);
+                Console.SetCursorPosition(0, Console.CursorTop - 3);
                 Console.Write(new String(' ', Console.BufferWidth));
-                Console.SetCursorPosition(0, Console.CursorTop-1); // SET TO Console.CursorTop-2 for DEPLOYED BUILD, ELSE -1
+                Console.SetCursorPosition(0, Console.CursorTop - 1); // SET TO Console.CursorTop-2 for DEPLOYED BUILD, ELSE -1
                 Console.Write(new String(' ', Console.BufferWidth));
 
                 if (i == segments)
@@ -176,7 +178,7 @@ __________.___  ___________________________   ___________________
         {
             Console.Clear();
             DisplayAsciiArt();
-            
+
             var prevColor = Console.ForegroundColor;
 
             Console.Write("\n> Set a custom tick rate (ms)?");
