@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>BIGFOOT.MatrixViz.Visuals.Snake</AssemblyName>
+    <RootNamespace>BIGFOOT.MatrixViz.Visuals.Snake</RootNamespace>
+    <Platforms>AnyCPU;ARM64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DriverInterfacing\BIGFOOT.MatrixViz.DriverInterfacing.csproj" />
+    <ProjectReference Include="..\..\Inputs\BIGFOOT.MatrixViz.Inputs.Drivers\BIGFOOT.MatrixViz.Inputs.Drivers.csproj" />
+    <ProjectReference Include="..\BIGFOOT.MatrixViz.Visuals\BIGFOOT.MatrixViz.Visuals.csproj" />
+  </ItemGroup>
+
+</Project>

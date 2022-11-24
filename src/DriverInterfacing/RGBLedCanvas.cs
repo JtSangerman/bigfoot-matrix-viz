@@ -1,4 +1,4 @@
-﻿namespace BIGFOOT.RGBMatrix.DriverInterfacing
+﻿namespace BIGFOOT.MatrixViz.DriverInterfacing
 {
     public class RGBLedCanvas
     {

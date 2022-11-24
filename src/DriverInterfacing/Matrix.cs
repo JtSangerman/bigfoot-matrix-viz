@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BIGFOOT.RGBMatrix.DriverInterfacing
+﻿namespace BIGFOOT.MatrixViz.DriverInterfacing
 {
     public abstract class Matrix<TCanvas> where TCanvas : Canvas
     {

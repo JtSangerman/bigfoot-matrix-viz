@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>BIGFOOT.MatrixViz.Visuals.ArraySorts</AssemblyName>
+    <RootNamespace>BIGFOOT.MatrixViz.Visuals.ArraySorts</RootNamespace>
+    <Platforms>AnyCPU;ARM64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Inputs\BIGFOOT.MatrixViz.Inputs.Drivers\BIGFOOT.MatrixViz.Inputs.Drivers.csproj" />
+    <ProjectReference Include="..\BIGFOOT.MatrixViz.Visuals\BIGFOOT.MatrixViz.Visuals.csproj" />
+  </ItemGroup>
+
+</Project>

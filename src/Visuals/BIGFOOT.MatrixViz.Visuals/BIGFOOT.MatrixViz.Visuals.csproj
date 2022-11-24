@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<AssemblyName>BIGFOOT.MatrixViz.Visuals</AssemblyName>
+    <RootNamespace>BIGFOOT.MatrixViz.Visuals</RootNamespace>
+    <Platforms>AnyCPU;ARM64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DriverInterfacing\BIGFOOT.MatrixViz.DriverInterfacing.csproj" />
+    <ProjectReference Include="..\..\Inputs\BIGFOOT.MatrixViz.Inputs.Drivers\BIGFOOT.MatrixViz.Inputs.Drivers.csproj" />
+  </ItemGroup>
+
+</Project>

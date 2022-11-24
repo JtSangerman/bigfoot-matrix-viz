@@ -5,37 +5,37 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C6A361E0-BA0C-4C58-8A19-AFDF2ACF8E1F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix", "src\BIGFOOT.RGBMatrix\BIGFOOT.RGBMatrix.csproj", "{321DBF63-C0EF-4A30-9212-D44831C236E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz", "src\BIGFOOT.MatrixViz\BIGFOOT.MatrixViz.csproj", "{321DBF63-C0EF-4A30-9212-D44831C236E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.DriverInterfacing", "src\DriverInterfacing\BIGFOOT.RGBMatrix.DriverInterfacing.csproj", "{157B826F-17B5-40E6-92D4-DAAFB9532397}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz.DriverInterfacing", "src\DriverInterfacing\BIGFOOT.MatrixViz.DriverInterfacing.csproj", "{157B826F-17B5-40E6-92D4-DAAFB9532397}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visuals", "Visuals", "{832E7028-BFA1-4F69-8179-37BE4846C21F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Visuals.ArraySorts", "src\Visuals\BIGFOOT.RGBMatrix.Visuals.ArraySorts\BIGFOOT.RGBMatrix.Visuals.ArraySorts.csproj", "{6F8C6E6E-5335-4668-BAE2-368E57F7E57D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz.Visuals.ArraySorts", "src\Visuals\BIGFOOT.MatrixViz.Visuals.ArraySorts\BIGFOOT.MatrixViz.Visuals.ArraySorts.csproj", "{6F8C6E6E-5335-4668-BAE2-368E57F7E57D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Visuals.Maze", "src\Visuals\BIGFOOT.RGBMatrix.Visuals.Maze\BIGFOOT.RGBMatrix.Visuals.Maze.csproj", "{93192D31-4598-40B7-8097-D30A9DC9B2D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz.Visuals.Maze", "src\Visuals\BIGFOOT.MatrixViz.Visuals.Maze\BIGFOOT.MatrixViz.Visuals.Maze.csproj", "{93192D31-4598-40B7-8097-D30A9DC9B2D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MatrixTypes", "MatrixTypes", "{5B703EF3-4DE6-4248-9DDC-64D2D595067E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole", "src\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole\BIGFOOT.RGBMatrix.MatrixTypes.ColoredConsole.csproj", "{3832008B-D145-452E-8D22-F8C48AEC9616}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz.MatrixTypes.ColoredConsole", "src\MatrixTypes\BIGFOOT.MatrixViz.MatrixTypes.ColoredConsole\BIGFOOT.MatrixViz.MatrixTypes.ColoredConsole.csproj", "{3832008B-D145-452E-8D22-F8C48AEC9616}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Visuals", "src\Visuals\BIGFOOT.RGBMatrix.Visuals\BIGFOOT.RGBMatrix.Visuals.csproj", "{E36B5293-D6A2-4895-ABC0-2CA400492962}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz.Visuals", "src\Visuals\BIGFOOT.MatrixViz.Visuals\BIGFOOT.MatrixViz.Visuals.csproj", "{E36B5293-D6A2-4895-ABC0-2CA400492962}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed", "src\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed\BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed.csproj", "{B3827681-13BD-4B2F-89CB-1D62DE57566B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz.MatrixTypes.InterfacedRGBLed", "src\MatrixTypes\BIGFOOT.MatrixViz.MatrixTypes.InterfacedRGBLed\BIGFOOT.MatrixViz.MatrixTypes.InterfacedRGBLed.csproj", "{B3827681-13BD-4B2F-89CB-1D62DE57566B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Visuals.Snake", "src\Visuals\BIGFOOT.RGBMatrix.Visuals.Snake\BIGFOOT.RGBMatrix.Visuals.Snake.csproj", "{2B050496-8921-44D0-8C25-018F120AE742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz.Visuals.Snake", "src\Visuals\BIGFOOT.MatrixViz.Visuals.Snake\BIGFOOT.MatrixViz.Visuals.Snake.csproj", "{2B050496-8921-44D0-8C25-018F120AE742}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.MatrixTypes.Direct2D", "src\MatrixTypes\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D\BIGFOOT.RGBMatrix.MatrixTypes.Direct2D.csproj", "{2B16EE9B-AC33-4E0A-ABF8-8BC9E6D91052}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz.MatrixTypes.Direct2D", "src\MatrixTypes\BIGFOOT.MatrixViz.MatrixTypes.Direct2D\BIGFOOT.MatrixViz.MatrixTypes.Direct2D.csproj", "{2B16EE9B-AC33-4E0A-ABF8-8BC9E6D91052}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Inputs.Drivers", "src\Inputs\BIGFOOT.RGBMatrix.Inputs.Drivers\BIGFOOT.RGBMatrix.Inputs.Drivers.csproj", "{8B663B4F-27C1-4063-AAFE-9B3C6387D7CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz.Inputs.Drivers", "src\Inputs\BIGFOOT.MatrixViz.Inputs.Drivers\BIGFOOT.MatrixViz.Inputs.Drivers.csproj", "{8B663B4F-27C1-4063-AAFE-9B3C6387D7CF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C656F41E-1E57-48F0-9667-21574401149A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RBGMatrix.Tests.Visuals.Snake", "src\Tests\BIGFOOT.RBGMatrix.Tests.Visuals.Snake\BIGFOOT.RBGMatrix.Tests.Visuals.Snake.csproj", "{3589B164-64DF-4138-B906-8C934BCF10FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz.Tests.Visuals.Snake", "src\Tests\BIGFOOT.MatrixViz.Tests.Visuals.Snake\BIGFOOT.MatrixViz.Tests.Visuals.Snake.csproj", "{3589B164-64DF-4138-B906-8C934BCF10FC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inputs", "Inputs", "{070C155E-3A0D-425F-8F58-810D1B9A3FD5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.RGBMatrix.Visuals.Tools.GridBuilder", "src\Visuals\BIGFOOT.RGBMatrix.Visuals.Tools\BIGFOOT.RGBMatrix.Visuals.Tools.GridBuilder\BIGFOOT.RGBMatrix.Visuals.Tools.GridBuilder.csproj", "{9361DEF1-46F7-4220-8444-CDF456CD2E5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIGFOOT.MatrixViz.Visuals.Tools.GridBuilder", "src\Visuals\BIGFOOT.MatrixViz.Visuals.Tools\BIGFOOT.MatrixViz.Visuals.Tools.GridBuilder\BIGFOOT.MatrixViz.Visuals.Tools.GridBuilder.csproj", "{9361DEF1-46F7-4220-8444-CDF456CD2E5A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DriverInterfacing", "DriverInterfacing", "{7FDEE026-EF85-4509-8454-75ABA68A53C4}"
 EndProject

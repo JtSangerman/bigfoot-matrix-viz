@@ -1,9 +1,4 @@
-﻿using BIGFOOT.RGBMatrix.DriverInterfacing;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BIGFOOT.RGBMatrix.DriverInterfacing
+﻿namespace BIGFOOT.MatrixViz.DriverInterfacing
 {
     public class RGBLedMatrix
     {

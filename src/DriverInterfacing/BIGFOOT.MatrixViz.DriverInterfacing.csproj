@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>BIGFOOT.MatrixViz.DriverInterfacing</AssemblyName>
+    <RootNamespace>BIGFOOT.MatrixViz.DriverInterfacing</RootNamespace>
+    <Platforms>AnyCPU;ARM64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ExternalLibraries\**" />
+    <EmbeddedResource Remove="ExternalLibraries\**" />
+    <None Remove="ExternalLibraries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RGBLedMatrix">
+      <HintPath>ExternalLibraries\RGBLedMatrix.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
