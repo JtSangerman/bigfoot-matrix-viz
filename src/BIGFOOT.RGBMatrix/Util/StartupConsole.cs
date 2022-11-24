@@ -5,8 +5,15 @@ using System.Threading;
 
 namespace BIGFOOT.RGBMatrix.ConsoleHelper
 {
+
     public static class StartupConsole
     {
+        // TODO add proper config handling
+        private static class LazyConfigs
+        {
+            public const bool SkipFakeLoads = true;
+        }
+
         private static string BIGFOOT_ASCII_ART_BLOCK = @"
 _|_|_|    _|_|_|    _|_|_|  _|_|_|_|    _|_|      _|_|    _|_|_|_|_|  
 _|    _|    _|    _|        _|        _|    _|  _|    _|      _|      
@@ -64,7 +71,6 @@ __________.___  ___________________________   ___________________
 
         public static void DisplayLoadingEmulation()
         {
-            return;
             Console.Clear();
             DisplayAsciiArt();
 
@@ -81,9 +87,10 @@ __________.___  ___________________________   ___________________
             RenderLoadingBar("> Cleaning up and returning to menu... \n\n\n", (int)(LOADING_SEGMENTS / 1.6), 5000 / 450);
         }
 
-        public static void RenderLoadingBar(string preBuffer = "", int segments = 50, int tickRateConst = 1)
+        public static void RenderLoadingBar(string preBuffer = "", int segments = 50, int tickRateConst = 1, bool skipRender = LazyConfigs.SkipFakeLoads)
         {
-            return;
+            if (skipRender) return;
+
             var tickRateMs = 5000 / (segments * tickRateConst);
             const string loadingTxt = "LOADING ";
             Random r = new Random();

@@ -13,8 +13,6 @@ using BIGFOOT.RGBMatrix.MatrixTypes.InterfacedRGBLed;
 
 namespace BIGFOOT.RGBMatrix
 {
-
-
     class Program
     {
         static Dictionary<string, string> MENU2_OPTIONS = new Dictionary<string, string>()
