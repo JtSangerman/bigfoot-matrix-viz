@@ -16,6 +16,7 @@ namespace BIGFOOT.MatrixViz.MatrixTypes.Direct2D
             Application.SetCompatibleTextRenderingDefault(false);
 
             var canvasForm = visual.GetMatrix().InterfacedCreateOffscreenCanvas();
+
             visual.SetTickMs(tickMs);
             canvasForm.SetVisual(visual);
 

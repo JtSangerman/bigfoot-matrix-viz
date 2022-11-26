@@ -10,6 +10,10 @@ namespace BIGFOOT.MatrixViz.Visuals
         protected readonly TMatrix Matrix;
         public readonly int Rows = 64;
         protected int TickMs;
+
+        //TODO property 'TCanvas Canvas' should be delegated here
+        /// Prior implementations inheriting from this class should defer their references of this property to this class
+
         private bool _isEmulating 
         {
             get 

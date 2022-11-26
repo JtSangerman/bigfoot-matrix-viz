@@ -10,26 +10,31 @@ using BIGFOOT.MatrixViz.DriverInterfacing;
 namespace BIGFOOT.MatrixViz.Visuals
 {
     // TODO doesn't support hardware viz at the moment
-    public abstract class Game<TMatrix, TCanvas> : Visual<TMatrix, TCanvas>
+    public abstract class Playable<TMatrix, TCanvas> : Visual<TMatrix, TCanvas>
         where TMatrix : Matrix<TCanvas>
         where TCanvas : Canvas
     {
-        private readonly TMatrix _matrix;
-        public readonly ControllerInputDriverBase _input;
-        protected readonly List<ControllerInput> _inputQueue;
+        public readonly ControllerInputDriverBase _inputController;
+        protected readonly List<ControllerInput> InputQueue;
         protected bool Paused;
         protected bool ControllerConnected;
 
-        public Game(TMatrix matrix, ControllerInputDriverBase input) : base(matrix)
+        public Playable(TMatrix matrix, ControllerInputDriverBase input) : base(matrix)
         {
-            _matrix = matrix;
-            _input = input;
-            _inputQueue = new List<ControllerInput>();
+            _inputController = input;
+            InputQueue = new List<ControllerInput>();
 
             SubscribeToControllerEvents();
-            _input.EstablishControllerConnection();
+            _inputController.EstablishControllerConnection();
         }
 
+        // TODO Run(), Tick() should be implmeneted on this class, or virtual at the least. Would depend on 
+        //      IsRunning/IsPaused/Etc lifted here as well.
+        /*
+         * Run()
+         *      while running
+         *          await Tick()
+         */
         protected abstract void Run();
         protected abstract void Draw();
 
@@ -44,23 +49,23 @@ namespace BIGFOOT.MatrixViz.Visuals
             Visualize(false);
         }
 
-        private void Visualize(bool isEmulating)
+        private async void Visualize(bool isEmulating)
         {
             Run();
         }
 
-        private void ConnectController()
-        {
-            //SubscribeToControllerEvents();
-            //_input.EstablishControllerConnection();
-        }
+        //private void ConnectController()
+        //{
+        //    SubscribeToControllerEvents();
+        //    _input.EstablishControllerConnection();
+        //}
 
         private void SubscribeToControllerEvents()
         {
-            _input.E_CONTROLLER_INPUT_RECEIVED += Handle_E_INPUT_RECEIVED;
+            _inputController.E_CONTROLLER_INPUT_RECEIVED += Handle_E_INPUT_RECEIVED;
 
-            _input.E_CONNECTION_SUCCESS += Handle_E_CONNECTION_SUCCESS;
-            _input.E_CONNECTION_FAIL += Handle_E_CONNECTION_FAIL;
+            _inputController.E_CONNECTION_SUCCESS += Handle_E_CONNECTION_SUCCESS;
+            _inputController.E_CONNECTION_FAIL += Handle_E_CONNECTION_FAIL;
         }
 
         private void Handle_E_INPUT_RECEIVED(object sender, EventArgs e)
@@ -70,22 +75,28 @@ namespace BIGFOOT.MatrixViz.Visuals
             switch (type)
             {
                 case ControllerInput.UP:
+                    InputQueue.Add(ControllerInput.UP);
                     Handle_E_INPUT_UP();
                     break;
                 case ControllerInput.DOWN:
+                    InputQueue.Add(ControllerInput.DOWN);
                     Handle_E_INPUT_DOWN();
                     break;
                 case ControllerInput.LEFT:
+                    InputQueue.Add(ControllerInput.LEFT);
                     Handle_E_INPUT_LEFT();
                     break;
                 case ControllerInput.RIGHT:
+                    InputQueue.Add(ControllerInput.RIGHT);
                     Handle_E_INPUT_RIGHT();
                     break;
                 case ControllerInput.EXT1:
+                    InputQueue.Add(ControllerInput.EXT1);
                     Handle_E_INPUT_EXT1();
                     Thread.Sleep(500);
                     break;
                 case ControllerInput.EXT2:
+                    InputQueue.Add(ControllerInput.EXT2);
                     break;
                 case ControllerInput.NONE:
                     break;
@@ -93,10 +104,6 @@ namespace BIGFOOT.MatrixViz.Visuals
                     throw new ControllerInputNotRecognized($"{type}");
             }
         }
-
-
-        ////////////////
-        ///
         protected abstract void Handle_E_INPUT_UP();
         protected abstract void Handle_E_INPUT_DOWN();
 

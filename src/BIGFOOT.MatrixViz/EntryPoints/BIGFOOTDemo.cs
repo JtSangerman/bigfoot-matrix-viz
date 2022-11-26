@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BIGFOOT.MatrixViz.EntryPoints
 {
-    class Program
+    class BIGFOOTDemo
     {
         static Dictionary<string, string> MENU2_OPTIONS = new Dictionary<string, string>()
         {

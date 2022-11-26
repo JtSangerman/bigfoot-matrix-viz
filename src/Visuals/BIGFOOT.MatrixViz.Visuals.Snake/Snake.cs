@@ -1,14 +1,15 @@
-﻿using BIGFOOT.MatrixViz.Visuals.Snake.Enums;
+﻿using BIGFOOT.MatrixViz.DriverInterfacing;
+using BIGFOOT.MatrixViz.Inputs.Drivers.Controllers;
+using BIGFOOT.MatrixViz.Visuals.Snake.Constants;
+using BIGFOOT.MatrixViz.Visuals.Snake.Enums;
+using BIGFOOT.MatrixViz.Visuals.Snake.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using BIGFOOT.MatrixViz.Visuals.Snake.Constants;
-using BIGFOOT.MatrixViz.Inputs.Drivers.Controllers;
-using BIGFOOT.MatrixViz.DriverInterfacing;
 
 namespace BIGFOOT.MatrixViz.Visuals.Snake
 {
-    public class Snake<TMatrix, TCanvas> : Game<TMatrix, TCanvas>
+    public class Snake<TMatrix, TCanvas> : Playable<TMatrix, TCanvas>
         where TMatrix : Matrix<TCanvas>
         where TCanvas : Canvas
     {
@@ -172,12 +173,12 @@ namespace BIGFOOT.MatrixViz.Visuals.Snake
         //////////////////
         private void Debug_enumerateInputQueue()
         {
-            if (_inputQueue?.Count == 0) return;
+            if (InputQueue?.Count == 0) return;
 
             Console.WriteLine("Input queue: \n\n");
 
             var num = 0;
-            _inputQueue.ForEach(i =>
+            InputQueue.ForEach(i =>
             {
                 Console.WriteLine($"{num++}: {i}");
             });

@@ -5,7 +5,7 @@ using BIGFOOT.MatrixViz.Inputs.Drivers.Controllers;
 
 namespace BIGFOOT.MatrixViz.EntryPoints
 {
-    class Main_ControllerPOCDemo
+    class ControllerDemo
     {
         public static void Main(string[] args)
         {

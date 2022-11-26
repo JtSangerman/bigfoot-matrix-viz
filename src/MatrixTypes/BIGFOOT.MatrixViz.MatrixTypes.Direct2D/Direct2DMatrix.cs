@@ -5,11 +5,12 @@ namespace BIGFOOT.MatrixViz.MatrixTypes.Direct2D
 {
     public class Direct2DMatrix : Matrix<Direct2DCanvas>
     {
+        private Direct2DCanvas _canvas; // ???
+
         public Direct2DMatrix(int rows, int chained_not_yet_supported = 1, int parallel_not_yet_supported = 1)
             : base(rows, chained_not_yet_supported, parallel_not_yet_supported) { }
 
 
-        private Direct2DCanvas _canvas;
         public override Direct2DCanvas InterfacedCreateOffscreenCanvas()
         {
             if (_canvas == null)

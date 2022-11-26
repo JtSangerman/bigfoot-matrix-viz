@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BIGFOOT.MatrixViz.Visuals.Snake
+namespace BIGFOOT.MatrixViz.Visuals.Snake.Models
 {
     public class SnakeGameState
     {
@@ -46,8 +46,8 @@ namespace BIGFOOT.MatrixViz.Visuals.Snake
             int x, y;
             do
             {
-                x = random.Next(_boardSize/2); // DEBUG lower possible spawn location
-                y = random.Next(_boardSize/2); // DEBUG lower possible spawn location
+                x = random.Next(_boardSize / 2); // DEBUG lower possible spawn location
+                y = random.Next(_boardSize / 2); // DEBUG lower possible spawn location
             } while (Board[x, y] != Tile.EMPTY);
 
             _goal = new GameTile(x, y, Tile.GOAL);
@@ -67,7 +67,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Snake
         private void SetBoard()
         {
             Board[_goal.X, _goal.Y] = Tile.GOAL;
-            
+
             foreach (var snakeSegment in _snake)
             {
                 Board[snakeSegment.X, snakeSegment.Y] = snakeSegment.Type;
@@ -93,10 +93,10 @@ namespace BIGFOOT.MatrixViz.Visuals.Snake
                 var oldHeadTile = oldHeadNode.Value;
                 oldHeadTile.Type = Tile.SNAKE_BODY;
 
-                 _snake.AddFirst(newHead);
+                _snake.AddFirst(newHead);
 
                 PlaceRandomGoal();
-                return; 
+                return;
             }
 
             // execute lose sequence if a losing move
@@ -137,7 +137,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Snake
 
             list.Reverse();
             _snake.Clear();
-            foreach(var t in list)
+            foreach (var t in list)
             {
                 _snake.AddFirst(t);
             }
@@ -214,7 +214,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Snake
             {
                 Board[tile.X, tile.Y] = Tile.EMPTY;
             }
-        } 
+        }
 
         private void PlaceSnake()
         {

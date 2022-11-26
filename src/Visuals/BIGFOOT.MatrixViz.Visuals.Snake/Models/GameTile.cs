@@ -1,6 +1,6 @@
 ﻿using BIGFOOT.MatrixViz.Visuals.Snake.Enums;
 
-namespace BIGFOOT.MatrixViz.Visuals.Snake
+namespace BIGFOOT.MatrixViz.Visuals.Snake.Models
 {
     public class GameTile
     {
@@ -10,7 +10,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Snake
         public int? Id { get; set; }
 
         private const int BOARD_SIZE = 64; // TODO hardcoded for now
-        
+
         public GameTile(int x, int y, Tile type, int? id = null)
         {
             X = x;
@@ -27,7 +27,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Snake
 
         public void Up()
         {
-            if ((Y + 1) > (BOARD_SIZE - 1))
+            if (Y + 1 > BOARD_SIZE - 1)
             {
                 Y = 0;
             }
@@ -39,7 +39,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Snake
 
         public void Down()
         {
-            if ((Y - 1) < 0)
+            if (Y - 1 < 0)
             {
                 Y = BOARD_SIZE - 1;
             }
@@ -51,7 +51,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Snake
 
         public void Right()
         {
-            if ((X + 1) > BOARD_SIZE - 1)
+            if (X + 1 > BOARD_SIZE - 1)
             {
                 X = 0;
             }
@@ -63,7 +63,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Snake
 
         public void Left()
         {
-            if ((X - 1) < 0)
+            if (X - 1 < 0)
             {
                 X = BOARD_SIZE - 1;
             }
