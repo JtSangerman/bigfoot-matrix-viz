@@ -7,22 +7,6 @@ namespace BIGFOOT.MatrixViz.Inputs.Drivers.Controllers
     {
         protected override string DriverName { get => ControllerDriverName.KeyboardConsole; }
 
-        //public override void Listen()
-        //{
-        //    new Thread(() =>
-        //    {
-        //        Thread.CurrentThread.Name = $"INPUT_LISTENER_THREAD__{DriverName}";
-
-        //        Console.WriteLine($"{Thread.CurrentThread.Name} => Listening \n\n\n");
-
-        //        while (true)
-        //        {
-        //            Update();
-        //        }
-
-        //    }).Start();
-        //}
-
         private protected override void Connect()
         {
             // Assumed that a keyboard is connected
@@ -47,6 +31,9 @@ namespace BIGFOOT.MatrixViz.Inputs.Drivers.Controllers
                     break;
                 case ConsoleKey.D:
                     inputEventType = Enums.ControllerInput.RIGHT;
+                    break;
+                case ConsoleKey.E:
+                    inputEventType = Enums.ControllerInput.ACTION_A;
                     break;
                 case ConsoleKey.Spacebar:
                     inputEventType = Enums.ControllerInput.EXT1;

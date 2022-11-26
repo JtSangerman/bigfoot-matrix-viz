@@ -7,6 +7,9 @@
         LEFT,
         RIGHT,
 
+        ACTION_A,
+        ACTION_B,
+
 
         // ex: Pause, Start
         EXT1,

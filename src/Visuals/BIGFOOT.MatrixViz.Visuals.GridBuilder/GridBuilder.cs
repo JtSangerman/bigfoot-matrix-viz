@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Linq;
 using BIGFOOT.MatrixViz.Inputs.Drivers.Enums;
 using System.Threading;
+using BIGFOOT.MatrixViz.Visuals.GridBuilder.Enums;
+using System.Collections.Generic;
+using BIGFOOT.MatrixViz.Visuals.GridBuilder.Constants;
 
 namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
 {
@@ -19,7 +22,8 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
     {
         public TCanvas _canvas { get; set; }
         public GridBuilderTile[,] Grid { private set; get; }
-        private VisualCoordinate _selector { get; set; }
+        public List<GridBuilderTile> Tiles { private set; get; }
+        private GridTileSelector _selector { get; set; }
         private bool _finishedBuilding { get; set; }
 
         public GridBuilder(TMatrix matrix, ControllerInputDriverBase input) : base(matrix, input) { }
@@ -27,89 +31,118 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
         public void Init()
         {
             _canvas = Matrix.InterfacedGetCanvas();
+            _selector = new GridTileSelector(Rows);
 
-            _selector = new VisualCoordinate(Rows / 2, Rows / 2);
-
-            Grid = new GridBuilderTile[Rows, Rows];
-            Grid.Initialize();
+            Grid = CreateEmptyGrid();
         }
 
-        protected override async void Run()
+        private GridBuilderTile[,] CreateEmptyGrid()
+        {
+            var grid = new GridBuilderTile[Rows, Rows];
+            for (int i = 0; i < Rows * Rows; i++)
+            {
+                grid[i/Rows, i%Rows] = new GridBuilderTile();
+            }
+
+            return grid;
+        }
+
+        protected override void Run()
         {
             Init();
 
             while (!_finishedBuilding)
             {
-                await ExecutePlayableTick();
+                ExecutePlayableTick();
                 Thread.Sleep(TickMs);
             }
         }
 
-        private async Task ExecutePlayableTick()
+        private void ExecutePlayableTick()
         {
-            MoveSelector();
+            HandleQueuedInputs();
             Draw();
         }
 
-        private (int, int) ParseInputQueue()
+        private void HandleQueuedInputs()
         {
-            int moveSelectorHeight = InputQueue.Where(x => x == ControllerInput.UP).Count() - InputQueue.Where(x => x == ControllerInput.DOWN).Count();
-            int moveSelectorLength = InputQueue.Where(x => x == ControllerInput.RIGHT).Count() - InputQueue.Where(x => x == ControllerInput.LEFT).Count();
+            foreach (var input in InputQueue)
+                HandledQueuedDirectionInput(input);               
 
             InputQueue.Clear();
-
-            return (moveSelectorLength, moveSelectorHeight);
         }
 
-        private void MoveSelector() 
+        private void HandledQueuedDirectionInput(ControllerInput input) 
         {
-            (int, int) move = ParseInputQueue();
-            _selector.AdjustLength(move.Item1);
-            _selector.AdjustVert(move.Item2);
+            var prevSelectorPosition = (_selector.X, _selector.Y);
+            switch (input)
+            {
+                case ControllerInput.UP:
+                    _selector.Move(0, 1);
+                    break;
+                case ControllerInput.DOWN:
+                    _selector.Move(0, -1);
+                    break;
+                case ControllerInput.LEFT:
+                    _selector.Move(-1, 0);
+                    break;
+                case ControllerInput.RIGHT:
+                    _selector.Move(1, 0);
+                    break;
+                case ControllerInput.ACTION_A:
+                    _placeTileBtnActiveFramesLeft = 1;
+                    Grid[_selector.X, _selector.Y].Type = GridBuilderTileType.BLOCK;
+                    break;
+            }
+
+            if (prevSelectorPosition != (_selector.X, _selector.Y))
+            {
+                _placeTileBtnActiveFramesLeft = 0;
+            }
         }
+
+        private int _placeTileBtnActiveFramesLeft = 0;
+        protected override void Handle_E_INPUT_ACTION_A(){ }
 
         protected override void Draw()
         {
             _canvas.Clear();
+            DrawEntities();
+            _canvas = Matrix.InterfacedSwapOnVsync(_canvas);
+        }
 
+        private void DrawEntities()
+        {
+            DrawTiles();
+            DrawSelector();
+        }
+
+        private void DrawSelector()
+        {
+            var color = GridBuilderTileColors.SELECTOR_DEFAULT;
+            if (_placeTileBtnActiveFramesLeft > 0)
+            {
+                color = GridBuilderTileColors.SELECTOR_ACTIVE;
+                _placeTileBtnActiveFramesLeft--;
+            }
+
+            _canvas.SetPixel(_selector.X, _selector.Y, color);
+        }
+
+        private void DrawTiles()
+        {
             for (int x = 0; x < Rows; x++)
             {
                 for (int y = 0; y < Rows; y++)
                 {
-                    var color = IsTileSelected(x, y)
-                         ? Color.FromKnownColor(System.Drawing.KnownColor.White)
-                         : Color.FromKnownColor(System.Drawing.KnownColor.Black);
+                    if (Grid[x, y].IsEmpty || (x, y) == (_selector.X, _selector.Y))
+                    {
+                        continue;
+                    }
 
-                    _canvas.SetPixel(x, y, color);
+                    _canvas.SetPixel(x, y, GridBuilderTileColors.BLOCK);
                 }
             }
-            
-            _canvas = Matrix.InterfacedSwapOnVsync(_canvas);
-        }
-
-        private bool IsTileSelected(int x, int y)
-        {
-            return (_selector.X, _selector.Y) == (x, y);
-        }
-
-        protected override void Handle_E_INPUT_DOWN()
-        {
-            _selector.AdjustVert(-1);
-        }
-
-        protected override void Handle_E_INPUT_LEFT()
-        {
-            _selector.AdjustLength(-1);
-        }
-
-        protected override void Handle_E_INPUT_RIGHT()
-        {
-            _selector.AdjustLength(1);
-        }
-
-        protected override void Handle_E_INPUT_UP()
-        {
-            _selector.AdjustVert(1);
         }
     }
 

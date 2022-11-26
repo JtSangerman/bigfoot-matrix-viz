@@ -90,6 +90,10 @@ namespace BIGFOOT.MatrixViz.Visuals
                     InputQueue.Add(ControllerInput.RIGHT);
                     Handle_E_INPUT_RIGHT();
                     break;
+                case ControllerInput.ACTION_A:
+                    InputQueue.Add(ControllerInput.ACTION_A);
+                    Handle_E_INPUT_ACTION_A();
+                    break;
                 case ControllerInput.EXT1:
                     InputQueue.Add(ControllerInput.EXT1);
                     Handle_E_INPUT_EXT1();
@@ -104,16 +108,16 @@ namespace BIGFOOT.MatrixViz.Visuals
                     throw new ControllerInputNotRecognized($"{type}");
             }
         }
-        protected abstract void Handle_E_INPUT_UP();
-        protected abstract void Handle_E_INPUT_DOWN();
+        protected virtual void Handle_E_INPUT_UP() { }
+        protected virtual void Handle_E_INPUT_DOWN() { }
 
-        protected abstract void Handle_E_INPUT_LEFT();
+        protected virtual void Handle_E_INPUT_LEFT() { }
 
-        protected abstract void Handle_E_INPUT_RIGHT();
+        protected virtual void Handle_E_INPUT_RIGHT() { }
 
-        //protected abstract void Handle_E_INPUT_NONE();
+        protected virtual void Handle_E_INPUT_ACTION_A() { }
 
-        protected virtual async void Handle_E_INPUT_EXT1()
+        protected virtual void Handle_E_INPUT_EXT1()
         {
             Paused = !Paused;
         }

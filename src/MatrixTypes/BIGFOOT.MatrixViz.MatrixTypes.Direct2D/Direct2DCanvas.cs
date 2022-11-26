@@ -13,7 +13,7 @@ namespace BIGFOOT.MatrixViz.MatrixTypes.Direct2D
     {
         private DriverInterfacing.Color[,] _grid;
         private Visual<Direct2DMatrix, Direct2DCanvas> _visual;
-        public System.Drawing.Color BgColor = System.Drawing.Color.FromKnownColor(KnownColor.LightSteelBlue);
+        public System.Drawing.Color BgColor = System.Drawing.Color.FromKnownColor(KnownColor.LightGray);
         private readonly bool _debug;
 
         private readonly int _size;

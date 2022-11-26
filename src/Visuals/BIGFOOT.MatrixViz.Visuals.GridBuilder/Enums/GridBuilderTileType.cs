@@ -7,6 +7,6 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder.Enums
     public enum GridBuilderTileType
     {
         EMPTY,
-        FILLED
+        BLOCK
     }
 }

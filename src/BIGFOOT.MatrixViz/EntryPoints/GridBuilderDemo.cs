@@ -35,7 +35,7 @@ namespace BIGFOOT.MatrixViz.EntryPoints
             var runnable = new GridBuilder<Direct2DMatrix, Direct2DCanvas>(matrix, input);
             //runnable._canvas = matrix.InterfacedGetCanvas();
 
-            await Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(runnable, 500);
+            await Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(runnable, 50);
         }
     }
 }
