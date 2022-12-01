@@ -29,6 +29,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
     {
         private char[,] maze;
         private readonly MazeStack<TMatrix, TCanvas> _mazeStack;
+        public string SerializedMazeStr { get; private set; }
 
         public MazeHolder(TMatrix matrix, int rows, int cols, int? tickMs = null) : base(matrix)
         {
@@ -88,17 +89,28 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
                 else _mazeStack.pop();
             }
 
-
-
-
+            SerializedMazeStr = _mazeStack.toString();
         }
 
+        public string SerializeMaze()
+        {
+            string mazeStr = string.Empty;
+            for (int i = 0; i < maze.GetLength(0); i++)
+            {
+                for (int j = 0; j < maze.GetLength(1); j++)
+                {
+                    mazeStr += maze[i, j].ToString();
+                }
+                mazeStr += "\n";
+            }
+            return mazeStr;
+        }
         public override void VisualizeOnHardware()
         {
             throw new NotImplementedException();
         }
 
-        public override void VisualizeVirtually()
+        public override async void VisualizeVirtually()
         {
 
             _mazeStack.makeExits();
@@ -110,13 +122,13 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
 
             Stopwatch s = new Stopwatch();
             s.Start();
-            while (s.ElapsedMilliseconds < 7500)
+            while (s.ElapsedMilliseconds < 1000)
             {
                 _mazeStack.drawAtEnd();
             }
 
             s.Stop();
-            //Thread.Sleep(7500);
+            ////Thread.Sleep(7500);
             //Console.WriteLine(cornMaze.toString());
         }
 
@@ -404,7 +416,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
                     //StdDraw.setPenColor(StdDraw.CYAN);
                     var c = WalkerColor;
                     canvas = Matrix.InterfacedSwapOnVsync(canvas);
-                    Thread.Sleep(TickMs);
+                    //Thread.Sleep(TickMs);
                     canvas = Matrix.InterfacedSwapOnVsync(canvas);
                     switch (i)
                     {
@@ -450,7 +462,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
             if (ok)
             {
 
-                Thread.Sleep(TickMs);
+                //Thread.Sleep(TickMs);
                 canvas = Matrix.InterfacedSwapOnVsync(canvas);
                 var c = new Color(0, 210, 0);
                 maze[y, x] = '*';

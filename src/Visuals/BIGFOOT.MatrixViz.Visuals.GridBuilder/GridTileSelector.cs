@@ -4,7 +4,7 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
 {
     internal class GridTileSelector : MatrixCoordinate
     {
-        public GridTileSelector(int matrixSize) : base(matrixSize / 2, matrixSize / 2) { }
+        public GridTileSelector(int matrixSize) : base(0, 0) { }//(matrixSize / 2, matrixSize / 2) { }
 
         public void Move(int xAmount, int yAmount)
         {
