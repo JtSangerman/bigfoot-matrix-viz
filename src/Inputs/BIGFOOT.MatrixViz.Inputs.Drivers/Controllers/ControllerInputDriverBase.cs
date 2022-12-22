@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using BIGFOOT.MatrixViz.Inputs.Drivers.Enums;
 using BIGFOOT.MatrixViz.Inputs.Drivers.Models;
 
 namespace BIGFOOT.MatrixViz.Inputs.Drivers.Controllers
@@ -39,7 +40,6 @@ namespace BIGFOOT.MatrixViz.Inputs.Drivers.Controllers
             new Thread(() =>
             {
                 Thread.CurrentThread.Name = $"INPUT_LISTENER_THREAD__{DriverName}";
-
                 Console.WriteLine($"{Thread.CurrentThread.Name} => Listening \n\n\n");
 
                 while (true)

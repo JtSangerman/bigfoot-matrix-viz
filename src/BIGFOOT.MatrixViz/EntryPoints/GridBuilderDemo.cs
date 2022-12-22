@@ -1,17 +1,10 @@
 ﻿using BIGFOOT.MatrixViz.Inputs.Drivers.Controllers;
 using BIGFOOT.MatrixViz.MatrixTypes.Direct2D;
-using BIGFOOT.MatrixViz.Visuals;
 using BIGFOOT.MatrixViz.Visuals.GridBuilder;
 using BIGFOOT.MatrixViz.Visuals.Maze;
-using BIGFOOT.MatrixViz.Visuals.Snake;
-using Microsoft.VisualBasic;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace BIGFOOT.MatrixViz.EntryPoints
 {

@@ -23,7 +23,6 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
     {
         public TCanvas _canvas { get; set; }
         public GridBuilderTile[,] Grid { private set; get; }
-        //public List<GridBuilderTile> Tiles { private set; get; }
         private GridTileSelector _selector { get; set; }
         private bool _finishedBuilding { get; set; }
         private readonly string _initialGridStateStr;
@@ -35,7 +34,6 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
             _totalNumMapSpots = Rows * Rows;
         }
 
-
         protected override void Run()
         {
             InitBuilder();
@@ -45,14 +43,28 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
                 ExecutePlayableTick();
                 Thread.Sleep(TickMs);
             }
-
-
         }
+
         private void InitBuilder()
         {
             _canvas = Matrix.InterfacedGetCanvas();
+            Grid = DeserializeGrid(_initialGridStateStr);
             _selector = new GridTileSelector(Rows);
-            Grid = LoadGridNonCute(_initialGridStateStr);
+        }
+
+        private void ExecutePlayableTick()
+        {
+            Draw();
+            ExecuteQueueInputEvents();
+        }
+
+        private void ExecuteQueueInputEvents()
+        {
+            foreach (var input in InputQueue)
+                HandleInputEvent(input);
+
+            InputQueue.Clear();
+            _selector.AsyncIsInputButtonActive = false;
         }
 
         protected override void Draw()
@@ -60,6 +72,42 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
             _canvas.Clear();
             DrawEntities();
             _canvas = Matrix.InterfacedSwapOnVsync(_canvas);
+        }
+
+        private GridBuilderTile[,] DeserializeGrid(string serializedGridToLoad = "")
+        {
+            var lines = serializedGridToLoad.Split('\n');
+            var grid = new GridBuilderTile[Rows, Rows];
+
+            for (int i = 0; i < Rows; i++)
+            {
+                var line = i < lines.Length ? lines[i] : string.Join("", Enumerable.Repeat(" ", Rows));
+                for (int j = 0; j < Rows; j++)
+                {
+                    var c = j < line.Length ? line[j] : ' ';
+                    GridBuilderTileType t = c == '#' ? GridBuilderTileType.BLOCK : GridBuilderTileType.EMPTY;
+                    grid[j, i] = new GridBuilderTile(t);
+                }
+            }
+
+            return grid;
+        }
+
+        private GridBuilderTile[,] DeserializeGrid_CuteAttempt(string serializedGridToLoad = "")
+        {
+            var grid = new GridBuilderTile[Rows, Rows];
+
+            var rows = ParseMapRows(serializedGridToLoad).ToList();
+            for (int i = 0; i < Rows; i++)
+            {
+                var row = rows.ElementAt(i).ToList();
+                for (int j = 0; j < Rows; j++)
+                {
+                    grid[i, j] = row.ElementAt(j);
+                }
+            }
+
+            return grid;
         }
 
         private IEnumerable<IEnumerable<GridBuilderTile>> ParseMapRows(IEnumerable<char> map)
@@ -101,49 +149,12 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
             }
         }
 
-        private  GridBuilderTile[,] LoadGrid(string serializedGridToLoad = "")
-        {
-            var grid = new GridBuilderTile[Rows, Rows];
-
-            var rows = ParseMapRows(serializedGridToLoad).ToList();
-            for (int i = 0; i < Rows; i++)
-            {
-                var row = rows.ElementAt(i).ToList();
-                for (int j = 0; j < Rows; j++)
-                {
-                    grid[i, j] = row.ElementAt(j);
-                }
-            }
-
-            return grid;
-        }
-
-        private GridBuilderTile[,] LoadGridNonCute(string serializedGridToLoad = "")
-        {
-            var lines = serializedGridToLoad.Split('\n');
-            var grid = new GridBuilderTile[Rows, Rows];
-
-            for (int i = 0; i < Rows; i++)
-            {
-                var line = i < lines.Length ? lines[i] : string.Join("", Enumerable.Repeat(" ", Rows));
-                for (int j = 0; j < Rows; j++)
-                {
-                    var c = j < line.Length ? line[j] : ' ';
-                    GridBuilderTileType t = c == '#' ? GridBuilderTileType.BLOCK : GridBuilderTileType.EMPTY;
-                    grid[j, i] = new GridBuilderTile(t);
-                }
-            }
-
-            return grid;
-        }
-
         public string SerializeMapState()
         {
             (int b0, int b1) = (Grid.GetLength(0), Grid.GetLength(1));
             int bound = b0 * b1;
 
             string stateStr = string.Empty;
-            //for (int i = Grid.GetLength(0) * Grid.GetLength(1) - 1; i >= 0; i--)
             for (int i = 0; i < bound; i++)
             {
                 (int x, int y) = (i / b0, i % b1);
@@ -170,25 +181,13 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
             return stateStr;
         }
 
-        private void ExecutePlayableTick()
+        private void HandleInputEvent(ControllerInput input) 
         {
-            HandleQueuedInputs();
-            Draw();
-        }
-
-        private void HandleQueuedInputs()
-        {
-            foreach (var input in InputQueue)
-                HandledQueuedDirectionInput(input);               
-
-            InputQueue.Clear();
-        }
-
-        private void HandledQueuedDirectionInput(ControllerInput input) 
-        {
-            var prevSelectorPosition = (_selector.X, _selector.Y);
             switch (input)
             {
+                case ControllerInput.ACTION_A:
+                    Grid[_selector.X, _selector.Y].PlaceNewTile(GridBuilderTileType.BLOCK);
+                    break;
                 case ControllerInput.UP:
                     _selector.Move(0, 1);
                     break;
@@ -201,20 +200,13 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
                 case ControllerInput.RIGHT:
                     _selector.Move(1, 0);
                     break;
-                case ControllerInput.ACTION_A:
-                    _placeTileBtnActiveFramesLeft = 1;
-                    Grid[_selector.X, _selector.Y] = new GridBuilderTile(GridBuilderTileType.BLOCK);
-                    break;
-            }
-
-            if (prevSelectorPosition != (_selector.X, _selector.Y))
-            {
-                _placeTileBtnActiveFramesLeft = 0;
             }
         }
 
-        private int _placeTileBtnActiveFramesLeft = 0;
-        protected override void Handle_E_INPUT_ACTION_A(){ } // ?
+        protected override void Handle_E_INPUT_ACTION_A() 
+        {
+            _selector.AsyncIsInputButtonActive = true;
+        }
 
         private void DrawEntities()
         {
@@ -224,29 +216,28 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
 
         private void DrawSelector()
         {
+            if (_selector.AsyncIsCurrentlyTransparent)
+                return;
+
             var color = GridBuilderTileColors.SELECTOR_DEFAULT;
-            if (_placeTileBtnActiveFramesLeft > 0)
-            {
-                color = GridBuilderTileColors.SELECTOR_ACTIVE;
-                _placeTileBtnActiveFramesLeft--;
-            }
+            if (_selector.AsyncIsInputButtonActive)
+                color = GridBuilderTileColors.SELECTOR_INPUT_ACTIVE;
 
             _canvas.SetPixel(_selector.X, _selector.Y, color);
+
         }
 
         private void DrawTiles()
         {
-            for (int x = 0; x < Rows; x++)
+            int bound = Rows * Rows;
+            for (int i = 0; i < bound; i++)
             {
-                for (int y = 0; y < Rows; y++)
-                {
-                    if (Grid[x, y].IsEmpty || (x, y) == (_selector.X, _selector.Y))
-                    {
-                        continue;
-                    }
+                (int x, int y) = (i / 64, i % 64);
 
-                    _canvas.SetPixel(x, y, GridBuilderTileColors.BLOCK);
-                }
+                if (Grid[x, y].IsEmpty)
+                    continue;
+
+                _canvas.SetPixel(x, y, GridBuilderTileColors.BLOCK_DEFAULT);
             }
         }
     }

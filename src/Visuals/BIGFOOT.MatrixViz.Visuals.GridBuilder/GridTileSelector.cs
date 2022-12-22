@@ -1,10 +1,16 @@
-﻿using BIGFOOT.MatrixViz.Visuals.Models;
+﻿using BIGFOOT.MatrixViz.DriverInterfacing;
+using BIGFOOT.MatrixViz.Visuals.Models;
+using System;
 
 namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
 {
     internal class GridTileSelector : MatrixCoordinate
     {
-        public GridTileSelector(int matrixSize) : base(0, 0) { }//(matrixSize / 2, matrixSize / 2) { }
+        private sbyte _ticker = 0;
+        public bool AsyncIsCurrentlyTransparent => (_ticker = (sbyte) (_ticker + 16)) > 0;
+        public bool AsyncIsInputButtonActive { get; set; }
+
+        public GridTileSelector(int matrixSize) : base(matrixSize / 2, matrixSize / 2) { }
 
         public void Move(int xAmount, int yAmount)
         {

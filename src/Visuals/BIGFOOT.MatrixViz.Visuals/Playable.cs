@@ -14,7 +14,7 @@ namespace BIGFOOT.MatrixViz.Visuals
         where TMatrix : Matrix<TCanvas>
         where TCanvas : Canvas
     {
-        public readonly ControllerInputDriverBase _inputController;
+        private readonly ControllerInputDriverBase _inputController;
         protected readonly List<ControllerInput> InputQueue;
         protected bool Paused;
         protected bool ControllerConnected;
@@ -53,12 +53,6 @@ namespace BIGFOOT.MatrixViz.Visuals
         {
             Run();
         }
-
-        //private void ConnectController()
-        //{
-        //    SubscribeToControllerEvents();
-        //    _input.EstablishControllerConnection();
-        //}
 
         private void SubscribeToControllerEvents()
         {
@@ -108,6 +102,7 @@ namespace BIGFOOT.MatrixViz.Visuals
                     throw new ControllerInputNotRecognized($"{type}");
             }
         }
+
         protected virtual void Handle_E_INPUT_UP() { }
         protected virtual void Handle_E_INPUT_DOWN() { }
 

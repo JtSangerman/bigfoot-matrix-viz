@@ -5,7 +5,7 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder.Models
 {
     public class GridBuilderTile
     {
-        public GridBuilderTileType Type { get; }
+        public GridBuilderTileType Type { get; private set; }
         public bool IsEmpty => Type == GridBuilderTileType.EMPTY; 
 
         public GridBuilderTile(GridBuilderTileType? type = null)
@@ -14,6 +14,9 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder.Models
         }
 
         public GridBuilderTile(char c) => Type = FromChar(c);
+
+        public void PlaceNewTile(GridBuilderTileType type) 
+            => Type = IsEmpty ? type : GridBuilderTileType.EMPTY;
 
         private static GridBuilderTileType FromChar(char c)
         {
