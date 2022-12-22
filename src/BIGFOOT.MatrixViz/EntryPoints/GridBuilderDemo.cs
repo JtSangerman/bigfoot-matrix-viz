@@ -4,6 +4,7 @@ using BIGFOOT.MatrixViz.Visuals;
 using BIGFOOT.MatrixViz.Visuals.GridBuilder;
 using BIGFOOT.MatrixViz.Visuals.Maze;
 using BIGFOOT.MatrixViz.Visuals.Snake;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,14 +17,89 @@ namespace BIGFOOT.MatrixViz.EntryPoints
 {
     internal class GridBuilderDemo
     {
+        static string EX_MAZE_STR =
+@"############################################################# #
+# #####       #               #     #         #       #       #
+# ######### # ####### ##### # # ### # ### ##### ##### # # ### #
+# #   ##    #       #     # # # #   #   #     #   # #   #   # #
+# # # # ########### ####### ### # ##### ##### ### # ####### ###
+# # # # #####             # #   #     #     #   #   #     #   #
+# ### # ################# # # ##### ### ##### ##### ### ##### #
+#     #   #       #   #     # #   #     #     #     #   #     #
+##### ########### # # ####### ### ####### ### # ##### # # ### #
+#   #   ##  #     # #         #     #     #   # #     # #   # #
+# # ######### ###   ########### ### # ######### ### ##### # ###
+# #   #   #   #   #   #         #   # #             #   # #   #
+# ### # # # ######### ####### # # ### # ############# # ##### #
+#   #   #   #       #       # # #   #   #     #       # #   # #
+### ####### # ### # ####### # # ### ##### ### # ####### # # # #
+#   #     # #   # # #     # # # #     #   #   # #   #   # #   #
+# ### ### ##### # ### ### # # # ##### # ### ### ### # ### #####
+#     # #       #       # # # # #   # # # #     #   # #   #   #
+# ##### ########### ##### # ### # # ### # ####### ### # ### # #
+#   #     #       # #     # #   # #     #       #   # # # # # #
+### # ##### ##### ### ### # # # # ####### ##### # # # # # # # #
+#   #   #   #         #   #   # #     # # #   #   # #   #   # #
+# ##### # ############# ####### ####### # ### ##### ######### #
+#       #       #       # #   #     #   # #     # #           #
+####### ####### # ####### # # ##### # ### # ### # ##### ##### #
+#             # #   #   #   #   #   #       #       #   #     #
+# ######### ### ### # # ####### # ######### ######### ### #####
+# #     #   #   # #   #         #   #   #   #       # #     # #
+### ### # ### ### ######### ####### # # # ### ##### # ##### # #
+#   #   #   #   #           #     #   # #   # #   # #   #   # #
+# ### ##### ### # ########### ### ##### ##### # # # # # # ### #
+#                                                             #
+#                                                             #
+#                                                             #
+# # ##### ### # ### ### ##### ####### # ##### # # ### ### # # #
+# #   # #   # # # # #   #     #     # #     # # #   # # # #   #
+# ### # ### # # # # # ### ### # ### # ##### ### ### # # # ### #
+# #   #     # # #   # # #   # #   # # #     #   #   #   #   # #
+# # ####### ### # ### # ### ##### # # # ##### ### ##### ### ###
+# #       #     # # # #   #       # #   # #     # #       #   #
+# ####### ####### # # ### ######### ##### # ### # ####### ### #
+#       #     #   # # #   # #     #   #     # # #       # #   #
+####### ##### # ### # # # # # ### ### # ##### # ####### ### # #
+#   #   #     #     #   #   # #       # # #   #       #     # #
+# # ##### ######### ####### # ### ##### # # # ####### ####### #
+# #       #   #     #     # #   # #     # # # #     #     #   #
+# ######### # # ##### # ### ### ### ##### # # # ### ##### # ###
+#   #       #   #     # #   #   #   #   #   # # # #     # # # #
+# # ### ######### ####### ### ### ### # # ### # # ### # # # # #
+# #   # #     #     #     # #   # # # #     # # #   # # #   # #
+# ### # ### # # ### # ##### ### # # # ####### # # # # ####### #
+#   # #     # # #   #         # # # #     #   #   # #     #   #
+##### # ##### ### ##### ####### # # ##### # ### ####### # ### #
+#     # #   #   #     # #     # # #     # #     #       #   # #
+# ####### # ### ### ### # ### # # ##### # ####### ######### # #
+#         # # # #   #   # # #   #     #   #       #     #   # #
+# ######### # # # # # ### # ### ##### ##### ####### ##### ### #
+# #   #     #     # #   # #     #   #   #   #       #   #   # #
+# ### # ### ####### ### # ####### # ### # ### ### ### # ### # #
+#     #   # #   #   #   #     #   #   # # # # #   #   #   # # #
+##### ### ### # ##### ####### # ### ### # # # # ### ##### # # #
+#       #     #             #     #       #   #         #     #
+# #############################################################
+
+";
         static async Task Main(string[] args)
         {
             try
             {
-                var mazeStr = new SimpleMazeHolder(31, 31).MazeStackToString();
-                //var map = await AsyncGenerateMazeString().ConfigureAwait(false);
-                var editedMap = await AsyncStartMapEditor(mazeStr).ConfigureAwait(false);
-                Console.WriteLine(editedMap);
+                while (true)
+                {
+                    int tickMs = 3;
+
+                    var deserializedEditedMapResult = await AsyncStartMapEditor().ConfigureAwait(false);
+                    await Task.Delay(500);
+
+                    var mazeViz = new MazeHolder<Direct2DMatrix, Direct2DCanvas>(new Direct2DMatrix(64), deserializedEditedMapResult, tickMs);
+                    await Task.Delay(500);
+
+                    await Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(mazeViz, tickMs).ConfigureAwait(false);
+                    await Task.Delay(500);
+                }
 
             }
             catch (Exception ex)
@@ -32,13 +108,12 @@ namespace BIGFOOT.MatrixViz.EntryPoints
             }
         }
 
-        public static async Task<string> AsyncStartMapEditor(string serializedMapStartStr = null, CancellationToken cancellationToken = default)
+        public static async Task<string> AsyncStartMapEditor(CancellationToken cancellationToken = default)
         {
             var matrix = new Direct2DMatrix(64);
             ControllerInputDriverBase input = new KeyboardConsoleDriver();
 
-
-            var mapBuilder = new GridBuilder<Direct2DMatrix, Direct2DCanvas>(matrix, input, serializedMapStartStr);
+            var mapBuilder = new GridBuilder<Direct2DMatrix, Direct2DCanvas>(matrix, input, EX_MAZE_STR);
             await Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(mapBuilder, 50).ConfigureAwait(false);
             var finishedGrid = mapBuilder.SerializeMapState();
             Console.WriteLine("edited Grid start: ---");
@@ -53,7 +128,7 @@ namespace BIGFOOT.MatrixViz.EntryPoints
         public static async Task<string> AsyncGenerateMazeString(CancellationToken cancellationToken = default)
         {
             var matrix = new Direct2DMatrix(64);
-            var maze = new MazeHolder<Direct2DMatrix, Direct2DCanvas>(matrix, 31, 31, 1);
+            var maze = new MazeHolder<Direct2DMatrix, Direct2DCanvas>(matrix, 1);
             await Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(maze, 1).ConfigureAwait(false);
             var mazeStr = maze.SerializedMazeStr;
             Console.WriteLine("maze start: ---");

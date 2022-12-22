@@ -59,42 +59,41 @@ namespace BIGFOOT.MatrixViz.EntryPoints
 
             var opt = Console.ReadKey().Key;
 
-            var matrixv = new Direct2DMatrix(64);
-            Visual<Direct2DMatrix, Direct2DCanvas> v;
+            var tickMs = opt == ConsoleKey.D1 ? 5 : 100;
+
+            StartupConsole.PromptCustomTickRate(tickMs);
+
+            var tickMsInputStr = Console.ReadLine();
+            if (int.TryParse(tickMsInputStr, out var parsed))
+            {
+                tickMs = parsed;
+            }
+
+            var d2dMatrix = new Direct2DMatrix(64);
+            Visual<Direct2DMatrix, Direct2DCanvas> d2dVisual;
 
             switch (opt)
             {
                 case ConsoleKey.D1:
-                    v = new MazeHolder<Direct2DMatrix, Direct2DCanvas>(matrixv, 31, 31);
+                    d2dVisual = new MazeHolder<Direct2DMatrix, Direct2DCanvas>(d2dMatrix, tickMs);
                     break;
                 case ConsoleKey.D2:
-                    v = new InsertionSort<Direct2DMatrix, Direct2DCanvas>(matrixv);
+                    d2dVisual = new InsertionSort<Direct2DMatrix, Direct2DCanvas>(d2dMatrix);
                     break;
                 case ConsoleKey.D3:
-                    v = new BubbleSort<Direct2DMatrix, Direct2DCanvas>(matrixv);
+                    d2dVisual = new BubbleSort<Direct2DMatrix, Direct2DCanvas>(d2dMatrix);
                     break;
                 default:
-                    v = null;
+                    d2dVisual = null;
                     break;
             }
 
-            if (v != null)
+            if (d2dVisual != null)
             {
-                var tickMs = opt == ConsoleKey.D1 ? 5 : 100;
-
-                StartupConsole.PromptCustomTickRate(tickMs);
-
-                var tickMsInputStr = Console.ReadLine();
-                if (int.TryParse(tickMsInputStr, out var parsed))
-                {
-                    tickMs = parsed;
-                }
-
+                d2dVisual.SetTickMs(tickMs);
                 StartupConsole.DisplayLoadingEmulation();
-                await Task.Run(async () =>
-                {
-                    await Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(v, tickMs, cancellationToken);
-                });
+                Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(d2dVisual, tickMs, cancellationToken).ConfigureAwait(false); ;
+                
             }
             else
             {
@@ -125,7 +124,7 @@ namespace BIGFOOT.MatrixViz.EntryPoints
                 else if (opt == ConsoleKey.D4)
                 {
                     var matrix = new ColoredConsoleMatrix(64);
-                    var maze = new MazeHolder<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix, 10, 10, 1);
+                    var maze = new MazeHolder<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix, 1);
                     StartupConsole.DisplayLoadingEmulation();
                     maze.Visualize();
                 }

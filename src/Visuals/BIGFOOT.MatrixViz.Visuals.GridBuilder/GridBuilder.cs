@@ -148,7 +148,7 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
             {
                 (int x, int y) = (i / b0, i % b1);
 
-                GridBuilderTileType type = Grid[x, y].Type;
+                GridBuilderTileType type = Grid[y, x].Type;
                 switch (type)
                 {
                     case GridBuilderTileType.BLOCK:

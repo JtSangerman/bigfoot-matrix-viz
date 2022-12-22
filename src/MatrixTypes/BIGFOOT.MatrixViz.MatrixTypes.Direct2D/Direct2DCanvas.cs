@@ -3,6 +3,7 @@ using BIGFOOT.MatrixViz.Visuals;
 using System;
 using System.Drawing;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using unvell.D2DLib;
 using unvell.D2DLib.WinForm;
@@ -41,17 +42,11 @@ namespace BIGFOOT.MatrixViz.MatrixTypes.Direct2D
             SceneChanged = true;
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override async void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
-            new Thread(() =>
-            {
-                _visual.Visualize();
-                Thread.Sleep(2500);
-                base.OnClosed(e);
-                Application.Exit();
-            }).Start();
+            new Thread(() => _visual.Visualize()).Start();
         }
 
         protected override void OnKeyUp(KeyEventArgs e)
@@ -61,7 +56,7 @@ namespace BIGFOOT.MatrixViz.MatrixTypes.Direct2D
 
         protected override void OnClosed(EventArgs e)
         {
-
+            base.OnClosed(e);
         }
 
         public void SetVisual(Visual<Direct2DMatrix, Direct2DCanvas> visual)

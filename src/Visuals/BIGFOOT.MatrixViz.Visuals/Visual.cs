@@ -10,6 +10,7 @@ namespace BIGFOOT.MatrixViz.Visuals
         protected readonly TMatrix Matrix;
         public readonly int Rows = 64;
         protected int TickMs;
+        public bool IsRunning { get;  set; }
 
         //TODO property 'TCanvas Canvas' should be delegated here
         /// Prior implementations inheriting from this class should defer their references of this property to this class
@@ -22,8 +23,10 @@ namespace BIGFOOT.MatrixViz.Visuals
             } 
         }
 
-        public Visual(TMatrix matrix)
+        public Visual(TMatrix matrix, int? tickMs = null)
         {
+            if (tickMs.HasValue) TickMs = tickMs.Value;
+
             Rows = matrix.Size;
             Matrix = matrix;
         }
@@ -35,6 +38,8 @@ namespace BIGFOOT.MatrixViz.Visuals
 
         public virtual void Visualize()
         {
+            IsRunning = true;
+
             if (_isEmulating)
             {
                 VisualizeVirtually();
@@ -48,6 +53,8 @@ namespace BIGFOOT.MatrixViz.Visuals
             {
                 Thread.Sleep(2500);
             }
+
+            IsRunning = false;
         }
 
         public TMatrix GetMatrix()

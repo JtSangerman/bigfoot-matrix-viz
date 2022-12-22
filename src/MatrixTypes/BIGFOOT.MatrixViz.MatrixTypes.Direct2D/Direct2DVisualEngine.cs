@@ -13,14 +13,15 @@ namespace BIGFOOT.MatrixViz.MatrixTypes.Direct2D
             where TVisual : Visual<Direct2DMatrix, Direct2DCanvas>
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
 
             var canvasForm = visual.GetMatrix().InterfacedCreateOffscreenCanvas();
-
             visual.SetTickMs(tickMs);
             canvasForm.SetVisual(visual);
+            canvasForm.Show();
 
             Application.Run(canvasForm);
+            canvasForm.Close();
+            Application.Exit();
         }
     }
 }
