@@ -1,7 +1,6 @@
 ﻿using BIGFOOT.MatrixViz.DriverInterfacing;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 
@@ -181,6 +180,8 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
         private Color WallColor = Color.FromKnownColor(System.Drawing.KnownColor.MidnightBlue);
         private Color VisitedColor = Color.FromKnownColor(System.Drawing.KnownColor.LightSkyBlue);
         private Color WalkerColor = Color.FromKnownColor(System.Drawing.KnownColor.Indigo);
+        private Color GoalColor = Color.FromKnownColor(System.Drawing.KnownColor.Green);
+        private Color StartColor = Color.FromKnownColor(System.Drawing.KnownColor.Red);
         private Color SolverWalkerColor = new Color(0, 210, 0);
 
         private TCanvas Canvas;
@@ -302,14 +303,36 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
                         Canvas.DrawLine(ind, i, ind + 1, i, WallColor);
                     if (Maze[i, j] == '#' && i + 1 <= Maze.GetLength(0) - 1 && Maze[i + 1, j] == '#')
                         Canvas.DrawLine(ind, i, ind, i + 1, WallColor);
+                    if (Maze[i, j] == '%')
+                        Canvas.SetPixel(j, i, StartColor);
+                    if (Maze[i, j] == '$')
+                        Canvas.SetPixel(j, i, GoalColor);
                     ind++;
                 }
             }
 
         }
 
-        private void MakeExits()
+        public void MakeExits()
         {
+            for (int i = 0; i < Maze.GetLength(0); i++)
+            {
+                for (int j = 0; j < Maze.GetLength(1); j++)
+                {
+                    if (Maze[i, j] == '%')
+                    {
+                        Start = new Coordinate(i, j);
+                    }
+
+                    if (Maze[i, j] == '$')
+                    {
+                        End = new Coordinate(i, j);
+                    }
+                }
+            }
+
+            if (Start != null && End != null) return;
+
             for (int i = 0; i < Maze.GetLength(0); i++) //first row
                 Maze[0, i] = '#';
 
@@ -322,9 +345,9 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
             for (int i = 0; i < Maze.GetLength(0); i++) //first column
                 Maze[0, i] = '#';
 
+
             int entrance = Maze.GetLength(0) - 2;
             int exit = 1;
-
             Start = new Coordinate(entrance, 1);
             End = new Coordinate(exit, Maze.GetLength(0) - 2);
 
@@ -476,6 +499,14 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
                     else if (Maze[i, j] == ' ')
                     {
 
+                    }
+                    else if (Maze[i, j] == '%')
+                    {
+                        Canvas.SetPixel(j, i, StartColor);
+                    }
+                    else if (Maze[i, j] == '$')
+                    {
+                        Canvas.SetPixel(j, i, GoalColor);
                     }
                     else if (Maze[i, j] == '#')
                     {
