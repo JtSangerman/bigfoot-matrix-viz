@@ -35,6 +35,18 @@ namespace BIGFOOT.MatrixViz.Inputs.Drivers.Controllers
                 case ConsoleKey.E:
                     inputEventType = Enums.ControllerInput.ACTION_A;
                     break;
+                case ConsoleKey.Q:
+                    inputEventType = Enums.ControllerInput.ACTION_B;
+                    break;
+                case ConsoleKey.Z:
+                    inputEventType = Enums.ControllerInput.ACTION_X;
+                    break;
+                case ConsoleKey.C:
+                    inputEventType = Enums.ControllerInput.ACTION_Y;
+                    break;
+                case ConsoleKey.Delete:
+                    inputEventType = Enums.ControllerInput.DELETE;
+                    break;
                 case ConsoleKey.Spacebar:
                     inputEventType = Enums.ControllerInput.EXT1;
                     break;

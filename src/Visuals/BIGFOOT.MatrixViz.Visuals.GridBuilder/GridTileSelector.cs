@@ -7,8 +7,7 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
     internal class GridTileSelector : MatrixCoordinate
     {
         private sbyte _ticker = 0;
-        public bool AsyncIsCurrentlyTransparent => (_ticker = (sbyte) (_ticker + 16)) > 0;
-        public bool AsyncIsInputButtonActive { get; set; }
+        public bool AsyncIsCurrentlyTransparent => (_ticker = (sbyte) (_ticker + 24)) > 0;
 
         public GridTileSelector(int matrixSize) : base(matrixSize / 2, matrixSize / 2) { }
 

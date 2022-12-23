@@ -88,6 +88,18 @@ namespace BIGFOOT.MatrixViz.Visuals
                     InputQueue.Add(ControllerInput.ACTION_A);
                     Handle_E_INPUT_ACTION_A();
                     break;
+                case ControllerInput.ACTION_B:
+                    InputQueue.Add(ControllerInput.ACTION_B);
+                    Handle_E_INPUT_ACTION_B();
+                    break;
+                case ControllerInput.ACTION_X:
+                    InputQueue.Add(ControllerInput.ACTION_X);
+                    Handle_E_INPUT_ACTION_X();
+                    break;
+                case ControllerInput.ACTION_Y:
+                    InputQueue.Add(ControllerInput.ACTION_Y);
+                    Handle_E_INPUT_ACTION_Y();
+                    break;
                 case ControllerInput.EXT1:
                     InputQueue.Add(ControllerInput.EXT1);
                     Handle_E_INPUT_EXT1();
@@ -95,6 +107,9 @@ namespace BIGFOOT.MatrixViz.Visuals
                     break;
                 case ControllerInput.EXT2:
                     InputQueue.Add(ControllerInput.EXT2);
+                    break;
+                case ControllerInput.DELETE:
+                    InputQueue.Add(ControllerInput.DELETE);
                     break;
                 case ControllerInput.NONE:
                     break;
@@ -105,17 +120,15 @@ namespace BIGFOOT.MatrixViz.Visuals
 
         protected virtual void Handle_E_INPUT_UP() { }
         protected virtual void Handle_E_INPUT_DOWN() { }
-
         protected virtual void Handle_E_INPUT_LEFT() { }
-
         protected virtual void Handle_E_INPUT_RIGHT() { }
-
+        
         protected virtual void Handle_E_INPUT_ACTION_A() { }
+        protected virtual void Handle_E_INPUT_ACTION_B() { }
+        protected virtual void Handle_E_INPUT_ACTION_X() { }
+        protected virtual void Handle_E_INPUT_ACTION_Y() { }
 
-        protected virtual void Handle_E_INPUT_EXT1()
-        {
-            Paused = !Paused;
-        }
+        protected virtual void Handle_E_INPUT_EXT1() => Paused = !Paused;
 
         protected virtual void Handle_E_CONNECTION_SUCCESS(object sender, EventArgs e)
         {

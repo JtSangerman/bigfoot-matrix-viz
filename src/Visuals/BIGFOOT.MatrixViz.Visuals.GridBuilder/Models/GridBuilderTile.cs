@@ -8,15 +8,21 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder.Models
         public GridBuilderTileType Type { get; private set; }
         public bool IsEmpty => Type == GridBuilderTileType.EMPTY; 
 
-        public GridBuilderTile(GridBuilderTileType? type = null)
-        {
+        public GridBuilderTile(GridBuilderTileType? type = null) =>
             Type = type.HasValue ? type.Value : GridBuilderTileType.EMPTY;
+        
+        public void ClearTile() => Type = GridBuilderTileType.EMPTY;
+
+        public void PlaceNewTile(GridBuilderTileType type)
+        {
+            if (type == Type)
+            {
+                ClearTile();
+                return;
+            }
+
+            Type = type;
         }
-
-        public GridBuilderTile(char c) => Type = FromChar(c);
-
-        public void PlaceNewTile(GridBuilderTileType type) 
-            => Type = IsEmpty ? type : GridBuilderTileType.EMPTY;
 
         private static GridBuilderTileType FromChar(char c)
         {
@@ -26,6 +32,10 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder.Models
                     return GridBuilderTileType.BLOCK;
                 case ' ':
                     return GridBuilderTileType.EMPTY;
+                case '%':
+                    return GridBuilderTileType.START;
+                case '$':
+                    return GridBuilderTileType.TARGET;
                 default:
                     throw new Exception($"Could not parse map builder from character: {c}");
             }
