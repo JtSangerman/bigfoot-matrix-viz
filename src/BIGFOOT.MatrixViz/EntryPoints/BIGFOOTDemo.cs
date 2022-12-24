@@ -75,7 +75,7 @@ namespace BIGFOOT.MatrixViz.EntryPoints
             switch (opt)
             {
                 case ConsoleKey.D1:
-                    d2dVisual = new MazeHolder<Direct2DMatrix, Direct2DCanvas>(d2dMatrix, tickMs);
+                    d2dVisual = new MazeSolver<Direct2DMatrix, Direct2DCanvas>(d2dMatrix, tickMs);
                     break;
                 case ConsoleKey.D2:
                     d2dVisual = new InsertionSort<Direct2DMatrix, Direct2DCanvas>(d2dMatrix);
@@ -93,7 +93,6 @@ namespace BIGFOOT.MatrixViz.EntryPoints
                 d2dVisual.SetTickMs(tickMs);
                 StartupConsole.DisplayLoadingEmulation();
                 Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(d2dVisual, tickMs, cancellationToken).ConfigureAwait(false); ;
-                
             }
             else
             {
@@ -124,7 +123,7 @@ namespace BIGFOOT.MatrixViz.EntryPoints
                 else if (opt == ConsoleKey.D4)
                 {
                     var matrix = new ColoredConsoleMatrix(64);
-                    var maze = new MazeHolder<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix, 1);
+                    var maze = new MazeSolver<ColoredConsoleMatrix, ColoredConsoleCanvas>(matrix, 1);
                     StartupConsole.DisplayLoadingEmulation();
                     maze.Visualize();
                 }

@@ -1,10 +1,11 @@
 ﻿namespace BIGFOOT.MatrixViz.Visuals.Enums
 {
-    public enum GridBuilderTileType
+    public enum MatrixGridTileType
     {
         EMPTY,
         BLOCK,
         START,
-        TARGET
+        TARGET,
+        VISITED
     }
 }

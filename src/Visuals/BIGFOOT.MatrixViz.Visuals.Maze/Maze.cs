@@ -1,4 +1,5 @@
 ﻿using BIGFOOT.MatrixViz.DriverInterfacing;
+using BIGFOOT.MatrixViz.Visuals.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,23 +24,23 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
         public int getCol() { return c; }
     }
 
-    public class MazeHolder<TMatrix, TCanvas> : Visual<TMatrix, TCanvas>
+    public class MazeSolver<TMatrix, TCanvas> : Visual<TMatrix, TCanvas>
         where TMatrix : Matrix<TCanvas>
         where TCanvas : Canvas
     {
         private MazeStack<TMatrix, TCanvas> _randMazeGeneratorStack;
         public string SerializedMazeStr { get => _randMazeGeneratorStack.toString(); }
 
-        public MazeHolder(TMatrix matrix, int? tickMs = null) : base(matrix, tickMs)
+        public MazeSolver(TMatrix matrix, int? tickMs = null) : base(matrix, tickMs)
         {
             LoadGeneratedRandomMaze();
         }
 
-        public MazeHolder(TMatrix matrix, string serializedMazeStr, int? tickMs = null) : base(matrix, tickMs)
+        public MazeSolver(TMatrix matrix, string serializedMazeStr, int? tickMs = null) : base(matrix, tickMs)
         {
-            LoadDeserializedMaze(serializedMazeStr);
+            LoadSerializedMaze(serializedMazeStr);
         }
-        private void LoadDeserializedMaze(string serializedMazeStr)
+        private void LoadSerializedMaze(string serializedMazeStr)
         {
             var maze = new char[Matrix.Size, Matrix.Size];
             var mazeOverrideLines = serializedMazeStr
@@ -106,20 +107,6 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
 
             return maze;
         }
-
-        public string SerializeMaze(char[,] maze)
-        {
-            string mazeStr = string.Empty;
-            for (int i = 0; i < maze.GetLength(0); i++)
-            {
-                for (int j = 0; j < maze.GetLength(1); j++)
-                {
-                    mazeStr += maze[i, j].ToString();
-                }
-                mazeStr += "\n";
-            }
-            return mazeStr;
-        }
         public override void VisualizeOnHardware() => throw new NotImplementedException();
         public override void VisualizeVirtually() => _randMazeGeneratorStack.Solve();
 
@@ -171,60 +158,66 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
     {
         private LinkedList<Coordinate> MazeGenRandomizerStack;
         
-        private char[,] Maze;
-        private bool[,] Visited;
-
-        private Coordinate Start;
-        private Coordinate End;
-        
-        private Color WallColor = Color.FromKnownColor(System.Drawing.KnownColor.MidnightBlue);
-        private Color VisitedColor = Color.FromKnownColor(System.Drawing.KnownColor.LightSkyBlue);
-        private Color WalkerColor = Color.FromKnownColor(System.Drawing.KnownColor.Indigo);
-        private Color GoalColor = Color.FromKnownColor(System.Drawing.KnownColor.Green);
-        private Color StartColor = Color.FromKnownColor(System.Drawing.KnownColor.Red);
-        private Color SolverWalkerColor = new Color(0, 210, 0);
-
-        private TCanvas Canvas;
-        private readonly TMatrix Matrix;
-
+        private char[,] _maze;
+        private bool[,] _visited;
         private readonly int _tickMs;
+
+        private TCanvas _canvas;
+        private readonly TMatrix _matrix;
+
+        private Coordinate _startPos;
+        private Coordinate _end;
+
+
+
+
+        private Color WallColor = MatrixGridTileColors.BLOCK;
+        private Color EmptyPathColor = MatrixGridTileColors.EMPTY;
+        private Color VistedPathColor = MatrixGridTileColors.VISITED;
+
+        private Color WalkerColor = MatrixGridTileColors.SELECTOR;
+        private Color WalkerSolvedRouteColor = MatrixGridTileColors.TARGET;
+
+        private Color GoalColor = MatrixGridTileColors.TARGET;
+        private Color StartColor = MatrixGridTileColors.START;
+
 
         public MazeStack(TMatrix matrix, int tickMs, char[,] overrideMaze = null)
         {
             _tickMs = tickMs;
-            Matrix = matrix;
+            _matrix = matrix;
             Init(overrideMaze);
         }
 
         private void Init(char[,] mazeOverride = null)
         {
-            Canvas = Matrix.InterfacedGetCanvas();
-            Visited = new bool[Matrix.Size, Matrix.Size];
+            _canvas = _matrix.InterfacedGetCanvas();
+            _visited = new bool[_matrix.Size, _matrix.Size];
             MazeGenRandomizerStack = new LinkedList<Coordinate>();
 
             if (mazeOverride != null)
             {
-                Maze = mazeOverride;
+                _maze = mazeOverride;
                 return;
             }
 
-            Maze = InitRandomMazeGeneration();
+            _maze = InitRandomMazeGeneration();
         }
 
         private char[,] InitRandomMazeGeneration()
         {
-            var maze = new char[Matrix.Size, Matrix.Size];
+            var maze = new char[_matrix.Size, _matrix.Size];
             for (int i = 0; i < maze.GetLength(0); i++)
                 for (int j = 0; j < maze.GetLength(0); j++)
                     maze[i, j] = '#';
 
             Random r = new Random();
-            int mazeGenStartRow = r.Next(Matrix.Size / 2 - 1);
-            int mazeGenStartCol = r.Next(Matrix.Size / 2 - 1);
+            int mazeGenStartRow = r.Next(_matrix.Size / 2 - 1);
+            int mazeGenStartCol = r.Next(_matrix.Size / 2 - 1);
             
             MazeGenRandomizerStack.AddFirst(new Coordinate(mazeGenStartRow, mazeGenStartCol));
             
-            maze[mazeGenStartRow, mazeGenStartCol] = ' ';
+            //maze[mazeGenStartRow, mazeGenStartCol] = ' ';
             return maze;
         }
 
@@ -258,19 +251,19 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
             {
                 case 'U':
                     for (int i = 0; i <= 2; i++)
-                        Maze[row - i, col] = ' ';
+                        _maze[row - i, col] = ' ';
                     break;
                 case 'R':
                     for (int i = 0; i <= 2; i++)
-                        Maze[row, col + i] = ' ';
+                        _maze[row, col + i] = ' ';
                     break;
                 case 'D':
                     for (int i = 0; i <= 2; i++)
-                        Maze[row + i, col] = ' ';
+                        _maze[row + i, col] = ' ';
                     break;
                 case 'L':
                     for (int i = 0; i <= 2; i++)
-                        Maze[row, col - i] = ' ';
+                        _maze[row, col - i] = ' ';
                     break;
             }
         }
@@ -278,12 +271,12 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
         public String toString()
         {
             String retVal = "";
-            for (int i = 0; i < Maze.GetLength(0); i++)
+            for (int i = 0; i < _maze.GetLength(0); i++)
             {
-                for (int j = 0; j < Maze.GetLength(0); j++)
+                for (int j = 0; j < _maze.GetLength(0); j++)
                 {
-                    retVal += Maze[i, j];
-                    if (j == Maze.GetLength(0) - 1)
+                    retVal += _maze[i, j];
+                    if (j == _maze.GetLength(0) - 1)
                         retVal += "\n";
                 }
             }
@@ -293,20 +286,22 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
 
         public void Draw()
         {
-            Canvas = Matrix.InterfacedSwapOnVsync(Matrix.InterfacedGetCanvas());
-            for (int i = 0; i < Maze.GetLength(0); i++)
+            _canvas = _matrix.InterfacedSwapOnVsync(_matrix.InterfacedGetCanvas());
+            for (int i = 0; i < _maze.GetLength(0); i++)
             {
                 int ind = 0;
-                for (int j = 0; j < Maze.GetLength(0); j++)
+                for (int j = 0; j < _maze.GetLength(0); j++)
                 {
-                    if (Maze[i, j] == '#' && j + 1 <= Maze.GetLength(0) - 1 && Maze[i, j + 1] == '#')
-                        Canvas.DrawLine(ind, i, ind + 1, i, WallColor);
-                    if (Maze[i, j] == '#' && i + 1 <= Maze.GetLength(0) - 1 && Maze[i + 1, j] == '#')
-                        Canvas.DrawLine(ind, i, ind, i + 1, WallColor);
-                    if (Maze[i, j] == '%')
-                        Canvas.SetPixel(j, i, StartColor);
-                    if (Maze[i, j] == '$')
-                        Canvas.SetPixel(j, i, GoalColor);
+                    if (_maze[i, j] == '#' && j + 1 <= _maze.GetLength(0) - 1 && _maze[i, j + 1] == '#')
+                        _canvas.DrawLine(ind, i, ind + 1, i, WallColor);
+                    if (_maze[i, j] == '#' && i + 1 <= _maze.GetLength(0) - 1 && _maze[i + 1, j] == '#')
+                        _canvas.DrawLine(ind, i, ind, i + 1, WallColor);
+                    if (_maze[i, j] == '%')
+                        _canvas.SetPixel(j, i, StartColor);
+                    if (_maze[i, j] == '$')
+                        _canvas.SetPixel(j, i, GoalColor);
+                    if (_maze[i, j] == ' ')
+                        _canvas.SetPixel(j, i, EmptyPathColor);
                     ind++;
                 }
             }
@@ -315,48 +310,48 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
 
         public void MakeExits()
         {
-            for (int i = 0; i < Maze.GetLength(0); i++)
+            for (int i = 0; i < _maze.GetLength(0); i++)
             {
-                for (int j = 0; j < Maze.GetLength(1); j++)
+                for (int j = 0; j < _maze.GetLength(1); j++)
                 {
-                    if (Maze[i, j] == '%')
+                    if (_maze[i, j] == '%')
                     {
-                        Start = new Coordinate(i, j);
+                        _startPos = new Coordinate(i, j);
                     }
 
-                    if (Maze[i, j] == '$')
+                    if (_maze[i, j] == '$')
                     {
-                        End = new Coordinate(i, j);
+                        _end = new Coordinate(i, j);
                     }
                 }
             }
 
-            if (Start != null && End != null) return;
+            if (_startPos != null && _end != null) return;
 
-            for (int i = 0; i < Maze.GetLength(0); i++) //first row
-                Maze[0, i] = '#';
+            for (int i = 0; i < _maze.GetLength(0); i++) //first row
+                _maze[0, i] = '#';
 
-            for (int i = 0; i < Maze.GetLength(0); i++) //last column
-                Maze[i, 0] = '#';
+            for (int i = 0; i < _maze.GetLength(0); i++) //last column
+                _maze[i, 0] = '#';
 
-            for (int i = 0; i < Maze.GetLength(0); i++) //last row
-                Maze[Maze.GetLength(0) - 1, i] = '#';
+            for (int i = 0; i < _maze.GetLength(0); i++) //last row
+                _maze[_maze.GetLength(0) - 1, i] = '#';
 
-            for (int i = 0; i < Maze.GetLength(0); i++) //first column
-                Maze[0, i] = '#';
+            for (int i = 0; i < _maze.GetLength(0); i++) //first column
+                _maze[0, i] = '#';
 
 
-            int entrance = Maze.GetLength(0) - 2;
+            int entrance = _maze.GetLength(0) - 3;
             int exit = 1;
-            Start = new Coordinate(entrance, 1);
-            End = new Coordinate(exit, Maze.GetLength(0) - 2);
+            _startPos = new Coordinate(entrance, 1);
+            _end = new Coordinate(exit, _maze.GetLength(0) - 2);
 
             //we cut two spots to make sure the exits are accessible
-            Maze[entrance, 0] = ' ';
-            Maze[entrance, 1] = ' ';
+            _maze[entrance, 0] = ' ';
+            _maze[entrance, 1] = ' ';
 
-            Maze[exit, Maze.GetLength(0) - 1] = ' ';
-            Maze[exit, Maze.GetLength(0) - 2] = ' ';
+            _maze[exit, _maze.GetLength(0) - 1] = ' ';
+            _maze[exit, _maze.GetLength(0) - 2] = ' ';
 
         }
 
@@ -367,9 +362,9 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
             MakeExits();
             Draw();
 
-            SolveMazeRecursively(Maze, End.getCol() + 1, End.getRow(), -1);
+            SolveMazeRecursively(_maze, _end.getCol() + 1, _end.getRow(), -1);
 
-            Canvas = Matrix.InterfacedSwapOnVsync(Canvas);
+            _canvas = _matrix.InterfacedSwapOnVsync(_canvas);
 
             DrawAtEnd();
         }
@@ -380,21 +375,21 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
         private bool _solved = false;
         private bool SolveMazeRecursively(char[,] StackMaze, int x, int y, int d)
         {
-            Canvas = Matrix.InterfacedSwapOnVsync(Canvas);
+            _canvas = _matrix.InterfacedSwapOnVsync(_canvas);
             if (_prevRow != -1)
-                Canvas.SetPixel(_prevRow, _prevCol, VisitedColor);
+                _canvas.SetPixel(_prevRow, _prevCol, VistedPathColor);
 
             _prevRow = x;
             _prevCol = y;
             
-            if (Visited[y, x])
+            if (_visited[y, x])
                 return false;
             
             if (!_solved)
             {
                 Thread.Sleep(_tickMs);
-                Canvas.SetPixel(x, y, VisitedColor);
-                Visited[y, x] = true;
+                _canvas.SetPixel(x, y, VistedPathColor);
+                _visited[y, x] = true;
             }
 
             bool ok = false;
@@ -404,20 +399,21 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
                 if (i != d)
                 {
                     // check for end condition
-                    if ((x == Start.getCol() || x - 1 == Start.getCol()) && y == Start.getRow())
+                    //if ((x == _startPos.getCol() || x - 1 == _startPos.getCol()) && y == _startPos.getRow())
+                    if (x == _startPos.getCol() && y == _startPos.getRow())
                     {
                         _solved = true;
                         ok = true;
                     }
 
-                    Canvas = Matrix.InterfacedSwapOnVsync(Canvas);
+                    _canvas = _matrix.InterfacedSwapOnVsync(_canvas);
                     switch (i)
                     {
                         case 0:
                             if ((y - 1 >= 0) && StackMaze[y - 1, x] == ' ' && !_solved)
                             {
                                 if (StackMaze[y - 1, x] == ' ')
-                                    Canvas.SetPixel(x, y - 1, WalkerColor);
+                                    _canvas.SetPixel(x, y - 1, WalkerColor);
                                 ok = SolveMazeRecursively(StackMaze, x, y - 1, 2);
                             }
                             break;
@@ -425,7 +421,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
                             if ((x + 1 < StackMaze.GetLength(0)) && StackMaze[y, x + 1] == ' ' && !_solved)
                             {
                                 if (StackMaze[y, x + 1] == ' ')
-                                    Canvas.SetPixel(x + 1, y, WalkerColor);
+                                    _canvas.SetPixel(x + 1, y, WalkerColor);
                                 ok = SolveMazeRecursively(StackMaze, x + 1, y, 3);
                             }
                             break;
@@ -433,7 +429,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
                             if ((y + 1 < StackMaze.GetLength(0)) && StackMaze[y + 1, x] == ' ' && !_solved)
                             {
                                 if (StackMaze[y + 1, x] == ' ')
-                                    Canvas.SetPixel(x, y + 1, WalkerColor);
+                                    _canvas.SetPixel(x, y + 1, WalkerColor);
 
                                 ok = SolveMazeRecursively(StackMaze, x, y + 1, 0);
                             }
@@ -442,7 +438,7 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
                             if ((x - 1 >= 0) && StackMaze[y, x - 1] == ' ' && !_solved)
                             {
                                 if (StackMaze[y, x - 1] == ' ')
-                                    Canvas.SetPixel(x - 1, y, WalkerColor);
+                                    _canvas.SetPixel(x - 1, y, WalkerColor);
 
                                 ok = SolveMazeRecursively(StackMaze, x - 1, y, 1);
                             }
@@ -454,71 +450,73 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
             if (ok)
             {
                 Thread.Sleep(_tickMs);
-                Canvas = Matrix.InterfacedSwapOnVsync(Canvas);
+                _canvas = _matrix.InterfacedSwapOnVsync(_canvas);
                 
                 StackMaze[y, x] = '*';
-                
-                Canvas.SetPixel(Start.getCol(), Start.getRow(), SolverWalkerColor);
-                Canvas.SetPixel(Start.getCol() - 1, Start.getRow(), SolverWalkerColor);
+
+                _canvas.SetPixel(_startPos.getCol(), _startPos.getRow(), WalkerSolvedRouteColor);
+                _canvas.SetPixel(_startPos.getCol()-1, _startPos.getRow(), WalkerSolvedRouteColor);
 
                 switch (d)
                 {
                     case 0:
-                        Canvas.SetPixel(x, y - 1, SolverWalkerColor);
+                        _canvas.SetPixel(x, y - 1, WalkerSolvedRouteColor);
                         StackMaze[y - 1, x] = '*';
                         break;
                     case 1:
-                        Canvas.SetPixel(x + 1, y, SolverWalkerColor);
+                        _canvas.SetPixel(x + 1, y, WalkerSolvedRouteColor);
                         StackMaze[y, x + 1] = '*';
                         break;
                     case 2:
-                        Canvas.SetPixel(x, y + 1, SolverWalkerColor);
+                        _canvas.SetPixel(x, y + 1, WalkerSolvedRouteColor);
                         StackMaze[y + 1, x] = '*';
                         break;
                     case 3:
-                        Canvas.SetPixel(x - 1, y, SolverWalkerColor);
+                        _canvas.SetPixel(x - 1, y, WalkerSolvedRouteColor);
                         StackMaze[y, x - 1] = '*';
                         break;
                 }
             }
-            Canvas = Matrix.InterfacedSwapOnVsync(Canvas);
+            _canvas = _matrix.InterfacedSwapOnVsync(_canvas);
             return ok;
         }
 
-
         public void DrawAtEnd()
         {
-            for (int i = 0; i < Maze.GetLength(0); i++)
+            for (int i = 0; i < _maze.GetLength(0); i++)
             {
-                for (int j = 0; j < Maze.GetLength(0); j++)
+                for (int j = 0; j < _maze.GetLength(0); j++)
                 {
-                    if (Maze[i, j] == '*')
+                    if (_maze[i, j] == '*')
                     {
-                        Canvas.SetPixel(j, i, SolverWalkerColor);
+                        _canvas.SetPixel(j, i, WalkerSolvedRouteColor);
                     }
-                    else if (Maze[i, j] == ' ')
+                    else if (_maze[i, j] == ' ')
                     {
-
+                        if (_visited[i, j])
+                            _canvas.SetPixel(j, i, VistedPathColor);
+                        else
+                            _canvas.SetPixel(j, i, EmptyPathColor);
                     }
-                    else if (Maze[i, j] == '%')
+                    else if (_maze[i, j] == '%')
                     {
-                        Canvas.SetPixel(j, i, StartColor);
+                        _canvas.SetPixel(j, i, StartColor);
                     }
-                    else if (Maze[i, j] == '$')
+                    else if (_maze[i, j] == '$')
                     {
-                        Canvas.SetPixel(j, i, GoalColor);
+                        _canvas.SetPixel(j, i, WalkerSolvedRouteColor);
                     }
-                    else if (Maze[i, j] == '#')
+                    else if (_maze[i, j] == '#')
                     {
-                        Canvas.SetPixel(j, i, WallColor);
+                        _canvas.SetPixel(j, i, WallColor);
                     }
-                    else if (Visited[i, j])
-                    {
-                        Canvas.SetPixel(j, i, VisitedColor);
-                    }
+                    else throw new Exception($"Unknown handling for drawing maze tile '{_maze[i,j]}'");
                 }
-                Canvas = Matrix.InterfacedSwapOnVsync(Canvas);
+                _canvas = _matrix.InterfacedSwapOnVsync(_canvas);
             }
+
+            _canvas.SetPixel(_startPos.getCol(), _startPos.getRow(), WalkerSolvedRouteColor);
+            _canvas.SetPixel(_startPos.getCol() - 1, _startPos.getRow(), WalkerSolvedRouteColor);
         }
     }
 }

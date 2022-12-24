@@ -14,13 +14,7 @@ namespace BIGFOOT.MatrixViz.Visuals
         //TODO property 'TCanvas Canvas' should be delegated here
         /// Prior implementations inheriting from this class should defer their references of this property to this class
 
-        private bool _isEmulating 
-        {
-            get 
-            { 
-                return Matrix.GetType().Name != "InterfacedRGBLedMatrix"; 
-            } 
-        }
+        private bool _isEmulating => Matrix.GetType().Name != "InterfacedRGBLedMatrix"; 
 
         public Visual(TMatrix matrix, int? tickMs = null)
         {

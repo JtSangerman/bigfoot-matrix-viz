@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BIGFOOT.MatrixViz.Visuals.Maze\BIGFOOT.MatrixViz.Visuals.Maze.csproj" />
     <ProjectReference Include="..\BIGFOOT.MatrixViz.Visuals\BIGFOOT.MatrixViz.Visuals.csproj" />
   </ItemGroup>
 

@@ -5,7 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>BIGFOOT.MatrixViz</AssemblyName>
     <RootNamespace>BIGFOOT.MatrixViz</RootNamespace>
-    <StartupObject>BIGFOOT.MatrixViz.EntryPoints.GridBuilderDemo</StartupObject>
+    <StartupObject>BIGFOOT.MatrixViz.EntryPoints.InsertionSortDemo</StartupObject>
     <Platforms>AnyCPU;ARM64</Platforms>
   </PropertyGroup>
 

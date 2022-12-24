@@ -6,7 +6,6 @@ using BIGFOOT.MatrixViz.Inputs.Drivers.Enums;
 using System.Threading;
 using BIGFOOT.MatrixViz.Visuals.Enums;
 using BIGFOOT.MatrixViz.Visuals.Constants;
-using System;
 
 namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
 {
@@ -19,12 +18,13 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
         where TCanvas : Canvas
     {
         public TCanvas _canvas { get; set; }
-        public GridBuilderTile[,] Grid { private set; get; }
+        public MatrixGridTile[,] Grid { private set; get; }
         private GridBuilderCursor _selector { get; set; }
         private bool _finishedBuilding { get; set; }
         private readonly string _initialGridStateStr;
+        public string Serialized => MatrixGridUtility.Serialize(Grid, Matrix.Size);
 
-        public GridBuilder(TMatrix matrix, ControllerInputDriverBase input, string serializedMapStateToLoad = null) : base(matrix, input)
+        public GridBuilder(TMatrix matrix, ControllerInputDriverBase input, string serializedMapStateToLoad = "") : base(matrix, input)
         {
             _initialGridStateStr = serializedMapStateToLoad;
         }
@@ -43,7 +43,7 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
         private void InitBuilder()
         {
             _canvas = Matrix.InterfacedGetCanvas();
-            Grid = DeserializeGrid(_initialGridStateStr);
+            Grid = MatrixGridUtility.Deserialize(_initialGridStateStr, Matrix.Size);
             _selector = new GridBuilderCursor(Rows);
         }
 
@@ -68,88 +68,31 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
             _canvas = Matrix.InterfacedSwapOnVsync(_canvas);
         }
 
-        private GridBuilderTile[,] DeserializeGrid(string serializedGrid = "")
-        {
-            var lines = serializedGrid.Split('\n');
-            var grid = new GridBuilderTile[Rows, Rows];
-
-            for (int i = 0; i < Rows; i++)
-            {
-                var line = i < lines.Length ? lines[i] : string.Join("", Enumerable.Repeat(" ", Rows));
-                for (int j = 0; j < Rows; j++)
-                {
-                    var c = j < line.Length ? line[j] : ' ';
-                    GridBuilderTileType t = c == '#' ? GridBuilderTileType.BLOCK : GridBuilderTileType.EMPTY;
-                    grid[j, i] = new GridBuilderTile(t);
-                }
-            }
-
-            return grid;
-        }
-
-        public string SerializeMapState()
-        {
-            (int b0, int b1) = (Grid.GetLength(0), Grid.GetLength(1));
-            int bound = b0 * b1;
-
-            string stateStr = string.Empty;
-            for (int i = 0; i < bound; i++)
-            {
-                (int x, int y) = (i / b0, i % b1);
-
-                GridBuilderTileType type = Grid[y, x].Type;
-                switch (type)
-                {
-                    case GridBuilderTileType.BLOCK:
-                        stateStr += '#';
-                        break;
-                    case GridBuilderTileType.EMPTY:
-                        stateStr += ' ';
-                        break;
-                    case GridBuilderTileType.START:
-                        stateStr += '%';
-                        break;
-                    case GridBuilderTileType.TARGET:
-                        stateStr += '$';
-                        break;
-                    default:
-                        throw new Exception($"Unknown tile type '{type}' at ({x},{y}))");
-                }
-
-                if (y == 63)
-                {
-                    stateStr += '\n';
-                    continue;
-                }
-            }
-            return stateStr;
-        }
-
         private void HandleInputEvent(ControllerInput input) 
         {
             switch (input)
             {
                 case ControllerInput.ACTION_A:
-                    Grid[_selector.X, _selector.Y].PlaceNewTile(GridBuilderTileType.BLOCK);
+                    Grid[_selector.X, _selector.Y].PlaceNewTile(MatrixGridTileType.BLOCK);
                     break;
                 case ControllerInput.ACTION_B:
                     var tileUnderSelector = Grid[_selector.X, _selector.Y];
-                    if (tileUnderSelector.Type == GridBuilderTileType.START)
+                    if (tileUnderSelector.Type == MatrixGridTileType.START)
                     {
                         tileUnderSelector.ClearTile();
                         break;
                     }
 
-                    var existingStartTiles = from GridBuilderTile tile in Grid
-                                             where tile.Type == GridBuilderTileType.START
+                    var existingStartTiles = from MatrixGridTile tile in Grid
+                                             where tile.Type == MatrixGridTileType.START
                                              select tile;
                     
                     existingStartTiles.ToList().ForEach(tile => tile.ClearTile());
-                    tileUnderSelector.PlaceNewTile(GridBuilderTileType.START);
+                    tileUnderSelector.PlaceNewTile(MatrixGridTileType.START);
                     
                     break;
                 case ControllerInput.ACTION_X:
-                    Grid[_selector.X, _selector.Y].PlaceNewTile(GridBuilderTileType.TARGET);
+                    Grid[_selector.X, _selector.Y].PlaceNewTile(MatrixGridTileType.TARGET);
                     break;
                 case ControllerInput.ACTION_Y:
                     // does nothing atm
@@ -174,7 +117,7 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
 
         private void DrawEntities()
         {
-            DrawTiles();
+            MatrixGridUtility.DrawGridLayer(_canvas, Grid, Matrix.Size);
             DrawSelector();
         }
 
@@ -183,37 +126,7 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
             if (_selector.AsyncIsCurrentlyTransparent)
                 return;
 
-            _canvas.SetPixel(_selector.X, _selector.Y, GridBuilderTileColors.SELECTOR);
-        }
-
-        private void DrawTiles()
-        {
-            int bound = Rows * Rows;
-            for (int i = 0; i < bound; i++)
-            {
-                (int x, int y) = (i / 64, i % 64);
-               
-                var tile = Grid[x, y];
-                if (tile.IsEmpty)
-                    continue;
-
-                _canvas.SetPixel(x, y, DetermineTileColor(tile.Type));
-            }
-        }
-
-        private static Color DetermineTileColor(GridBuilderTileType tileType)
-        {
-            switch (tileType)
-            {
-                case GridBuilderTileType.BLOCK:
-                    return GridBuilderTileColors.BLOCK;
-                case GridBuilderTileType.START:
-                    return GridBuilderTileColors.START;
-                case GridBuilderTileType.TARGET:
-                    return GridBuilderTileColors.TARGET;
-                default:
-                    throw new Exception("GridBuilder could not draw unrecognized GridBuilderTileType: " + tileType);
-            }
+            _canvas.SetPixel(_selector.X, _selector.Y, MatrixGridTileColors.SELECTOR);
         }
     }
 

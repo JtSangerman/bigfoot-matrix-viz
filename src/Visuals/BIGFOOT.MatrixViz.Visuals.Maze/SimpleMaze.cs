@@ -1,20 +1,15 @@
-﻿using BIGFOOT.MatrixViz.DriverInterfacing;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading;
-
 
 // TODO refactor class structure and the awful code in general.
 namespace BIGFOOT.MatrixViz.Visuals.Maze
 {
-    public class SimpleMazeHolder
+    public class SimpleMaze
     {
         private char[,] maze;
         private readonly MazeStack _mazeStack;
-        public string SerializedMazeStr { get; private set; }
-
-        public SimpleMazeHolder(int rows, int cols)
+        
+        public SimpleMaze(int rows, int cols)
         {
             //StdDraw.setCanvasSize();
             //default the maze array to be completely full
@@ -71,9 +66,8 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
             _mazeStack.makeExits();
         }
 
-        public string MazeStackToString() => _mazeStack.toString();
+        public string Serialize() => _mazeStack.Serialize();
 
-        public string MazeToString() => toString();
 
         private char[] canMove(int row, int col)
         {
@@ -117,24 +111,6 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
             }
 
             return validDirs;
-        }
-
-
-        public String toString()
-        {
-            String retVal = "";
-
-            for (int i = 0; i < maze.GetLength(0); i++)
-            {
-                for (int j = 0; j < maze.GetLength(0); j++)
-                {
-                    retVal += maze[i, j];
-                    if (j == maze.GetLength(0) - 1)
-                        retVal += "\n";
-                }
-            }
-
-            return retVal;
         }
     }
 
@@ -225,15 +201,11 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
             int exit = 1;//r.nextInt(maze.GetLength(0)-2)+1;
 
 
-            //we cut two spots to make sure the exits are accessible
-            maze[entrance, 0] = ' ';
-            maze[entrance, 1] = ' ';
-
-            maze[exit, maze.GetLength(0) - 1] = ' ';
-            maze[exit, maze.GetLength(0) - 2] = ' ';
+            maze[entrance, 0] = '@';
+            maze[exit, maze.GetLength(0) - 1] = '$';
         }
 
-        public String toString()
+        public String Serialize()
         {
             String retVal = "";
 
@@ -250,9 +222,6 @@ namespace BIGFOOT.MatrixViz.Visuals.Maze
             return retVal;
         }
 
-
-
         public bool isEmpty() { return stack.Count == 0; }
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BIGFOOT.MatrixViz.DriverInterfacing;
+using BIGFOOT.MatrixViz.Visuals.Constants;
 using System.Threading;
 
 namespace BIGFOOT.MatrixViz.Visuals.ArraySorts
@@ -7,8 +8,24 @@ namespace BIGFOOT.MatrixViz.Visuals.ArraySorts
         where TMatrix : Matrix<TCanvas> 
         where TCanvas : Canvas
     {
+        private static Color COLOR_UNSORTED = MatrixGridTileColors.BLOCK;
+        private static Color COLOR_SORTED = MatrixGridTileColors.EMPTY;
+        private static Color COLOR_POINTER = MatrixGridTileColors.START;
+        private static Color COLOR_BACKGROUND = MatrixGridTileColors.VISITED;
+
+
         public InsertionSort(TMatrix matrix) : base(matrix)
         {
+        }
+
+        private void FillBackgroundLayer(TCanvas canvas)
+        {
+            int bound = Matrix.Size * Matrix.Size;
+            for (int i = 0; i < bound; i++)
+            {
+                canvas.SetPixel(i / Matrix.Size, i % Matrix.Size, COLOR_BACKGROUND);
+                //canvas.DrawLine(i, 0, bound, bound, COLOR_BACKGROUND);
+            }
         }
 
         public override void VisualizeOnHardware()
@@ -31,7 +48,7 @@ namespace BIGFOOT.MatrixViz.Visuals.ArraySorts
                     canvas.Clear();
                     for (int k = 0; k < n; k++)
                     {
-                        canvas.DrawLine(k, 0, k, arr[k] - 1, k == min_idx || k == j ? new Color(123, 0, 0) : k < i ? new Color(0, 0, 123) : new Color(123, 123, 123));
+                        canvas.DrawLine(k, 0, k, arr[k] - 1, k == min_idx || k == j ? COLOR_POINTER : k < i ? COLOR_SORTED : COLOR_UNSORTED);
                         //Console.WriteLine($"Drawing line ({k}, {arr[k] - 1}: x0={k}, y0={0}, x1={k}, y1={arr[k] - 1}");
                     }
                     canvas = Matrix.SwapOnVsync(canvas);
@@ -47,7 +64,7 @@ namespace BIGFOOT.MatrixViz.Visuals.ArraySorts
             canvas.Clear();
             for (int k = 0; k < arr.Length; k++)
             {
-                canvas.DrawLine(k, 0, k, arr[k] - 1, new Color(0, 0, 123));
+                canvas.DrawLine(k, 0, k, arr[k] - 1, COLOR_SORTED);
             }
             canvas = Matrix.SwapOnVsync(canvas);
         }
@@ -73,7 +90,8 @@ namespace BIGFOOT.MatrixViz.Visuals.ArraySorts
                     canvas.Clear();
                     for (int k = 0; k < n; k++)
                     {
-                        canvas.DrawLine(k, 0, k, arr[k] - 1, k == min_idx || k == j ? new Color(123, 0, 0) : k < i ? new Color(0, 0, 123) : new Color(123, 123, 123));
+                        canvas.DrawLine(k, 0, k, n-1, COLOR_BACKGROUND);
+                        canvas.DrawLine(k, 0, k, arr[k] - 1, k == min_idx || k == j ? COLOR_POINTER : k < i ? COLOR_SORTED : COLOR_UNSORTED);
                         //Console.WriteLine($"Drawing line ({k}, {arr[k] - 1}: x0={k}, y0={0}, x1={k}, y1={arr[k] - 1}");
                     }
                     canvas = Matrix.InterfacedSwapOnVsync(canvas);
@@ -89,7 +107,7 @@ namespace BIGFOOT.MatrixViz.Visuals.ArraySorts
             canvas.Clear();
             for (int k = 0; k < arr.Length; k++)
             {
-                canvas.DrawLine(k, 0, k, arr[k] - 1, new Color(0, 0, 123));
+                canvas.DrawLine(k, 0, k, arr[k] - 1, COLOR_SORTED);
             }
             canvas = Matrix.InterfacedSwapOnVsync(canvas);
         }

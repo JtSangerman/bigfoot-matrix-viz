@@ -84,10 +84,10 @@ namespace BIGFOOT.MatrixViz.EntryPoints
                 {
                     int tickMs = 3;
 
-                    var deserializedEditedMapResult = await AsyncStartMapEditor().ConfigureAwait(false);
+                    var serializedMaze = await AsyncStartMapEditor().ConfigureAwait(false);
                     await Task.Delay(500);
 
-                    var mazeViz = new MazeHolder<Direct2DMatrix, Direct2DCanvas>(new Direct2DMatrix(64), deserializedEditedMapResult, tickMs);
+                    var mazeViz = new MazeSolver<Direct2DMatrix, Direct2DCanvas>(new Direct2DMatrix(64), serializedMaze, tickMs);
                     await Task.Delay(500);
 
                     await Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(mazeViz, tickMs).ConfigureAwait(false);
@@ -108,7 +108,7 @@ namespace BIGFOOT.MatrixViz.EntryPoints
 
             var mapBuilder = new GridBuilder<Direct2DMatrix, Direct2DCanvas>(matrix, input, EX_MAZE_STR);
             await Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(mapBuilder, 50).ConfigureAwait(false);
-            var finishedGrid = mapBuilder.SerializeMapState();
+            var finishedGrid = mapBuilder.Serialized;
             Console.WriteLine("edited Grid start: ---");
             Console.WriteLine(finishedGrid);
 
@@ -121,7 +121,7 @@ namespace BIGFOOT.MatrixViz.EntryPoints
         public static async Task<string> AsyncGenerateMazeString(CancellationToken cancellationToken = default)
         {
             var matrix = new Direct2DMatrix(64);
-            var maze = new MazeHolder<Direct2DMatrix, Direct2DCanvas>(matrix, 1);
+            var maze = new MazeSolver<Direct2DMatrix, Direct2DCanvas>(matrix, 1);
             await Direct2DVisualEngine.BeginVirtualDirect2DGraphicsVisualEmulation(maze, 1).ConfigureAwait(false);
             var mazeStr = maze.SerializedMazeStr;
             Console.WriteLine("maze start: ---");
