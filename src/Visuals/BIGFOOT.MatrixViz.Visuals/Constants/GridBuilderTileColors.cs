@@ -1,7 +1,7 @@
 ﻿using BIGFOOT.MatrixViz.DriverInterfacing;
-namespace BIGFOOT.MatrixViz.Visuals.GridBuilder.Constants
+namespace BIGFOOT.MatrixViz.Visuals.Constants
 {
-    internal static class GridBuilderTileColors
+    public static class GridBuilderTileColors
     {
         public static Color SELECTOR = Color.FromSystemColor(System.Drawing.Color.Black);
         public static Color BLOCK = Color.FromSystemColor(System.Drawing.Color.Gray);

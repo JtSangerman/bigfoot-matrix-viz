@@ -1,4 +1,4 @@
-﻿namespace BIGFOOT.MatrixViz.Visuals.GridBuilder.Enums
+﻿namespace BIGFOOT.MatrixViz.Visuals.Enums
 {
     public enum GridBuilderTileType
     {

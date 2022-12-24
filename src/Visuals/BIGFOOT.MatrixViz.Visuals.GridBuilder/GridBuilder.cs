@@ -1,11 +1,11 @@
 ﻿using BIGFOOT.MatrixViz.DriverInterfacing;
 using BIGFOOT.MatrixViz.Inputs.Drivers.Controllers;
-using BIGFOOT.MatrixViz.Visuals.GridBuilder.Models;
+using BIGFOOT.MatrixViz.Visuals.Models;
 using System.Linq;
 using BIGFOOT.MatrixViz.Inputs.Drivers.Enums;
 using System.Threading;
-using BIGFOOT.MatrixViz.Visuals.GridBuilder.Enums;
-using BIGFOOT.MatrixViz.Visuals.GridBuilder.Constants;
+using BIGFOOT.MatrixViz.Visuals.Enums;
+using BIGFOOT.MatrixViz.Visuals.Constants;
 using System;
 
 namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
@@ -20,7 +20,7 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
     {
         public TCanvas _canvas { get; set; }
         public GridBuilderTile[,] Grid { private set; get; }
-        private GridTileSelector _selector { get; set; }
+        private GridBuilderCursor _selector { get; set; }
         private bool _finishedBuilding { get; set; }
         private readonly string _initialGridStateStr;
 
@@ -44,7 +44,7 @@ namespace BIGFOOT.MatrixViz.Visuals.GridBuilder
         {
             _canvas = Matrix.InterfacedGetCanvas();
             Grid = DeserializeGrid(_initialGridStateStr);
-            _selector = new GridTileSelector(Rows);
+            _selector = new GridBuilderCursor(Rows);
         }
 
         private void ExecutePlayableTick()

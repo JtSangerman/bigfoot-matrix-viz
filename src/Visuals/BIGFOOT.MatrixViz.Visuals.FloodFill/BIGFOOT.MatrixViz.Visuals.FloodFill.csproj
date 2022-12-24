@@ -1,9 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <AssemblyName>BIGFOOT.MatrixViz.Visuals.FloodFill</AssemblyName>
+	  <RootNamespace>BIGFOOT.MatrixViz.Visuals.FloodFill</RootNamespace>
+	<Platforms>AnyCPU;ARM64</Platforms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BIGFOOT.MatrixViz.Visuals\BIGFOOT.MatrixViz.Visuals.csproj" />
+  </ItemGroup>
 
 </Project>

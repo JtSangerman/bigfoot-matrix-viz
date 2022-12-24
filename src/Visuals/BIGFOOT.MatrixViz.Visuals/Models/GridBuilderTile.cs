@@ -1,7 +1,7 @@
-﻿using BIGFOOT.MatrixViz.Visuals.GridBuilder.Enums;
+﻿using BIGFOOT.MatrixViz.Visuals.Enums;
 using System;
 
-namespace BIGFOOT.MatrixViz.Visuals.GridBuilder.Models
+namespace BIGFOOT.MatrixViz.Visuals.Models
 {
     public class GridBuilderTile
     {

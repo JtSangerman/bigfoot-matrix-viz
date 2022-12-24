@@ -15,6 +15,7 @@
     <ProjectReference Include="..\MatrixTypes\BIGFOOT.MatrixViz.MatrixTypes.Direct2D\BIGFOOT.MatrixViz.MatrixTypes.Direct2D.csproj" />
     <ProjectReference Include="..\MatrixTypes\BIGFOOT.MatrixViz.MatrixTypes.InterfacedRGBLed\BIGFOOT.MatrixViz.MatrixTypes.InterfacedRGBLed.csproj" />
     <ProjectReference Include="..\Visuals\BIGFOOT.MatrixViz.Visuals.ArraySorts\BIGFOOT.MatrixViz.Visuals.ArraySorts.csproj" />
+    <ProjectReference Include="..\Visuals\BIGFOOT.MatrixViz.Visuals.FloodFill\BIGFOOT.MatrixViz.Visuals.FloodFill.csproj" />
     <ProjectReference Include="..\Visuals\BIGFOOT.MatrixViz.Visuals.GridBuilder\BIGFOOT.MatrixViz.Visuals.GridBuilder.csproj" />
     <ProjectReference Include="..\Visuals\BIGFOOT.MatrixViz.Visuals.Maze\BIGFOOT.MatrixViz.Visuals.Maze.csproj" />
     <ProjectReference Include="..\Visuals\BIGFOOT.MatrixViz.Visuals.Snake\BIGFOOT.MatrixViz.Visuals.Snake.csproj" />
